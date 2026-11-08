@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Genussmanufaktur · Ein Haus, fünf Genusswelten (inoffizieller Entwurf)</title>
+<meta name="description" content="Inoffizieller Entwurf: die Genussmanufaktur aus Ochtrup mit Frooters, Café nyd, Bowlers, Pick Nick und Loaves Bakery.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=20261108140733">
+<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js", "three/addons/": "./assets/vendor/addons/" } }</script>
+</head>
+<body>
+<canvas id="fluid" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"><span>Eintreten</span></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="boil"><feTurbulence id="turb" type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="1"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs></svg>
+
+<header class="nav" id="nav">
+  <a href="#start" class="brand">Genussmanufaktur</a>
+  <nav aria-label="Genusswelten">
+    <a href="#frooters">Frooters</a><a href="#nyd">Café nyd</a><a href="#bowlers">Bowlers</a><a href="#picknick">Pick Nick</a><a href="#loaves">Loaves</a><a href="partner.html" class="pill">Für Partner</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 1 Das Haus -->
+  <section id="start" class="hero">
+    <div class="hero-text">
+      <p class="kicker reveal">Ochtrup · seit 2011</p>
+      <h1 class="split"><span class="line">Genuss</span><span class="line l2">manufaktur</span></h1>
+      <p class="lead reveal">Ein Haus, fünf Genusswelten. Jede hat ihren eigenen Raum. Such dir einen aus und tritt ein.</p>
+      <div class="hero-links reveal"><a class="btn" href="partner.html">Für Partner</a><a class="link" href="#dach">Unsere Geschichte ↓</a></div>
+    </div>
+    <div class="house" id="house">
+      <div class="roof" aria-hidden="true">
+        <span class="chimney"><i></i><i></i><i></i></span>
+        <div class="roof-body">
+          <span class="rb b1"></span><span class="rb b2"></span><span class="rb b3"></span><span class="rb b4"></span><span class="rb b5"></span>
+          <span class="tiles"></span><span class="sheen"></span>
+          <span class="dormer"></span>
+          <span class="roof-name">Genussmanufaktur</span>
+        </div>
+      </div>
+      <div class="rooms">
+        <button class="room r-loaves" data-go="#loaves" aria-label="Loaves Bakery: Backstube unterm Dach, bald">
+          <canvas class="flour" id="flourCv"></canvas>
+          <span class="dough" aria-hidden="true"><i>L</i><i>o</i><i>a</i><i>v</i><i>e</i><i>s</i></span>
+          <span class="lbl"><small>Unterm Dach</small><b>Loaves Bakery</b><em>bald</em></span>
+          <span class="zinfo"><span class="kicker">Loaves Bakery · Unterm Dach</span><span>Hier wird gerade eingerichtet. Bald duftet es nach Brot.</span><span class="zgo" data-go="#loaves">Mehr ↓</span></span>
+        </button>
+        <button class="room r-bowlers" data-go="#bowlers" data-expand="jungle" aria-label="Bowlers: Gewächshaus mit Dschungel">
+          <canvas id="jungleMini"></canvas>
+          <span class="lbl"><small>Gewächshaus</small><b>Bowlers</b></span>
+          <span class="zinfo"><span class="kicker">Bowlers · Das Gewächshaus</span><span>Hinter dem Gewächshaus beginnt der Regenwald. Hier wächst die Açaí.</span><span class="zgo" data-go="#bowlers" data-expand="jungle">Reise starten ↓</span></span>
+        </button>
+        <button class="room r-pick" data-go="#picknick" aria-label="Pick Nick: Terrasse">
+          <svg class="mini-doodles" viewBox="0 0 300 200" aria-hidden="true"><g filter="url(#boil)" fill="none" stroke="#2c4a28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 60 C10 30 50 10 60 35 C67 55 45 72 30 60 C15 47 15 25 40 20 M60 35 C70 10 110 20 100 50 C93 72 70 60 60 35"/>
+            <path d="M220 40 L270 40 L263 110 L227 110 Z M216 40 L274 40 M270 60 C290 60 290 88 266 90"/>
+            <path d="M200 150 L280 150 L280 192 L200 192 Z M226 150 L226 192 M253 150 L253 192 M200 171 L280 171"/>
+          </g></svg>
+          <img class="pn-logo" src="assets/img/pn-logo-hell.png" alt="">
+          <span class="lbl"><small>Terrasse</small><b>Pick Nick</b></span>
+          <span class="zinfo"><span class="kicker">Pick Nick · Die Terrasse</span><span>Kaffee, belegte Brötchen, Laugengebäck, Waffeln und Eis. Die kleine Pause beim Einkaufen.</span><span class="zgo" data-go="#picknick">Zur Terrasse ↓</span></span>
+        </button>
+        <div class="room r-frooters" role="button" tabindex="0" data-go="#frooters" aria-label="Frooters: Obstküche">
+          <span class="lbl"><small>Obstküche</small><b>Frooters</b></span>
+          <div class="zinfo"><p class="kicker">Frooters · Die Obstküche</p><p>Fahr über die Theke und schubs das Obst an.</p><button class="zgo" data-go="#frooters">Mehr Frooters ↓</button></div>
+        </div>
+        <button class="room r-nyd" data-go="#nyd" aria-label="Café nyd: Wohnzimmer">
+          <span class="slides" aria-hidden="true"><i style="background-image:url(assets/img/nyd/hero-room.webp)"></i><i style="background-image:url(assets/img/nyd/acai.webp)"></i><i style="background-image:url(assets/img/nyd/tisch.webp)"></i></span>
+          <span class="lbl"><small>Wohnzimmer</small><b>Café nyd</b></span>
+          <span class="zinfo"><span class="kicker">Café nyd · Osnabrück</span><span>Brunch, Kaffee und Kuchen mitten in der Stadt. Nyd ist dänisch für genießen.</span><span class="zgo" data-go="#nyd">Ins Café ↓</span></span>
+        </button>
+      </div>
+      <a class="door" href="partner.html"><small>Haustür</small><b>Für Partner</b><span>Flächen, Lieferanten, Presse, Jobs →</span></a>
+    </div>
+  </section>
+
+  <!-- 2 Das Dach -->
+  <section id="dach" class="dach">
+    <div>
+      <p class="kicker reveal">Das Dach</p>
+      <h2 class="split"><span class="line">Aus der Mode</span><span class="line">zum Genuss.</span></h2>
+    </div>
+    <div>
+      <p class="reveal">Christian Kötterheinrich kam aus der Modebranche. Bei einer Studie über Passform stieß er auf eine Erkenntnis, die nichts mit Stoff zu tun hatte: Einkaufen und Genießen gehören zusammen. 2011 gründete er in Ochtrup die Genussmanufaktur. Seitdem entstehen Orte zum Verweilen, dort, wo Menschen einkaufen, bummeln und sich etwas gönnen.</p>
+      <ul class="awards reveal">
+        <li><b>2012</b><span>Retailer-Award der ECE für das innovativste Konzept</span></li>
+        <li><b>2013</b><span>Store of the Year des Handelsverbands HDE</span></li>
+        <li><b>2014</b><span>Nominierung Bahnhofsshop des Jahres der Deutschen Bahn</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 Frooters -->
+  <section class="juice" id="frooters" data-fluid="fruit">
+    <p class="kicker reveal">Frooters · Säfte und Smoothies</p>
+    <h2 class="split"><span class="line">Frisch</span><span class="line l2">gepresst.</span></h2>
+    <span class="hint reveal"><i></i>Fahr mit der Maus durch den Saft</span>
+  </section>
+
+  <!-- 4 Café nyd -->
+  <section id="nyd" class="nyd-wrap">
+    <div class="nyd-sticky">
+      <div class="nyd-fallback"></div>
+      <canvas id="nydCanvas" aria-hidden="true"></canvas>
+      <div class="nyd-shade"></div>
+      <div class="nyd-top"><img class="nyd-logo" src="assets/img/nyd/logo-weiss.png" alt="nyd"><a href="https://cafe-nyd.eu/" target="_blank" rel="noopener">cafe-nyd.eu ↗</a></div>
+      <div class="nyd-caps">
+        <div class="cap on"><p class="kicker">Café nyd · Osnabrück</p><h3><span>Nyd ist dänisch für genießen.</span></h3><p class="s">Mitten an der Großen Straße: draußen die Fußgängerzone, drinnen beginnt die Pause.</p></div>
+        <div class="cap"><p class="kicker">Bunt auf dem Teller</p><h3><span>Açaí-Bowl.</span></h3><p class="s">Fruchtig, cremig und voller Farbe. Mit Granola, Beeren und Passionsfrucht.</p></div>
+        <div class="cap"><p class="kicker">Für den ganzen Tisch</p><h3><span>Ube, Kuchen, Kaffee.</span></h3><p class="s">Der lila Ube-Drink, Karottenkuchen mit Frischkäse und ein Cappuccino mit Herz.</p></div>
+        <div class="cap"><p class="kicker">Herzhaft und frisch</p><h3><span>Sauerteig &amp; Avocado.</span></h3><p class="s">Knuspriges Sauerteigbrot, cremige Avocado und frische Begleiter.</p></div>
+        <div class="cap"><p class="kicker">Noch etwas Süßes</p><h3><span>Karottenkuchen.</span></h3><p class="s">Saftig, mit Frischkäse-Topping und feinen Blütenblättern.</p></div>
+        <div class="cap"><p class="kicker">Zeit zum Ankommen</p><h3><span>Sitzenbleiben erlaubt.</span></h3><p class="s">Helles Holz, weiche Kissen, warmes Licht. Teller, die Lust auf langes Bleiben machen.</p></div>
+        <div class="cap"><p class="kicker">Große Straße 27–32</p><h3><span>Bis gleich.</span></h3><p class="s">Dienstag bis Samstag 10–19 Uhr, Sonntag 10–17 Uhr, Montag Ruhetag.</p></div>
+      </div>
+      <div class="nyd-count"><span id="nydNum">01</span><span class="bar"><i id="nydBar"></i></span><span>07</span></div>
+    </div>
+  </section>
+  <section class="ube" id="ube" data-fluid="ube">
+    <div class="ube-head">
+      <p class="kicker reveal">Café nyd · Eine Herleitung</p>
+      <h2 class="split big"><span class="line">Warum</span><span class="line l2">lila?</span></h2>
+    </div>
+    <ol class="ube-steps">
+      <li class="reveal"><span>01</span><h3>Eine Knolle</h3><p>Ube ist die lila Yamswurzel, botanisch <i>Dioscorea alata</i>. Keine Süßkartoffel und kein Taro, sondern eine eigene Pflanze.</p></li>
+      <li class="reveal"><span>02</span><h3>Von den Philippinen</h3><p>Ihre Heimat ist Südostasien, vor allem die Philippinen. Dort gehört sie seit Generationen in Süßspeisen und Gebäck.</p></li>
+      <li class="reveal"><span>03</span><h3>Natürlich violett</h3><p>Die Farbe kommt von Anthocyanen, denselben Farbstoffen wie in Heidelbeeren. Kein Farbstoff aus der Tube.</p></li>
+      <li class="reveal"><span>04</span><h3>Nussig, ein bisschen Vanille</h3><p>Ube schmeckt mild süß, nussig und erinnert an Vanille. Darum passt sie so gut zu Milch, Kaffee und Kuchen.</p></li>
+      <li class="reveal ube-final"><span>05</span><h3>Bei uns: im Glas</h3><p>Im Café nyd als lila Drink, mit Schaum und Muster. Probieren lohnt sich.</p><img src="assets/img/nyd/ube-drink.webp" alt="Ube-Drink im Café nyd" loading="lazy"></li>
+    </ol>
+  </section>
+
+  <!-- 5 Bowlers: Reise durch den Dschungel -->
+  <section id="bowlers" class="journey">
+    <div class="j-sticky">
+      <canvas id="jungleBig" aria-hidden="true"></canvas>
+      <div class="j-vignette"></div>
+      <div class="j-st" data-a="-1" data-b="0.12"><p class="kicker">Bowlers · Das Gewächshaus</p><h2>Die Reise<br>der Açaí.</h2><p>Scroll weiter und geh mit in den Regenwald.</p></div>
+      <div class="j-st" data-a="0.15" data-b="0.29"><p class="kicker">Station 1 · Herkunft</p><h3>Am Amazonas.</h3><p>Açaí wächst an der Palme <i>Euterpe oleracea</i>, vor allem im Bundesstaat Pará im Norden Brasiliens. Die schlanken Palmen werden über 25 Meter hoch.</p></div>
+      <div class="j-st j-photo" data-a="0.32" data-b="0.47"><img src="assets/img/acai-traube.webp" alt="Açaí-Beeren an der Palme" loading="lazy"><div><p class="kicker">Station 2 · Ernte</p><h3>Von Hand gepflückt.</h3><p>Die Pflücker klettern die Stämme hinauf und holen die reifen Rispen herunter, ohne dass die Beeren den Boden berühren.</p><small>Beispielbild: Kawê Rodrigues, Unsplash</small></div></div>
+      <div class="j-st" data-a="0.5" data-b="0.63"><p class="kicker">Station 3 · Tempo</p><h3>Ein Tag.</h3><p>Die Beeren verderben schnell. Deshalb werden sie innerhalb eines Tages nach der Ernte zu Fruchtmark verarbeitet und tiefgefroren.</p></div>
+      <div class="j-st j-data" data-a="0.66" data-b="0.82"><p class="kicker">Station 4 · Powerfood in Zahlen</p><h3>Klein, dunkel, stark.</h3>
+        <ul>
+          <li><b>25 m</b><span>hoch wird die Açaí-Palme</span></li>
+          <li><b>1 Tag</b><span>bis die Ernte verarbeitet ist</span></li>
+          <li><b>&lt;1 g</b><span>Zucker in 100 g ungesüßtem Fruchtmark</span></li>
+          <li><b>~5 g</b><span>natürliches Fett in 100 g</span></li>
+        </ul>
+        <small>Nährwerte laut Herstellerangaben für ungesüßtes Fruchtmark, je nach Produkt verschieden.</small>
+      </div>
+      <div class="j-final" id="jFinal">
+        <div class="j-bowl"></div>
+        <div class="j-final-text"><p class="kicker">Ankunft</p><h2>Die Bowl.</h2><p>Gefrorenes Açaí, frische Beeren, Granola und ein Hauch Nussmus. Bald bei Bowlers.</p><p class="ph">Platzhalter: Ort, Karte und Öffnungszeiten folgen · Foto: Açaí-Bowl aus dem Café nyd</p></div>
+      </div>
+      <div class="j-progress"><i id="jBar"></i></div>
+    </div>
+  </section>
+
+  <!-- 6 Pick Nick -->
+  <section id="picknick" class="pick">
+    <svg class="doodles" id="doodles" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g filter="url(#boil)" fill="none" stroke="#2c4a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <g class="dd" data-d="1.2" transform="translate(150 200) rotate(-12)"><path d="M0 60 C-40 0 40 -40 60 10 C75 50 30 85 0 60 C-30 35 -30 -10 20 -20 M60 10 C80 -40 160 -20 140 40 C125 85 80 60 60 10 C40 -40 90 -60 120 -20 M10 75 L-15 110 M130 75 L155 110"/></g>
+        <g class="dd" data-d="0.7" transform="translate(1180 170) rotate(8)"><path d="M0 0 L110 0 L95 150 L15 150 Z M-8 0 L118 0 M110 40 C150 40 150 95 102 98 M30 -20 C25 -40 45 -50 40 -70 M60 -20 C55 -40 75 -50 70 -70"/></g>
+        <g class="dd" data-d="1.5" transform="translate(1120 620) rotate(-8)"><path d="M0 0 L170 0 L170 120 L0 120 Z M42 0 L42 120 M85 0 L85 120 M128 0 L128 120 M0 40 L170 40 M0 80 L170 80"/></g>
+        <g class="dd" data-d="1" transform="translate(230 600) rotate(14)"><path d="M0 50 C0 -20 100 -20 100 50 L100 170 L0 170 Z M50 170 L50 240 M20 60 L20 110 M80 80 L80 130"/></g>
+        <g class="dd" data-d="0.9" transform="translate(560 90) rotate(-6)"><path d="M0 60 C20 -10 180 -10 200 60 C170 40 150 90 100 90 C50 90 30 40 0 60 Z M60 20 C70 50 70 70 65 88 M100 10 L100 90 M140 20 C130 50 130 70 135 88"/></g>
+        <g class="dd" data-d="1.3" transform="translate(860 740)"><path d="M0 60 C0 0 180 0 180 60 C180 90 0 90 0 60 Z M50 25 C60 40 60 50 55 62 M100 20 C110 38 110 50 105 62"/></g>
+      </g>
+    </svg>
+    <div class="pick-text">
+      <img class="pick-logo reveal" src="assets/img/pn-logo-hell.png" alt="Pick Nick">
+      <p class="kicker reveal">Die Terrasse · seit 2016</p>
+      <h2 class="split"><span class="line">Eine kleine Pause</span><span class="line">im Grünen.</span></h2>
+      <p class="reveal">Der kleine Bruder von Frooters: guter Kaffee, belegte Brötchen, Laugengebäck, frische Waffeln, Kuchen und handgemachtes Eis. Für die Pause beim Einkaufen.</p>
+      <p class="where reveal">Im Designer Outlet Ochtrup und im Modenhaus Becker in Gifhorn.</p>
+    </div>
+    <img class="wanderer" id="wanderer" src="assets/img/pn-wanderer-gruen.png" alt="" aria-hidden="true">
+  </section>
+
+  <!-- 7 Loaves -->
+  <section id="loaves" class="loaves">
+    <p class="kicker reveal">Loaves Bakery · Unterm Dach</p>
+    <h2 class="rise" aria-label="Loaves"><span>L</span><span>o</span><span>a</span><span>v</span><span>e</span><span>s</span></h2>
+    <p class="reveal soon">Der Teig geht noch. Bald duftet es hier nach Brot.</p>
+    <p class="ph reveal">Platzhalter: Konzept, Ort und Eröffnung folgen.</p>
+  </section>
+
+  <!-- 8 Für Partner (Kurzform) -->
+  <section class="partner-teaser">
+    <div><p class="kicker reveal">Die Haustür · Für Partner</p><h2 class="split"><span class="line">Ihr Haus.</span><span class="line">Unser Genuss.</span></h2></div>
+    <div class="pt-grid">
+      <a class="pt reveal" href="partner.html#flaechen"><b>Flächen &amp; Center</b><span>Gastronomie, die Menschen anzieht</span></a>
+      <a class="pt reveal" href="partner.html#handel"><b>Modehäuser</b><span>Genuss als Teil des Einkaufs</span></a>
+      <a class="pt reveal" href="partner.html#lieferanten"><b>Lieferanten</b><span>Frucht, Backwaren, Açaí</span></a>
+      <a class="pt reveal" href="partner.html#presse"><b>Presse</b><span>Geschichte, Fakten, Bilder</span></a>
+      <a class="pt reveal" href="partner.html#jobs"><b>Jobs</b><span>Alle offenen Stellen</span></a>
+      <a class="pt reveal" href="partner.html#kontakt"><b>Kontakt</b><span>Direkt zum richtigen Menschen</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst. Platzhalter sind gekennzeichnet.</p>
+  <p>Fotos Café nyd: Café nyd. Pick-Nick-Logo aus einem Foto der Filiale freigestellt. Açaí-Traube: Kawê Rodrigues, Unsplash (Beispielbild). Fruchtmodelle, Pflanzen und Licht: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+</footer>
+<div class="roomnav" id="roomnav" aria-hidden="true">
+  <button class="rn-back" id="rnBack">← Zurück zum Haus</button>
+  <div class="rn-step"><button id="rnPrev" aria-label="Vorheriger Raum">‹</button><span id="rnName">Frooters</span><button id="rnNext" aria-label="Nächster Raum">›</button></div>
+</div>
+<div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
+<script type="module" src="js/main.js?v=20261108140733"></script>
+<script>window.STAND="20261108140733";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+</body>
+</html>
