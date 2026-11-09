@@ -92,9 +92,10 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
     run('advect', dye.w, { vel: vel.r, src: dye.r, tx: vel.r.tx, dt, diss: 0.45 }); dye.swap();
   }
   const ptr = { x: .5, y: .5, px: .5, py: .5, moved: false, idle: 9 };
-  addEventListener('pointermove', e => { ptr.px = ptr.x; ptr.py = ptr.y; ptr.x = e.clientX / innerWidth; ptr.y = 1 - e.clientY / innerHeight; ptr.moved = true; ptr.idle = 0; }, { passive: true });
+  const nrm = e => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / Math.max(1, r.width), 1 - (e.clientY - r.top) / Math.max(1, r.height)]; };
+  addEventListener('pointermove', e => { ptr.px = ptr.x; ptr.py = ptr.y; [ptr.x, ptr.y] = nrm(e); ptr.moved = true; ptr.idle = 0; }, { passive: true });
   let active = true;
-  addEventListener('pointerdown', e => { if (!active) return; for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; splat(e.clientX / innerWidth, 1 - e.clientY / innerHeight, Math.cos(a) * 900, Math.sin(a) * 900, colNow().map(v => v * 1.4), 0.0016); } pi++; });
+  addEventListener('pointerdown', e => { if (!active) return; const [nx, ny] = nrm(e); for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; splat(nx, ny, Math.cos(a) * 900, Math.sin(a) * 900, colNow().map(v => v * 1.4), 0.0016); } pi++; });
   function auto(t) {
     const x = .5 + .34 * Math.sin(t * .53) + .08 * Math.sin(t * 1.7), y = .5 + .27 * Math.cos(t * .71) + .06 * Math.sin(t * 2.3);
     splat(x, y, .34 * .53 * Math.cos(t * .53) * 1800, -.27 * .71 * Math.sin(t * .71) * 1800, colNow().map(v => v * .3), 0.0013);
@@ -102,6 +103,7 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
   for (let i = 0; i < 70; i++) { time += 1 / 30; colT += 0.03; if (colT >= 1) { colT = 0; pi++; } if (i % 2 === 0) auto(time * 1.6 + 2); step(1 / 30); }
   return {
     setActive(v) { active = v; },
+    burst(x, y, rgb, k = 1) { if (!active) return; for (let i = 0; i < 5; i++) { const a = i / 5 * Math.PI * 2 + Math.random(); splat(x, y, Math.cos(a) * 700 * k, Math.sin(a) * 700 * k, rgb, 0.0011); } },
     setTheme(name) { const n = THEMES[name] || THEMES.fruit; if (n !== theme) { theme = n; fade = 1.4; pi = 0; colT = 0; } },
     resize,
     update(dt) {

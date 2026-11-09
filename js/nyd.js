@@ -1,9 +1,8 @@
 // Café nyd: echte Fotos, flüssige Übergänge beim Scrollen, weiche Linse unter der Maus
-export async function createNyd({ canvas, wrap, root, rec = false, reduced = false }) {
+export async function createNyd({ canvas, wrap, root, rec = false, reduced = false, prog = null }) {
   // fit: 0 = Bild füllt alles, 1 = ganzes Bild sichtbar (Rand weich verschwommen); fx/fy: Bildmitte
   const SET = [
     { src: 'assets/img/nyd/hero-room.webp', fit: 0, fx: .5, fy: .5 },
-    { src: 'assets/img/nyd/acai.webp', fit: .82, fx: .48, fy: .5 },
     { src: 'assets/img/nyd/tisch.webp', fit: 1, fx: .5, fy: .5 },
     { src: 'assets/img/nyd/avocado.webp', fit: .8, fx: .5, fy: .5 },
     { src: 'assets/img/nyd/karottenkuchen.webp', fit: .75, fx: .5, fy: .5 },
@@ -67,7 +66,7 @@ void main(){
     resize,
     update(dt) {
       t += dt;
-      const p = Math.min(1, Math.max(0, (scrollY - wrap.offsetTop) / (wrap.offsetHeight - innerHeight)));
+      const p = prog ? prog(wrap) : Math.min(1, Math.max(0, (scrollY - wrap.offsetTop) / (wrap.offsetHeight - innerHeight)));
       sp += (p - sp) * (reduced ? 1 : 1 - Math.exp(-dt * 6));
       const x = sp * (IMGS.length - 1), i = Math.min(IMGS.length - 2, Math.floor(x));
       let f = x - i; f = Math.min(1, Math.max(0, (f - 0.25) / 0.5));
