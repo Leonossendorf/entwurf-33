@@ -407,7 +407,7 @@ body.zoom-lock .nav,body.zoom-lock .flag{opacity:0;pointer-events:none}
   :root{--ss:.9;--sy:-4.5vh}
   .rn-back{height:54px;padding:0 18px 0 14px;font-size:15px;white-space:nowrap;gap:8px}
   .rn-next b{max-width:92px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
-  .tk-screen-text{top:auto;bottom:16px}
+  .tk-screen-text{display:none}
   .rn-where{height:54px;padding:0 12px 0 10px}
   .rn-txt{display:none}
   .rn-next{height:54px;padding:0 16px}
@@ -437,3 +437,6 @@ body.zoom-lock .nav,body.zoom-lock .flag{opacity:0;pointer-events:none}
   .pick-final{left:6vw;right:6vw;top:auto;bottom:12vh;transform:translateY(20px)}
   .pick.done .pick-final{transform:none}
 }
+
+.j-tip{margin-top:14px;font-size:15px;opacity:.9}
+.soon-sub{max-width:520px;margin:18px auto 0;font-size:17px;opacity:.85}

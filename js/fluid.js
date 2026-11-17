@@ -46,7 +46,7 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
   }
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
   gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-  function resize() { const d = Math.min(devicePixelRatio, mobile ? 1.5 : 2); canvas.width = innerWidth * d; canvas.height = innerHeight * d; }
+  function resize() { const d = Math.min(devicePixelRatio, mobile ? 1.25 : 2); canvas.width = innerWidth * d; canvas.height = innerHeight * d; }
   resize();
   function fbo(w, h, ifmt, fmt, filter) {
     gl.activeTexture(gl.TEXTURE0); const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);

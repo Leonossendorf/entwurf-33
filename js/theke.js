@@ -42,10 +42,10 @@ export async function createTheke(root, { mobile = false, rec = false } = {}) {
   // --- Obst in 3D, von oben ---
   const canvas = el.querySelector('.tk-fruit');
   const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: rec });
-  r.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 2)); r.toneMapping = THREE.ACESFilmicToneMapping; r.shadowMap.enabled = true; r.shadowMap.type = THREE.VSMShadowMap;
+  r.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.25 : 2)); r.toneMapping = THREE.ACESFilmicToneMapping; r.shadowMap.enabled = true; r.shadowMap.type = THREE.VSMShadowMap;
   const scene = new THREE.Scene();
   const cam = new THREE.OrthographicCamera(0, 1, 0, -1, -3000, 3000); cam.up.set(0, 0, -1);
-  const sun = new THREE.DirectionalLight('#fff2e2', 2.5); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); sun.shadow.radius = 9; sun.shadow.blurSamples = 16;
+  const sun = new THREE.DirectionalLight('#fff2e2', 2.5); sun.castShadow = true; sun.shadow.mapSize.set(mobile ? 1024 : 2048, mobile ? 1024 : 2048); sun.shadow.radius = mobile ? 6 : 9; sun.shadow.blurSamples = mobile ? 8 : 16;
   scene.add(sun, sun.target, new THREE.HemisphereLight('#ffffff', '#1a1a1a', 0.55));
   const catcher = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.ShadowMaterial({ opacity: 0.6 })); catcher.rotation.x = -Math.PI / 2; catcher.receiveShadow = true; scene.add(catcher);
   let lw = 0, lh = 0;
@@ -78,7 +78,7 @@ export async function createTheke(root, { mobile = false, rec = false } = {}) {
   // Durchmesser bei 1500 px Breite
   const SET = [
     ['food_pomegranate_01', 76, 2], ['food_apple_01', 70, 3], ['food_pears_asian_01', 70, 2], ['food_kiwi_01', 60, 4], ['lemon', 62, 2], ['food_lime_01', 54, 3], ['food_lychee_01', 40, 4],
-    ['strawberry', 46, 9], ['rasp', 30, 7], ['blue', 21, mobile ? 14 : 26],
+    ['strawberry', 46, mobile ? 6 : 9], ['rasp', 30, mobile ? 4 : 7], ['blue', 21, mobile ? 10 : 26],
   ];
   const rnd = (a, b) => a + Math.random() * (b - a);
   layout(); fitGL();
@@ -99,7 +99,7 @@ export async function createTheke(root, { mobile = false, rec = false } = {}) {
   const ptr = { x: -9999, y: -9999, px: -9999, py: -9999, in: false };
   addEventListener('pointermove', e => { const b = el.getBoundingClientRect(), k = el.clientWidth / Math.max(1, b.width); ptr.x = (e.clientX - b.left) * k; ptr.y = (e.clientY - b.top) * k; ptr.in = ptr.x > 0 && ptr.y > 0 && ptr.x < el.clientWidth && ptr.y < el.clientHeight; light.style.setProperty('--lx', ptr.x + 'px'); light.style.setProperty('--ly', ptr.y + 'px'); board.style.setProperty('--px', `${(ptr.x / Math.max(1, el.clientWidth) - .5) * -16}px`); board.style.setProperty('--py', `${(ptr.y / Math.max(1, el.clientHeight) - .5) * -10}px`); }, { passive: true });
   const q = new THREE.Quaternion(), ax = new THREE.Vector3();
-  let visible = true;
+  let visible = true, fr = 0;
   return {
     el,
     setVisible(v) { visible = v; },
@@ -128,6 +128,7 @@ export async function createTheke(root, { mobile = false, rec = false } = {}) {
         const roll = Math.hypot(b.vx, b.vy) * dt / Math.max(b.rad, 1); if (roll > 1e-4) { ax.set(b.vy, 0, -b.vx).normalize(); q.setFromAxisAngle(ax, roll); b.o.quaternion.premultiply(q); }
         b.o.scale.setScalar(b.dia * unit * b.o.userData.k); b.o.position.set(b.x, b.rad, b.y);
       }
+      if (mobile) { r.shadowMap.autoUpdate = false; if ((fr = (fr + 1) % 2) === 0) r.shadowMap.needsUpdate = true; }
       r.render(scene, cam);
     }
   };

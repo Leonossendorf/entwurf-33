@@ -1,6 +1,6 @@
 // Genussmanufaktur · inoffizieller Entwurf von Leon Oßendorf
-import Lenis from './lenis.mjs?v=20261109071741';
-import { createFluid } from './fluid.js?v=20261109071741';
+import Lenis from './lenis.mjs?v=20261117114756';
+import { createFluid } from './fluid.js?v=20261117114756';
 
 const REC = new URLSearchParams(location.search).has('rec');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -45,9 +45,9 @@ let theke = null, nyd = null, jungle = null, jMini = null, jBig = null, nydLoadi
 const ready = [];
 const safe = p => p.catch(e => console.warn('Baustein ohne WebGL', e));
 const load = {
-  theke: () => import('./theke.js?v=20261109071741').then(m => m.createTheke($('.r-frooters'), { mobile, rec: REC })).then(x => { theke = x; }),
-  jungle: () => import('./jungle.js?v=20261109071741').then(async m => { jungle = await m.getJungle({ mobile }); jMini = m.createView($('#jungleMini'), { mobile, rec: REC }); jBig = m.createView($('#jungleBig'), { mobile, rec: REC }); }),
-  nyd: () => nydLoading || (nydLoading = safe(import('./nyd.js?v=20261109071741').then(m => m.createNyd({ canvas: $('#nydCanvas'), wrap: $('#nyd'), root: $('#nyd'), rec: REC, reduced, prog })).then(n => { nyd = n; }))),
+  theke: () => import('./theke.js?v=20261117114756').then(m => m.createTheke($('.r-frooters'), { mobile, rec: REC })).then(x => { theke = x; }),
+  jungle: () => import('./jungle.js?v=20261117114756').then(async m => { jungle = await m.getJungle({ mobile }); jMini = m.createView($('#jungleMini'), { mobile, rec: REC }); jBig = m.createView($('#jungleBig'), { mobile, rec: REC }); }),
+  nyd: () => nydLoading || (nydLoading = safe(import('./nyd.js?v=20261117114756').then(m => m.createNyd({ canvas: $('#nydCanvas'), wrap: $('#nyd'), root: $('#nyd'), rec: REC, reduced, prog })).then(n => { nyd = n; }))),
 };
 ready.push(safe(load.theke()), safe(load.jungle()));
 if (REC) ready.push(load.nyd());
@@ -204,7 +204,7 @@ const loaves = $('#loaves'), letters = $$('.loaves h2 span');
 const nav = $('#nav'), darkSecs = ['#nyd', '#ube', '#bowlers', '.partner-teaser', '.foot'].map($);
 const nydSticky = $('#nydSticky');
 
-let t = 0;
+let t = 0, frameN = 0;
 function tick(dt, now) {
   t += dt;
   if (lenis) lenis.raf(now);
@@ -212,12 +212,12 @@ function tick(dt, now) {
   if (cur === null) { let light = false; for (const s of darkSecs) { const r = s.getBoundingClientRect(); if (r.top <= 40 && r.bottom > 40) { light = true; break; } } nav.classList.toggle('light', light); nav.classList.toggle('bar', scrollY > innerHeight * 0.85); }
 
   // Haus: lebendige Räume
-  const heroVis = heroEl.getBoundingClientRect().bottom > 0;
-  if (heroVis || cur !== null) {
-    if (cur === null || cur === 0) drawFlour(t);
-    if (theke) theke.update(dt);
-    if (jungle && jMini && (cur === null || (cur === 3 && !stage.classList.contains('on')))) { jungle.update(dt, 0); jungle.pose(0.002 + Math.sin(t * 0.3) * 0.002, jMini.cam, Math.sin(t * 0.4)); jMini.render(jungle.scene); }
-  }
+  const stageOn = stage.classList.contains('on'), heroVis = heroEl.getBoundingClientRect().bottom > 0;
+  const live = (k) => cur === null ? heroVis && vis(ROOMS[k].el) : cur === k && !stageOn;
+  if (live(0)) drawFlour(t);
+  if (theke && (live(1) || (cur === 1 && stageOn && tkScreen && vis(tkScreen)))) theke.update(dt);
+  frameN++;
+  if (jungle && jMini && live(3) && (!mobile || frameN % 2 === 0)) { jungle.update(mobile ? dt * 2 : dt, 0); jungle.pose(0.002 + Math.sin(t * 0.3) * 0.002, jMini.cam, Math.sin(t * 0.4)); jMini.render(jungle.scene); }
   // Farbstrom und Ube
   if (fluid) {
     const a = vis(juice), b = vis(ube);

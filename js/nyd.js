@@ -55,7 +55,7 @@ void main(){
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.MIRRORED_REPEAT);
     tex.push(tx); asps.push(im.width / im.height); });
   root.querySelector('.nyd-fallback').style.display = 'none';
-  const resize = () => { const d = Math.min(devicePixelRatio, 2); canvas.width = canvas.clientWidth * d; canvas.height = canvas.clientHeight * d; gl.viewport(0, 0, canvas.width, canvas.height); };
+  const resize = () => { const d = Math.min(devicePixelRatio, innerWidth < 760 ? 1.5 : 2); canvas.width = canvas.clientWidth * d; canvas.height = canvas.clientHeight * d; gl.viewport(0, 0, canvas.width, canvas.height); };
   resize();
   const ms = { x: .5, y: .5, tx: .5, ty: .5, spd: 0 };
   addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); const nx = (e.clientX - r.left) / r.width, ny = 1 - (e.clientY - r.top) / r.height; ms.spd = Math.min(1.5, ms.spd + Math.hypot(nx - ms.tx, ny - ms.ty) * 6); ms.tx = nx; ms.ty = ny; }, { passive: true });
