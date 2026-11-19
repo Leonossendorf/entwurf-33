@@ -1,5 +1,5 @@
 // Saftspur: Flüssigkeitssimulation (stabile Strömung nach Jos Stam), eigene Umsetzung in WebGL2
-export function createFluid(canvas, { rec = false, mobile = false, reduced = false } = {}) {
+export function createFluid(canvas, { rec = false, mobile = false, reduced = false, theme: startTheme = 'fruit', warm = true } = {}) {
   const gl = canvas.getContext('webgl2', { alpha: false, antialias: false, preserveDrawingBuffer: rec });
   if (!gl || !gl.getExtension('EXT_color_buffer_float')) return null;
   const SIM = mobile ? 96 : 160, DYE = mobile ? 512 : 1024;
@@ -46,7 +46,7 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
   }
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
   gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-  function resize() { const d = Math.min(devicePixelRatio, mobile ? 1.25 : 2); canvas.width = innerWidth * d; canvas.height = innerHeight * d; }
+  function resize() { const d = Math.min(devicePixelRatio, mobile ? 1.25 : 2); canvas.width = (canvas.clientWidth || innerWidth) * d; canvas.height = (canvas.clientHeight || innerHeight) * d; }
   resize();
   function fbo(w, h, ifmt, fmt, filter) {
     gl.activeTexture(gl.TEXTURE0); const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
@@ -71,11 +71,12 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
   // Farbwelten: Früchte oben, Açaí und Ube bei Bowlers
   const THEMES = {
     fruit: { bg: [0.957, 0.925, 0.878], pal: [[0.85, 0.02, 0.16], [0.95, 0.55, 0.06], [0.55, 0.12, 0.62], [0.45, 0.72, 0.12], [0.62, 0.45, 0.9], [0.96, 0.36, 0.2]], dk: [0.05, 0, 0.4, 0.05, 0.15, 0], glow: 0 },
+    night: { bg: [0, 0, 0], pal: [[0.95, 0.06, 0.16], [1, 0.6, 0.05], [0.45, 0.8, 0.12], [1, 0.82, 0.1]], dk: [0, 0, 0, 0], glow: 0.5 },
     ube: { bg: [0.075, 0.035, 0.09], pal: [[0.5, 0.1, 0.62], [0.72, 0.58, 0.95], [0.9, 0.22, 0.48], [0.36, 0.14, 0.7], [0.78, 0.5, 0.88]], dk: [0, 0, 0, 0, 0], glow: 0.6 },
   };
-  let theme = THEMES.fruit; const bg = [...theme.bg]; let glow = 0, fade = 0;
+  let theme = THEMES[startTheme] || THEMES.fruit, override = null; const bg = [...theme.bg]; let glow = 0, fade = 0;
   let pi = 0, colT = 0, time = 0;
-  const colNow = () => { const a = theme.pal[pi % theme.pal.length], b = theme.pal[(pi + 1) % theme.pal.length]; return a.map((v, i) => (v + (b[i] - v) * colT) * 0.55); };
+  const colNow = () => { if (override) return override.map(v => v * 0.6); const a = theme.pal[pi % theme.pal.length], b = theme.pal[(pi + 1) % theme.pal.length]; return a.map((v, i) => (v + (b[i] - v) * colT) * 0.55); };
   function splat(x, y, dx, dy, col, r = 0.0028) {
     const ar = canvas.width / canvas.height;
     run('splat', vel.w, { tgt: vel.r, ar, pt: [x, y], col: [dx, dy, 0], rad: r, dk: 0 }); vel.swap();
@@ -100,9 +101,11 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
     const x = .5 + .34 * Math.sin(t * .53) + .08 * Math.sin(t * 1.7), y = .5 + .27 * Math.cos(t * .71) + .06 * Math.sin(t * 2.3);
     splat(x, y, .34 * .53 * Math.cos(t * .53) * 1800, -.27 * .71 * Math.sin(t * .71) * 1800, colNow().map(v => v * .3), 0.0013);
   }
-  for (let i = 0; i < 70; i++) { time += 1 / 30; colT += 0.03; if (colT >= 1) { colT = 0; pi++; } if (i % 2 === 0) auto(time * 1.6 + 2); step(1 / 30); }
+  if (warm) for (let i = 0; i < 70; i++) { time += 1 / 30; colT += 0.03; if (colT >= 1) { colT = 0; pi++; } if (i % 2 === 0) auto(time * 1.6 + 2); step(1 / 30); }
   return {
     setActive(v) { active = v; },
+    setColor(rgb) { override = rgb; },
+    jet(x, y, rgb, k = 1) { if (!active) return; for (let i = 0; i < 5; i++) splat(x + (Math.random() - .5) * .05, y + i * .02, (Math.random() - .5) * 420, 1100 * k, rgb.map(v => v * .7), 0.0013); },
     burst(x, y, rgb, k = 1) { if (!active) return; for (let i = 0; i < 5; i++) { const a = i / 5 * Math.PI * 2 + Math.random(); splat(x, y, Math.cos(a) * 700 * k, Math.sin(a) * 700 * k, rgb, 0.0011); } },
     setTheme(name) { const n = THEMES[name] || THEMES.fruit; if (n !== theme) { theme = n; fade = 1.4; pi = 0; colT = 0; } },
     resize,

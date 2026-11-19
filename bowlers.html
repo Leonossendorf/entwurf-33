@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2416">
+<title>Bowlers · Die Reise der Açaí (inoffizieller Entwurf)</title>
+<meta name="description" content="Inoffizieller Entwurf: Bowlers. Die Reise der Açaí-Beere aus dem Regenwald bis in die Bowl.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/bowlers/poster.webp" fetchpriority="high">
+<link rel="stylesheet" href="css/base.css?v=20261119103210">
+<link rel="stylesheet" href="css/bowlers.css?v=20261119103210">
+<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js", "three/addons/": "./assets/vendor/addons/" } }</script>
+<link rel="modulepreload" href="assets/vendor/three.module.min.js">
+</head>
+<body data-world="bowlers">
+<header class="wbar">
+  <a class="wback" href="index.html"><i>←</i> Zum Haus</a>
+  <div class="wright">
+    <nav class="wmap" aria-label="Hausplan"><a class="m0" href="loaves.html" title="Loaves Bakery"></a><a class="m1" href="frooters.html" title="Frooters"></a><a class="m2" href="picknick.html" title="Pick Nick"></a><a class="m3 on" href="bowlers.html" title="Bowlers" aria-current="page"></a><a class="m4" href="nyd.html" title="Café nyd"></a><a class="m5" href="partner.html" title="Haustür: Für Partner"></a></nav>
+    <a class="wnext" href="nyd.html"><span><small>Weiter</small><b>Café nyd</b></span><i>→</i></a>
+  </div>
+</header>
+
+<main>
+  <section class="journey" id="reise" aria-label="Die Reise der Açaí">
+    <div class="j-sticky">
+      <img class="j-poster" src="assets/img/bowlers/poster.webp" alt="" width="960" height="540" fetchpriority="high">
+      <canvas id="wald" aria-hidden="true"></canvas>
+      <div class="j-vig"></div>
+
+      <div class="j-st j-intro" data-a="-1" data-b="0.09">
+        <p class="kicker">Bowlers · Bowls aus dem Regenwald</p>
+        <h1>Die Reise<br>der Açaí.</h1>
+        <p>Sie hängt hoch oben in der Palme. Komm mit, bis sie in deiner Bowl landet.</p>
+        <span class="hint"><i></i>Scrollen: der Beere folgen</span>
+      </div>
+
+      <div class="j-st j-photo" data-a="0.13" data-b="0.31">
+        <img src="assets/img/acai/regenwald.webp" alt="Fluss im Regenwald" width="720" height="1087" loading="lazy" decoding="async">
+        <div><p class="kicker">Station 1 · Herkunft</p><h2>Am Amazonas.</h2><p>Açaí wächst an der Palme <i>Euterpe oleracea</i>, vor allem im Bundesstaat Pará im Norden Brasiliens. Die schlanken Palmen stehen an Flussufern und werden über 25 Meter hoch.</p></div>
+      </div>
+
+      <div class="j-st j-photo two" data-a="0.36" data-b="0.55">
+        <img src="assets/img/acai/acai-palme.webp" alt="Açaí-Beeren an der Palme" width="720" height="1080" loading="lazy" decoding="async"><img src="assets/img/acai-traube.webp" alt="Reife Açaí-Rispe" width="640" height="960" loading="lazy" decoding="async">
+        <div><p class="kicker">Station 2 · Ernte</p><h2>Von Hand gepflückt.</h2><p>Pflücker klettern die Stämme hinauf und holen die reifen Rispen herunter. Noch am selben Tag werden die Beeren zu Fruchtmark verarbeitet und tiefgefroren.</p></div>
+      </div>
+
+      <div class="j-power" id="jPower">
+        <div class="jp-head"><p class="kicker">Station 3 · Powerfood</p><h2>Was in der kleinen Beere steckt.</h2></div>
+        <ul>
+          <li class="l"><b>Anthocyane</b><span>Der dunkle Farbstoff, der die Beere fast schwarz macht.</span></li>
+          <li class="l"><b>Polyphenole</b><span>Pflanzenstoffe, wie sie in dunklen Beeren stecken.</span></li>
+          <li class="l"><b>Ballaststoffe</b><span>Aus dem Fruchtfleisch, machen die Bowl sämig.</span></li>
+          <li class="r"><b>Ölsäure</b><span>Omega-9-Fett, dasselbe wie im Olivenöl.</span></li>
+          <li class="r"><b>Mineralstoffe</b><span>Kalium, Calcium und Magnesium.</span></li>
+          <li class="r hl"><b>&lt;1 g Zucker</b><span>in 100 g ungesüßtem Fruchtmark.</span></li>
+        </ul>
+        <small>Inhaltsstoffe laut Fachliteratur und Herstellerangaben, Mengen je nach Produkt verschieden.</small>
+      </div>
+
+      <div class="j-final" id="jFinal">
+        <div class="j-glow"></div>
+        <img class="j-bowl" src="assets/img/acai/bowl.webp" alt="Açaí-Bowl mit Beeren, Granola, Passionsfrucht und Nussmus" width="1100" height="966" loading="lazy" decoding="async">
+        <div class="j-final-text"><p class="kicker">Station 4 · Ankunft</p><h2>Die Bowl.</h2><p>Gefrorenes Açaí, frische Beeren, Granola und ein Hauch Nussmus.</p><p class="j-tip">Bowlers ist in Vorbereitung. Wer nicht warten will: Diese Bowl gibt es schon im Café nyd.</p><a class="btn light" href="nyd.html">Zum Café nyd →</a></div>
+      </div>
+
+      <nav class="j-rail" id="jRail" aria-label="Stationen der Reise">
+        <button data-p="0.2"><i></i><span>Herkunft</span></button>
+        <button data-p="0.44"><i></i><span>Ernte</span></button>
+        <button data-p="0.72"><i></i><span>Powerfood</span></button>
+        <button data-p="0.98"><i></i><span>Die Bowl</span></button>
+      </nav>
+    </div>
+  </section>
+
+  <section class="wend" style="--nbg:#faf6f4;--nfg:#2b1f21">
+    <p class="kicker">Nächster Raum · Das Wohnzimmer</p>
+    <a class="wend-next" href="nyd.html">Café nyd <i>→</i></a>
+    <p class="sub">Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte.</p>
+    <a class="btn wend-back" href="index.html">← Zurück zum Haus</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
+  <p>Regenwald als Rundumbild: <a href="https://polyhaven.com/a/rainforest_trail" target="_blank" rel="noopener">Poly Haven</a> (CC0). Açaí-Bilder: Kawê Rodrigues, Fluss: Rohit Tandon (Unsplash, Beispielbilder). Bowl: Foto aus dem Café nyd. <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+</footer>
+<div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
+<script type="module" src="js/bowlers.js?v=20261119103210"></script>
+<script>window.STAND="20261119103210";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+</body>
+</html>

@@ -86,3 +86,5 @@
 .pp-main{min-width:0}
 @media (max-width:900px){.pp-body{grid-template-columns:minmax(0,1fr)}}
 .brandtag{justify-self:start}
+
+@view-transition{navigation:auto}

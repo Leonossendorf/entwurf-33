@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<title>Frooters · Die Obstküche der Genussmanufaktur (inoffizieller Entwurf)</title>
+<meta name="description" content="Inoffizieller Entwurf: Frooters. Frozen Yogurt, Bubble Waffles, Müslibecher und Smoothies, frisch an der Theke.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/frooters/theke/schiefer-band.webp" as="image">
+<link rel="stylesheet" href="css/base.css?v=20261119103210">
+<link rel="stylesheet" href="css/frooters.css?v=20261119103210">
+<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js", "three/addons/": "./assets/vendor/addons/" } }</script>
+<link rel="modulepreload" href="assets/vendor/three.module.min.js">
+</head>
+<body data-world="frooters">
+<header class="wbar">
+  <a class="wback" href="index.html"><i>←</i> Zum Haus</a>
+  <div class="wright">
+    <nav class="wmap" aria-label="Hausplan"><a class="m0" href="loaves.html" title="Loaves Bakery"></a><a class="m1 on" href="frooters.html" title="Frooters" aria-current="page"></a><a class="m2" href="picknick.html" title="Pick Nick"></a><a class="m3" href="bowlers.html" title="Bowlers"></a><a class="m4" href="nyd.html" title="Café nyd"></a><a class="m5" href="partner.html" title="Haustür: Für Partner"></a></nav>
+    <a class="wnext" href="picknick.html"><span><small>Weiter</small><b>Pick Nick</b></span><i>→</i></a>
+  </div>
+</header>
+
+<main>
+  <!-- Die Theke: einmal entlang, alles zum Antippen -->
+  <section class="theke" id="theke" aria-label="Die Frooters-Theke">
+    <div class="tk-sticky" id="tkSticky">
+      <div class="tk-track" id="tkTrack">
+        <div class="tk-start">
+          <img class="tk-logo" src="assets/img/frooters/logo-frooters-weiss.svg" alt="Frooters" width="376" height="137">
+          <p class="kicker">Die Obstküche der Genussmanufaktur</p>
+          <h1>Einmal die<br>Theke entlang.</h1>
+          <p class="tk-lead">Frozen Yogurt, Bubble Waffles, Müslibecher, Smoothies und mehr. Alles frisch gemacht. Schubs das Obst an und tipp auf das, was dich anlacht.</p>
+          <span class="hint tk-go"><i></i><span class="d">Scrollen: die Theke zieht vorbei</span><span class="m">Nach unten scrollen</span></span>
+        </div>
+        <div class="slab"><img src="assets/img/frooters/theke/frozenyoghurt.webp" alt="Frozen Yogurt in Waffelschalen mit Obst und Toppings" width="720" height="1280" fetchpriority="high"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/bubble.webp" alt="Bubble Waffle im roten Frooters-Becher" width="720" height="1280"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/erdbeerpueree.webp" alt="Müslibecher mit Erdbeerpüree und Granola" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/smoothie_obst.webp" alt="Smoothies in vielen Farben, daneben frisches Obst" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/smoothie_gruen.webp" alt="Grüne Smoothies mit Spinat, Apfel und Gurke" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="tk-gap"><span>Noch mehr auf der Theke</span></div>
+        <div class="slab"><img src="assets/img/frooters/theke/waffel_froyo.webp" alt="Waffel mit Frozen Yogurt und Obst" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/obstquark.webp" alt="Obstquark mit frischen Früchten" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/milchreis.webp" alt="Milchreis mit Himbeeren und Zimt" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/eis_himbeer_joghurt.webp" alt="Eis am Stiel, Sorte Himbeer-Joghurt" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/goji_chia.webp" alt="Goji-Beeren und Chia-Samen" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/tomatensuppe.webp" alt="Tomatensuppe mit Croûtons" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="slab"><img src="assets/img/frooters/theke/espresso.webp" alt="Espresso" width="720" height="1280" loading="lazy" decoding="async"></div>
+        <div class="tk-end"><p class="kicker">Ende der Theke</p><h2>Und zu trinken?</h2><p>Weiter unten wird frisch gemixt.</p><span class="hint"><i></i>Weiter scrollen</span></div>
+      </div>
+      <canvas id="fruit" aria-hidden="true"></canvas>
+      <div class="tk-hot" id="tkHot"></div>
+      <nav class="tk-nav" id="tkNav" aria-label="Stationen der Theke"></nav>
+      <div class="tk-dim" id="tkDim"></div>
+      <aside class="tk-panel" id="tkPanel" aria-hidden="true">
+        <button class="tk-x" id="tkX" aria-label="Schließen">×</button>
+        <p class="kicker" id="tpK"></p>
+        <h2 id="tpT"></h2>
+        <p class="tp-p" id="tpP"></p>
+        <ul class="chips" id="tpL"></ul>
+        <p class="tp-count" aria-hidden="true"><span id="tpN">01</span><small>von 12 an der Theke</small></p>
+        <div class="tp-nav"><button id="tpPrev" aria-label="Vorheriges Produkt">←</button><button id="tpNext"><small>Als Nächstes</small><b></b><i>→</i></button></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Frisch gemixt: echte Becher, Farbe nur wenn man sie anstößt -->
+  <section class="mix" id="mix">
+    <canvas id="fluid" aria-hidden="true"></canvas>
+    <div class="mix-head">
+      <p class="kicker reveal">Smoothies und frisch gepresste Säfte</p>
+      <h2 class="split"><span class="line">Frisch</span><span class="line l2">gemixt.</span></h2>
+      <p class="mix-lead reveal" id="mixLead" data-base="Aus ganzen Früchten, jeden Tag frisch. Fahr über einen Becher und sieh, wie die Farbe aufsteigt.">Aus ganzen Früchten, jeden Tag frisch. Fahr über einen Becher und sieh, wie die Farbe aufsteigt.</p>
+    </div>
+    <div class="cups-scroll">
+      <div class="cups" id="cups">
+        <img src="assets/img/frooters/becher-1400.webp" srcset="assets/img/frooters/becher-1400.webp 1400w, assets/img/frooters/becher-2400.webp 2400w" sizes="(max-width: 900px) 900px, 100vw" alt="Vier Frooters-Smoothies in klaren Bechern: rot, hell, grün und gelb" width="2400" height="688" loading="lazy" decoding="async">
+        <button class="cup" style="left:10%;width:19%" data-c=".95,.08,.14" data-n="Der Rote" data-t="Beerig und kräftig. Die Farbe kommt nur von der Frucht."><span>Der Rote</span></button>
+        <button class="cup" style="left:29%;width:21%" data-c=".98,.9,.72" data-n="Der Helle" data-t="Mild und cremig. Für alle, die es sanft mögen."><span>Der Helle</span></button>
+        <button class="cup" style="left:50%;width:18%" data-c=".3,.78,.1" data-n="Der Grüne" data-t="Mit Gemüse gemixt. Frisch, leicht, überraschend fruchtig."><span>Der Grüne</span></button>
+        <button class="cup" style="left:68%;width:24%" data-c="1,.7,0" data-n="Der Gelbe" data-t="Sonnig und süß. Wie Urlaub im Becher."><span>Der Gelbe</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wo es Frooters gibt -->
+  <section class="orte">
+    <div>
+      <p class="kicker reveal">Hier findest du uns</p>
+      <h2 class="split"><span class="line">Immer da, wo</span><span class="line">gebummelt wird.</span></h2>
+    </div>
+    <ul class="orte-list reveal">
+      <li><b>Ochtrup</b><span>Designer Outlet</span></li>
+      <li><b>Oberhausen</b><span>Westfield Centro</span></li>
+      <li><b>Kempten</b><span>Modehaus Reischmann</span></li>
+      <li><b>Minden</b><span>Modehaus Hagemeyer</span></li>
+      <li><b>Sinsheim</b><span>Thermen &amp; Badewelt</span></li>
+    </ul>
+  </section>
+
+  <section class="wend" style="--nbg:#e9efd9;--nfg:#2c4a28">
+    <p class="kicker">Nächster Raum · Die Terrasse</p>
+    <a class="wend-next" href="picknick.html">Pick Nick <i>→</i></a>
+    <p class="sub">Kaffee, belegte Brötchen und Waffeln. Die kleine Pause beim Einkaufen.</p>
+    <a class="btn wend-back" href="index.html">← Zurück zum Haus</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
+  <p>Fotos und Logo: Frooters (frooters.de). Bubble Waffle aus einem Frooters-Foto freigestellt. Obst in 3D: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+</footer>
+<div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
+<script type="module" src="js/frooters.js?v=20261119103210"></script>
+<script>window.STAND="20261119103210";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+</body>
+</html>
