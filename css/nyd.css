@@ -120,3 +120,6 @@ h1,h2,h3{font-weight:300;letter-spacing:-.045em}
   .ube-step figure{max-height:60vh}
   .besuch{grid-template-columns:1fr;gap:34px;padding:14vh var(--pad)}
 }
+
+.ube-pre{font:500 clamp(22px,2.2vw,34px)/1.2 "Bric";letter-spacing:-.02em;color:#d9b8ff;margin-bottom:6px}
+.ube-step img.knolle{object-position:38% 50%}

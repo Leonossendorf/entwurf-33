@@ -84,3 +84,6 @@ body{--bg:#0b1a10;--fg:#f4ecff}
   .j-rail:before{left:5px;right:5px;top:5px;bottom:auto;width:auto;height:1px}
   .j-rail span{display:none}
 }
+.j-photo:not(.two){max-width:1200px}
+.j-photo:not(.two) img{width:min(560px,40vw,64vh);aspect-ratio:4/5}
+@media (max-width:900px){.j-photo:not(.two) img{width:66vw;max-height:42vh}}

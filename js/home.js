@@ -1,5 +1,5 @@
 // Startseite: das Haus. Die Räume leben (Mehlstaub, Filmschleifen, Zeichnungen), ein Klick führt in die Genusswelt.
-import { $, $$, REC, reduced, coarse, start, run, onTick, vis } from './common.js?v=20261119104114';
+import { $, $$, REC, reduced, coarse, start, run, onTick, vis } from './common.js?v=20261119111254';
 
 start();
 const hero = $('#start'), nav = $('#nav');

@@ -1,5 +1,5 @@
 // Genussmanufaktur · gemeinsame Helfer für alle Seiten
-import Lenis from './lenis.mjs?v=20261119104114';
+import Lenis from './lenis.mjs?v=20261119111254';
 
 export const REC = new URLSearchParams(location.search).has('rec');
 export const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

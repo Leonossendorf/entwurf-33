@@ -20,16 +20,42 @@ export function createFruitWorld(canvas, { mobile = false, rec = false, vertical
   const bodies = [], waiting = [];
   const rnd = (a, b) => a + Math.random() * (b - a);
   const P = (c, o = {}) => new THREE.MeshPhysicalMaterial({ color: c, roughness: o.r ?? .35, clearcoat: o.cc ?? .5, clearcoatRoughness: .3, sheen: o.sh ?? 0, sheenColor: new THREE.Color(o.shc ?? '#fff') });
+  // Erdbeere: Herzform, glänzend rot, zur Schulter hin heller, eingesunkene gelbe Nüsschen, grüner Kelch mit Blättern
+  const SB = (() => {
+    const N = 40, pts = [];
+    const R = t => .46 * Math.pow(Math.sin(Math.min(1, t * 1.08) * Math.PI * .5), .62) * (1 - .55 * Math.pow(Math.max(0, t - .86) / .14, 2));
+    for (let i = 0; i <= N; i++) { const t = i / N; pts.push(new THREE.Vector2(Math.max(.0005, R(t)), t * 1.02)); }
+    const geo = new THREE.LatheGeometry(pts, 40), pos = geo.attributes.position, col = [], c = new THREE.Color();
+    const red = new THREE.Color('#a80a18'), hi = new THREE.Color('#d8222a'), sh = new THREE.Color('#e45a3c');
+    const seedsAt = []; const NS = 70;
+    for (let i = 0; i < NS; i++) { const t = .07 + .8 * (i + .5) / NS, a = i * 2.39996; seedsAt.push([t, a]); }
+    for (let i = 0; i < pos.count; i++) {
+      const y = pos.getY(i), t = y / 1.02, x = pos.getX(i), z = pos.getZ(i), a = Math.atan2(z, x);
+      // Dellen um jedes Nüsschen
+      let dent = 0; for (const [st, sa] of seedsAt) { const dt = (t - st) * 6, da = Math.atan2(Math.sin(a - sa), Math.cos(a - sa)) * R(st) * 1.1; const d2 = (dt * dt + da * da * 36) ; if (d2 < .5) dent = Math.max(dent, 1 - d2 / .5); }
+      const r = Math.hypot(x, z), k = r > 1e-4 ? (r - dent * .018) / r : 1; pos.setX(i, x * k); pos.setZ(i, z * k);
+      c.copy(red).lerp(hi, Math.min(1, Math.max(0, (t - .5) / .35)) * .6); if (t > .9) c.lerp(sh, Math.min(1, (t - .9) / .1) * .45); c.multiplyScalar(1 - dent * .25); col.push(c.r, c.g, c.b);
+    }
+    geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3)); geo.computeVertexNormals();
+    const body = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .26, clearcoat: 1, clearcoatRoughness: .12, sheen: .2, sheenColor: new THREE.Color('#ff9a8a') });
+    const seedGeo = new THREE.SphereGeometry(1, 8, 6); seedGeo.scale(.013, .022, .013);
+    const seedMat = new THREE.MeshStandardMaterial({ color: '#c99a2e', roughness: .55 });
+    const leaf = new THREE.Shape(); leaf.moveTo(0, 0); leaf.quadraticCurveTo(.1, .16, 0, .38); leaf.quadraticCurveTo(-.1, .16, 0, 0);
+    const leafGeo = new THREE.ShapeGeometry(leaf, 6), leafMat = new THREE.MeshStandardMaterial({ color: '#2f7420', roughness: .6, side: THREE.DoubleSide });
+    return { geo, body, seedGeo, seedMat, seedsAt, R, leafGeo, leafMat };
+  })();
   const strawberry = () => {
-    const pts = []; for (let i = 0; i <= 16; i++) { const t = i / 16; pts.push(new THREE.Vector2(Math.sin(t * Math.PI) * (0.36 + .12 * (1 - t)), t * .9)); }
-    const g = new THREE.Group(); g.add(new THREE.Mesh(new THREE.LatheGeometry(pts, 28), P('#c80f28', { r: .28, cc: .7 })));
-    const seeds = new THREE.InstancedMesh(new THREE.SphereGeometry(.022, 6, 4), P('#f0cf55'), 50), m4 = new THREE.Matrix4();
-    for (let i = 0; i < 50; i++) { const t = .1 + Math.random() * .85, a = Math.random() * 6.28, rr = Math.sin(t * Math.PI) * (0.36 + .12 * (1 - t)); m4.setPosition(Math.cos(a) * rr, t * .9, Math.sin(a) * rr); seeds.setMatrixAt(i, m4); } g.add(seeds);
-    const leaf = new THREE.Mesh(new THREE.ConeGeometry(.34, .12, 8), P('#3d8a28', { r: .6, cc: 0 })); leaf.position.y = .92; g.add(leaf);
+    const g = new THREE.Group(); g.add(new THREE.Mesh(SB.geo, SB.body));
+    const seeds = new THREE.InstancedMesh(SB.seedGeo, SB.seedMat, SB.seedsAt.length), m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), n = new THREE.Vector3(), one = new THREE.Vector3(1, 1, 1);
+    SB.seedsAt.forEach(([t, a], i) => { const r = SB.R(t) - .016, p = new THREE.Vector3(Math.cos(a) * r, t * 1.02, Math.sin(a) * r); n.set(Math.cos(a), .35, Math.sin(a)).normalize(); q.setFromUnitVectors(up, n); m4.compose(p, q, one); seeds.setMatrixAt(i, m4); });
+    g.add(seeds);
+    const cal = new THREE.Group(); cal.position.y = .99;
+    for (let i = 0; i < 10; i++) { const l = new THREE.Mesh(SB.leafGeo, SB.leafMat); const piv = new THREE.Group(); piv.rotation.y = i / 10 * Math.PI * 2 + Math.random() * .3; l.rotation.x = -Math.PI / 2 + .18 + Math.random() * .2; piv.add(l); cal.add(piv); }
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(.022, .03, .14, 6), SB.leafMat); stem.position.y = .07; cal.add(stem); g.add(cal);
     g.rotation.z = Math.PI / 2; const o = new THREE.Group(); o.add(g); return o;
   };
-  const blue = () => new THREE.Mesh(new THREE.SphereGeometry(.5, 20, 14), P('#2b3266', { r: .3, sh: .9, shc: '#c9d2ff' }));
-  const rasp = () => { const g = new THREE.Group(), geo = new THREE.SphereGeometry(.17, 10, 8), mat = P('#d4305a', { r: .25, cc: .6 }); for (let i = 0; i < 22; i++) { const a = i * 2.4, t = i / 22, rr = Math.sin(t * Math.PI * .9 + .2) * .4; const s = new THREE.Mesh(geo, mat); s.position.set(Math.cos(a) * rr, t * .8 - .4, Math.sin(a) * rr); g.add(s); } return g; };
+  const blue = () => new THREE.Mesh(new THREE.SphereGeometry(.5, 20, 14), P('#1c2148', { r: .42, cc: .25, sh: .45, shc: '#8f9bd8' }));
+  const rasp = () => { const g = new THREE.Group(), geo = new THREE.SphereGeometry(.17, 10, 8), mat = P('#c01f45', { r: .3, cc: .6 }); for (let i = 0; i < 22; i++) { const a = i * 2.4, t = i / 22, rr = Math.sin(t * Math.PI * .9 + .2) * .4; const s = new THREE.Mesh(geo, mat); s.position.set(Math.cos(a) * rr, t * .8 - .4, Math.sin(a) * rr); g.add(s); } return g; };
   // [Art, Durchmesser bei 1000 px Thekenbreite, Anzahl Computer, Anzahl Handy]
   const SET = { food_pomegranate_01: [112, 3, 2], food_apple_01: [100, 5, 3], food_pears_asian_01: [102, 3, 2], food_kiwi_01: [78, 5, 3], lemon: [88, 3, 2], food_lime_01: [74, 4, 2], food_lychee_01: [52, 5, 3], strawberry: [64, 9, 6], rasp: [40, 7, 4], blue: [27, 14, 8] };
 
