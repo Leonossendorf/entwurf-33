@@ -1,5 +1,5 @@
 // Café nyd: der Tisch wird beim Scrollen gedeckt, der Rundgang zieht seitlich vorbei, Ube mit lila Farbeffekt
-import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, start, run, onTick } from './common.js?v=20261119103210';
+import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, start, run, onTick } from './common.js?v=20261119103632';
 
 start();
 const vertical = matchMedia('(max-width: 900px)').matches;
@@ -21,7 +21,7 @@ layout(); addEventListener('resize', () => { if (matchMedia('(max-width: 900px)'
 // Ube: lila Farbe nur, wenn man die Maus bewegt
 const ube = $('#ube'), fluidCanvas = $('#fluid');
 let fluid = null;
-new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); import('./fluid.js?v=20261119103210').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'ube', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(ube);
+new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); import('./fluid.js?v=20261119103632').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'ube', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(ube);
 
 let lastDone = -1;
 onTick(dt => {

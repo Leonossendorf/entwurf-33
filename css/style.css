@@ -1,3 +1,4 @@
+@view-transition{navigation:auto}
 @font-face{font-family:"Bric";src:url("../assets/fonts/bricolage.woff") format("woff");font-weight:200 800;font-display:swap}
 @font-face{font-family:"Hank";src:url("../assets/fonts/hanken.woff") format("woff");font-weight:100 900;font-display:swap}
 :root{--cream:#f4ece0;--paper:#fbf7f0;--ink:#1b1714;--fr:#b5122e;--mango:#ee8a1c;--kiwi:#2c5b3a;--acai:#1c0d21;--ube:#b693ee;--nyd:#8e6b6d;--nydpaper:#faf6f4;--pick:#e9efd9;--pickink:#2c4a28;--pnred:#c8102e;--loaf:#e8d3b0;--loafink:#4a3220;--jungle:#0f2416;--ease:cubic-bezier(.2,.75,.15,1)}

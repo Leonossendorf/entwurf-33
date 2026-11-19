@@ -2,7 +2,7 @@
 // Beim Scrollen: Blick in die Krone, Ernte (Beeren fallen), eine Beere ganz groß, dann die Bowl.
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, start, run, onTick, scrollToY } from './common.js?v=20261119103210';
+import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, start, run, onTick, scrollToY } from './common.js?v=20261119103632';
 
 start();
 const reise = $('#reise'), canvas = $('#wald');

@@ -1,6 +1,6 @@
 // Frooters: die Theke entlang, Obst zum Anschubsen, Produkte zum Antippen, Smoothies mit Farbe
-import { $, $$, REC, reduced, mobile, clamp, prog, vis, start, run, onTick, lockScroll, scrollToY, lenis } from './common.js?v=20261119103210';
-import { createFruitWorld } from './fruit.js?v=20261119103210';
+import { $, $$, REC, reduced, mobile, clamp, prog, vis, start, run, onTick, lockScroll, scrollToY, lenis } from './common.js?v=20261119103632';
+import { createFruitWorld } from './fruit.js?v=20261119103632';
 
 start();
 const vertical = matchMedia('(max-width: 900px)').matches;
@@ -101,7 +101,7 @@ onTick(dt => {
 // Frisch gemixt: Farbe steigt nur auf, wenn man einen Becher anstößt oder die Maus bewegt
 const mix = $('#mix'), fluidCanvas = $('#fluid'), lead = $('#mixLead');
 let fluid = null, fluidWanted = false;
-new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); fluidWanted = true; import('./fluid.js?v=20261119103210').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'night', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(mix);
+new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); fluidWanted = true; import('./fluid.js?v=20261119103632').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'night', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(mix);
 $$('.cup').forEach(c => {
   const rgb = c.dataset.c.split(',').map(Number);
   const fire = () => {
