@@ -8,7 +8,7 @@
 <meta name="description" content="Inoffizieller Entwurf: die Genussmanufaktur aus Ochtrup mit Frooters, Café nyd, Bowlers, Pick Nick und Loaves Bakery.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/bricolage.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20261117114756">
+<link rel="stylesheet" href="css/style.css?v=20261119091650">
 <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js", "three/addons/": "./assets/vendor/addons/" } }</script>
 </head>
 <body>
@@ -121,12 +121,13 @@
       <div class="nyd-top"><img class="nyd-logo" src="assets/img/nyd/logo-weiss.png" alt="nyd"><a href="https://cafe-nyd.eu/" target="_blank" rel="noopener">cafe-nyd.eu ↗</a></div>
       <div class="nyd-caps">
         <div class="cap on"><p class="kicker">Café nyd · Osnabrück</p><h3><span>Nyd ist dänisch für genießen.</span></h3><p class="s">Mitten an der Großen Straße: draußen die Fußgängerzone, drinnen beginnt die Pause.</p></div>
-        <div class="cap"><p class="kicker">Für den ganzen Tisch</p><h3><span>Ube, Kuchen, Kaffee.</span></h3><p class="s">Der lila Ube-Drink, Karottenkuchen mit Frischkäse und ein Cappuccino mit Herz.</p></div>
+        <div class="cap"><p class="kicker">Für den ganzen Tisch</p><h3><span>Ube, Kuchen, Kaffee.</span></h3><p class="s">Der Ube Vanille Latte, Karottenkuchen mit Frischkäse und ein Cappuccino mit Herz.</p></div>
         <div class="cap"><p class="kicker">Herzhaft und frisch</p><h3><span>Sauerteig &amp; Avocado.</span></h3><p class="s">Knuspriges Sauerteigbrot, cremige Avocado und frische Begleiter.</p></div>
         <div class="cap"><p class="kicker">Noch etwas Süßes</p><h3><span>Karottenkuchen.</span></h3><p class="s">Saftig, mit Frischkäse-Topping und feinen Blütenblättern.</p></div>
         <div class="cap"><p class="kicker">Komm rein</p><h3><span>Dein Platz im Wohnzimmer.</span></h3><p class="s">Helles Holz, weiche Kissen, warmes Licht. Der Cappuccino steht schon auf dem Tisch.</p></div>
         <div class="cap"><p class="kicker">Große Straße 27–32</p><h3><span>Bis gleich.</span></h3><p class="s">Dienstag bis Samstag 10–19 Uhr, Sonntag 10–17 Uhr, Montag Ruhetag.</p></div>
       </div>
+      <div class="sec-hint" id="nydHint"><i></i>Scrollen: weitere Bilder</div>
       <div class="nyd-count"><span id="nydNum">01</span><span class="bar"><i id="nydBar"></i></span><span>06</span></div>
     </div>
   </section>
@@ -141,15 +142,15 @@
     <ol class="ube-steps">
       <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-pulver.webp" alt="Lila Ube-Pulver in Nahaufnahme" loading="lazy"><figcaption>Getrocknet und gemahlen: Ube-Pulver</figcaption></figure><div><span>01</span><h3>Eine Knolle.</h3><p>Ube ist die lila Yamswurzel, botanisch <i>Dioscorea alata</i>. Keine Süßkartoffel und kein Taro, sondern eine eigene Pflanze. Ihre Knolle wächst unter der Erde und ist innen tief violett.</p></div></li>
       <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-eis.webp" alt="Lila Eis auf einem Löffel" loading="lazy"><figcaption>Lila Eis: so kennt man Ube auf den Philippinen</figcaption></figure><div><span>02</span><h3>Von den Philippinen.</h3><p>Ihre Heimat ist Südostasien, vor allem die Philippinen. Dort gehört Ube seit Generationen in Eis, Cremes und Gebäck. Von dort kam sie in die Cafés der Welt.</p></div></li>
-      <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-drink2.webp" alt="Lila Getränk im Glas" loading="lazy"><figcaption>Die Farbe kommt aus der Knolle</figcaption></figure><div><span>03</span><h3>Natürlich violett.</h3><p>Das Lila stammt von Anthocyanen. Das sind dieselben Pflanzenfarbstoffe wie in Heidelbeeren. Keine Farbe aus der Tube, sondern aus der Knolle selbst.</p></div></li>
+      <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-latte.webp" alt="Ube Vanille Latte aus dem Café nyd, von oben" loading="lazy"><figcaption>Ube Vanille Latte im Café nyd</figcaption></figure><div><span>03</span><h3>Natürlich lila.</h3><p>Das Lila stammt von Anthocyanen. Das sind dieselben Pflanzenfarbstoffe wie in Heidelbeeren. Keine Farbe aus der Tube, sondern aus der Knolle selbst. Mit Milch aufgeschäumt wird daraus ein zartes Flieder.</p></div></li>
       <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-dessert.webp" alt="Pfannkuchen mit lila Creme und Nüssen" loading="lazy"><figcaption>Nussig und mild süß</figcaption></figure><div><span>04</span><h3>Nussig, ein bisschen Vanille.</h3><p>Ube schmeckt mild süß, nussig und erinnert an Vanille. Darum passt sie so gut zu Milch, Kaffee und Kuchen.</p></div></li>
     </ol>
     <div class="ube-star">
       <div class="ube-glass reveal"><img src="assets/img/nyd/ube-drink.webp" alt="Ube-Drink im Café nyd" loading="lazy"></div>
       <div class="ube-star-text">
         <p class="kicker reveal">Bei uns im Glas</p>
-        <h2 class="split"><span class="line">Der Ube-Drink</span><span class="line l2">im Café nyd.</span></h2>
-        <p class="reveal">Lila, cremig und mit Muster im Schaum. Das Getränk, nach dem in Osnabrück alle fragen. Probieren an der Großen Straße 27–32.</p>
+        <h2 class="split"><span class="line">Ube Vanille Latte</span><span class="line l2">im Café nyd.</span></h2>
+        <p class="reveal">Lila, cremig, mit einem Hauch Vanille und Muster im Schaum. Warm oder auf Eis, an der Großen Straße 27–32 in Osnabrück.</p>
         <a class="btn light reveal" href="https://cafe-nyd.eu/" target="_blank" rel="noopener">Zum Café nyd ↗</a>
       </div>
     </div>
@@ -206,7 +207,7 @@
       <svg class="pick-scene" id="pickScene" viewBox="0 0 1000 700" aria-hidden="true">
         <g filter="url(#boil)" fill="none" stroke="#2c4a28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
           <g class="pi" data-tx="270" data-ty="130"><g transform="translate(-100 -100)"><path fill="#fffdf6" d="M60 60 L140 60 L128 180 L72 180 Z"/><path fill="#c8102e" stroke="#2c4a28" d="M52 46 L148 46 L144 62 L56 62 Z"/><path d="M68 100 L132 100 M73 145 L127 145 M88 34 C82 20 96 14 90 0 M112 34 C106 20 120 14 114 0"/></g></g>
-          <g class="pi" data-tx="860" data-ty="160"><g transform="translate(-100 -100)"><path fill="#f4d9a6" d="M28 122 C28 72 172 72 172 122 C172 152 28 152 28 122 Z"/><path d="M58 96 C80 112 120 112 142 96 M70 84 l4 4 M100 79 l4 4 M130 85 l4 4"/><path fill="#8fc46a" d="M34 130 C60 150 140 150 166 130 L160 142 C130 160 70 160 40 142 Z"/></g></g>
+          <g class="pi" data-tx="860" data-ty="160"><g transform="translate(-100 -100)"><path fill="#e9c08a" d="M30 132 L170 132 C170 152 160 158 100 158 C40 158 30 152 30 132 Z"/><path fill="#f5c84b" d="M26 122 L174 122 L172 132 L134 132 L126 146 L118 132 L64 132 L57 143 L50 132 L28 132 Z"/><path fill="#e0443b" d="M30 112 L170 112 L168 123 L32 123 Z"/><path fill="#8fc46a" d="M22 104 C38 94 50 114 66 104 C82 94 94 114 110 104 C126 94 138 114 154 104 C164 98 174 106 180 104 L176 114 L24 114 Z"/><path fill="#e9c08a" d="M30 100 C30 52 170 52 170 100 Z"/><path d="M64 72 l6 -4 M96 64 l6 -3 M128 70 l6 -4 M84 84 l6 -3 M114 82 l6 -4"/></g></g>
           <g class="pi" data-tx="250" data-ty="370"><g transform="translate(-100 -100)"><path fill="#c98a4b" d="M100 168 C35 168 14 106 44 76 C70 50 100 70 100 102 C100 70 130 50 156 76 C186 106 165 168 100 168 Z"/><path d="M100 102 C92 132 72 152 56 152 M100 102 C108 132 128 152 144 152 M70 90 l2 2 M130 92 l2 2 M100 150 l2 2"/></g></g>
           <g class="pi" data-tx="930" data-ty="420"><g transform="translate(-100 -100)"><path fill="#f2c27a" d="M100 172 C40 132 20 102 30 72 C40 42 80 42 100 72 C120 42 160 42 170 72 C180 102 160 132 100 172 Z"/><path d="M58 62 L148 146 M42 88 L126 164 M84 50 L164 116 M144 62 L56 148 M160 88 L78 164 M118 50 L38 118"/></g></g>
           <g class="pi" data-tx="780" data-ty="640"><g transform="translate(-100 -100)"><path fill="#fff3d8" d="M28 152 L172 152 L172 112 L28 70 Z"/><path fill="#f1b5b9" d="M28 70 L172 112 L172 124 L28 84 Z"/><path d="M28 104 L172 140"/><circle cx="150" cy="96" r="10" fill="#c8102e"/></g></g>
@@ -247,10 +248,11 @@
 
 <footer class="foot">
   <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
-  <p>Fotos Café nyd: Café nyd. Pick-Nick-Logo aus einem Foto der Filiale freigestellt. Açaí-Bilder: Kawê Rodrigues, Regenwald: Rohit Tandon, Ube-Bilder: Monaz Hastam, Alexander Grey, Frank Huang, Eiliv Aceron (alle Unsplash, Beispielbilder). Bubble Waffle aus einem Frooters-Foto freigestellt, Cappuccino im Sitzplatz-Foto des Café nyd eingesetzt (Bildmontage für den Entwurf). Fruchtmodelle, Pflanzen und Licht: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+  <p>Fotos Café nyd: Café nyd. Pick-Nick-Logo aus einem Foto der Filiale freigestellt. Açaí-Bilder: Kawê Rodrigues, Regenwald: Rohit Tandon, Ube-Bilder: Monaz Hastam, Alexander Grey, Eiliv Aceron (alle Unsplash, Beispielbilder). Bubble Waffle aus einem Frooters-Foto freigestellt, Cappuccino im Sitzplatz-Foto des Café nyd eingesetzt (Bildmontage für den Entwurf). Fruchtmodelle, Pflanzen und Licht: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
 </footer>
+<div class="stage-back" id="stageBack" aria-hidden="true"></div>
 <div class="stage" id="stage" data-lenis-prevent aria-hidden="true"><div class="stage-in" id="stageIn"></div></div>
-<div class="st-hint" id="stHint" aria-hidden="true"><i></i>Scrollen</div>
+<div class="st-hint" id="stHint" aria-hidden="true"><i></i>Nach unten scrollen</div>
 <nav class="roomnav" id="roomnav" aria-label="Durchs Haus" aria-hidden="true">
   <button class="rn-back" id="rnBack"><span aria-hidden="true">←</span> Zurück zum Haus</button>
   <div class="rn-where">
@@ -265,7 +267,7 @@
   <button class="rn-next" id="rnNext"><small>Weiter</small><b id="rnNextName">Frooters</b><span aria-hidden="true">→</span></button>
 </nav>
 <div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
-<script type="module" src="js/main.js?v=20261117114756"></script>
-<script>window.STAND="20261117114756";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+<script type="module" src="js/main.js?v=20261119091650"></script>
+<script>window.STAND="20261119091650";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
 </body>
 </html>

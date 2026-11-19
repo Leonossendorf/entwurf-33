@@ -440,3 +440,30 @@ body.zoom-lock .nav,body.zoom-lock .flag{opacity:0;pointer-events:none}
 
 .j-tip{margin-top:14px;font-size:15px;opacity:.9}
 .soon-sub{max-width:520px;margin:18px auto 0;font-size:17px;opacity:.85}
+
+/* Lesbarkeit und Korrekturen 19.11. */
+.cap{max-width:min(1150px,92vw)}
+.cap h3{font-size:clamp(44px,6.2vw,112px)}
+.ube-intro{font-size:clamp(21px,1.9vw,28px);max-width:760px;text-shadow:0 2px 24px rgba(20,8,26,.9)}
+.ube-step>div{background:rgba(22,9,28,.66);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(230,210,255,.14);border-radius:26px;padding:clamp(24px,3vw,44px)}
+.ube-step h3{font-size:clamp(42px,4.4vw,74px)}
+.ube-step p{font-size:clamp(19px,1.5vw,23px);max-width:none;line-height:1.55}
+.ube-star-text{background:rgba(22,9,28,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:26px;padding:clamp(24px,3vw,44px)}
+.ube-star-text p{font-size:clamp(19px,1.5vw,23px)}
+
+.stage-back{position:fixed;inset:0;z-index:69;display:none;cursor:zoom-out}
+.stage-back.on{display:block}
+.st-hint{font-size:15px;padding:12px 20px;bottom:calc(50vh - 50vh * var(--ss) - var(--sy) + 26px)}
+.st-hint.on{animation:hintBob 1.8s ease-in-out infinite}
+@keyframes hintBob{50%{transform:translate(-50%,-6px)}}
+.sec-hint{position:absolute;left:50%;bottom:6vh;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:10px;padding:11px 18px;border-radius:99px;background:rgba(20,16,14,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff6ec;font:700 14px "Hank";pointer-events:none;transition:opacity .5s;animation:hintBob 1.8s ease-in-out infinite}
+.sec-hint i{width:14px;height:22px;border:2px solid currentColor;border-radius:9px;position:relative}
+.sec-hint i:after{content:"";position:absolute;left:50%;top:4px;width:2px;height:5px;margin-left:-1px;border-radius:2px;background:currentColor;animation:wheel 1.6s infinite}
+.sec-hint.off{opacity:0}
+.nyd-sticky .sec-hint{bottom:auto;top:50%}
+.stage .nyd-sticky .sec-hint{display:none}
+.tk-hint{bottom:28px}
+.st-end{position:relative;z-index:2;min-height:62vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12vh 6vw 22vh;background:#1b1714;color:#fff6ec}
+.st-end h3{font-size:clamp(40px,4.6vw,76px);margin:6px 0 30px}
+.st-end-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.st-end .btn.ghost{color:#fff6ec}

@@ -7,13 +7,13 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 // Produkte laut frooters.de, Fotos: Frooters
 const PRODUCTS = [
   { id: 'froyo', img: 'p_froyo', name: 'Frozen Yogurt', k: 'In der Waffelschale', text: 'Leicht und locker aus der Maschine, in der knusprigen Waffelschale. Mit Früchten, Saucen und Toppings ganz nach deiner Wahl.', x: 30, y: 30, w: 900 },
-  { id: 'bubble', img: 'p_bubble', name: 'Bubble Waffles', k: 'Frisch gebacken', text: 'Frisch gebackene Waffel, belegt mit Frozen Yogurt, Obst, Sauce und Naschereien. Zum Mitnehmen im roten Frooters-Becher.', x: 1170, y: 60, w: 380 },
+  { id: 'bubble', img: 'p_bubble', name: 'Bubble Waffles', k: 'Frisch gebacken', text: 'Warme Bubble Waffle im roten Frooters-Becher, gefüllt mit Frozen Yogurt, Obst, Sauce und Naschereien.', x: 1240, y: 24, w: 290 },
   { id: 'muesli', img: 'p_muesli', name: 'Müslibecher', k: 'Zum Löffeln', text: 'Fruchtpüree, frische Erdbeeren und knuspriges Granola im Becher. Für unterwegs oder zum Hinsetzen.', x: 110, y: 430, w: 320 },
   { id: 'smoothies', img: 'p_smoothies', name: 'Smoothies', k: 'Frisch gemixt', text: 'Aus ganzen Früchten gemixt: rot, grün, gelb oder ganz cremig. Jeden Tag frisch.', x: 520, y: 700, w: 1000 },
 ];
 // Hochformat (Handy): Produkte untereinander
-const PORTRAIT = { froyo: [40, 30, 920], bubble: [620, 450, 350], muesli: [60, 470, 360], smoothies: [20, 1290, 960] };
-const ASPECT = { p_froyo: 1067 / 2600, p_bubble: 525 / 639, p_muesli: 2848 / 1600, p_smoothies: 650 / 2600 };
+const PORTRAIT = { froyo: [40, 30, 920], bubble: [640, 430, 300], muesli: [60, 470, 360], smoothies: [20, 1290, 960] };
+const ASPECT = { p_froyo: 1067 / 2600, p_bubble: 689 / 396, p_muesli: 2848 / 1600, p_smoothies: 650 / 2600 };
 
 export async function createTheke(root, { mobile = false, rec = false } = {}) {
   const el = document.createElement('div'); el.className = 'tk';

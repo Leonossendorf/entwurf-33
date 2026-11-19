@@ -1,6 +1,6 @@
 // Genussmanufaktur · inoffizieller Entwurf von Leon Oßendorf
-import Lenis from './lenis.mjs?v=20261117114756';
-import { createFluid } from './fluid.js?v=20261117114756';
+import Lenis from './lenis.mjs?v=20261119091650';
+import { createFluid } from './fluid.js?v=20261119091650';
 
 const REC = new URLSearchParams(location.search).has('rec');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -45,9 +45,9 @@ let theke = null, nyd = null, jungle = null, jMini = null, jBig = null, nydLoadi
 const ready = [];
 const safe = p => p.catch(e => console.warn('Baustein ohne WebGL', e));
 const load = {
-  theke: () => import('./theke.js?v=20261117114756').then(m => m.createTheke($('.r-frooters'), { mobile, rec: REC })).then(x => { theke = x; }),
-  jungle: () => import('./jungle.js?v=20261117114756').then(async m => { jungle = await m.getJungle({ mobile }); jMini = m.createView($('#jungleMini'), { mobile, rec: REC }); jBig = m.createView($('#jungleBig'), { mobile, rec: REC }); }),
-  nyd: () => nydLoading || (nydLoading = safe(import('./nyd.js?v=20261117114756').then(m => m.createNyd({ canvas: $('#nydCanvas'), wrap: $('#nyd'), root: $('#nyd'), rec: REC, reduced, prog })).then(n => { nyd = n; }))),
+  theke: () => import('./theke.js?v=20261119091650').then(m => m.createTheke($('.r-frooters'), { mobile, rec: REC })).then(x => { theke = x; }),
+  jungle: () => import('./jungle.js?v=20261119091650').then(async m => { jungle = await m.getJungle({ mobile }); jMini = m.createView($('#jungleMini'), { mobile, rec: REC }); jBig = m.createView($('#jungleBig'), { mobile, rec: REC }); }),
+  nyd: () => nydLoading || (nydLoading = safe(import('./nyd.js?v=20261119091650').then(m => m.createNyd({ canvas: $('#nydCanvas'), wrap: $('#nyd'), root: $('#nyd'), rec: REC, reduced, prog })).then(n => { nyd = n; }))),
 };
 ready.push(safe(load.theke()), safe(load.jungle()));
 if (REC) ready.push(load.nyd());
@@ -67,7 +67,7 @@ const stage = $('#stage'), stageIn = $('#stageIn'), roomnav = $('#roomnav'), stH
 const heroEl = $('#start'), houseEl = $('#house');
 let tkScreen = null;
 function thekeScreen() {
-  if (!tkScreen) { tkScreen = document.createElement('section'); tkScreen.className = 'tk-screen'; tkScreen.innerHTML = '<p class="tk-screen-text"><b>Frooters · Die Obstküche</b><span>Zeig auf ein Produkt oder schubs das Obst an.</span></p>'; }
+  if (!tkScreen) { tkScreen = document.createElement('section'); tkScreen.className = 'tk-screen'; tkScreen.innerHTML = '<p class="tk-screen-text"><b>Frooters · Die Obstküche</b><span>Zeig auf ein Produkt oder schubs das Obst an.</span></p><div class="sec-hint tk-hint"><i></i>Weiter unten: Smoothies</div>'; }
   return tkScreen;
 }
 const ROOMS = [
@@ -91,6 +91,12 @@ function fillStage(i) {
     else put($(s));
   }
   if (R.secs.includes('#nyd')) load.nyd();
+  const end = document.createElement('section'); end.className = 'st-end';
+  const nextName = i + 1 < ROOMS.length ? NAMES[i + 1] : 'Haustür · Für Partner';
+  end.innerHTML = `<p class="kicker">Ende des Raums</p><h3>Das war ${R.name}.</h3><div class="st-end-btns"><button class="btn light" data-act="next">Weiter: ${nextName} →</button><button class="btn ghost" data-act="back">Zurück zum Haus</button></div>`;
+  end.querySelector('[data-act=next]').addEventListener('click', () => $('#rnNext').click());
+  end.querySelector('[data-act=back]').addEventListener('click', () => leaveRoom());
+  stageIn.appendChild(end);
   stage.scrollTop = 0;
   if (lenis && !REC) { stageLenis = new Lenis({ wrapper: stage, content: stageIn, lerp: 0.09, smoothWheel: true }); }
 }
@@ -117,7 +123,7 @@ function enterRoom(i) {
   const ph = document.createElement('div'); ph.className = 'room-placeholder'; ph.style.gridColumn = getComputedStyle(room).gridColumn; ph.style.height = r0.height + 'px'; room.after(ph);
   Object.assign(room.style, { top: r0.top + 'px', left: r0.left + 'px', width: r0.width + 'px', height: r0.height + 'px' });
   room.classList.add('zooming'); document.body.appendChild(room);
-  lenis?.stop(); document.body.classList.add('zoom-lock');
+  lenis?.stop(); document.body.classList.add('zoom-lock'); $('#stageBack').classList.add('on');
   cur = i; ROOMS[i].ph = ph; ROOMS[i].r0 = r0;
   setNav(i); roomnav.classList.add('on'); roomnav.setAttribute('aria-hidden', 'false');
   requestAnimationFrame(() => requestAnimationFrame(() => { const t = targetRect(); Object.assign(room.style, { top: t.top + 'px', left: t.left + 'px', width: t.width + 'px', height: t.height + 'px', borderRadius: '22px' }); heroEl.classList.add('zoom'); }));
@@ -141,7 +147,7 @@ function leaveRoom(cb) {
     heroEl.classList.remove('zoom');
     setTimeout(() => {
       room.classList.remove('zooming'); room.removeAttribute('style'); R.ph.replaceWith(room); cur = null; busy = false;
-      if (!cb) { lenis?.start(); document.body.classList.remove('zoom-lock'); }
+      if (!cb) { lenis?.start(); document.body.classList.remove('zoom-lock'); $('#stageBack').classList.remove('on'); }
       cb?.();
     }, reduced ? 50 : 1000);
   }, 420);
@@ -155,14 +161,17 @@ function goDoor() {
   };
   if (cur !== null) leaveRoom(go); else go();
 }
+// Zurück von der Partnerseite: Browser stellt die Seite im Zoom-Zustand wieder her, daher alles zurücksetzen
+addEventListener('pageshow', e => { if (!e.persisted && cur === null) return; heroEl.classList.remove('zoom'); document.body.classList.remove('zoom-lock'); $('#stageBack').classList.remove('on'); roomnav.classList.remove('on'); stage.classList.remove('on'); stHint.classList.remove('on'); busy = false; if (cur !== null) { const R = ROOMS[cur]; emptyStage(); R.el.classList.remove('zooming'); R.el.removeAttribute('style'); R.ph?.replaceWith(R.el); cur = null; } lenis?.start(); });
 ROOMS.forEach((R, i) => { R.el.addEventListener('click', () => { if (cur === null) enterRoom(i); }); R.el.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && cur === null) { e.preventDefault(); enterRoom(i); } }); });
 $('.door').addEventListener('click', e => { e.preventDefault(); goDoor(); });
 $$('[data-room]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); enterRoom(+a.dataset.room); }));
 $('#rnBack').addEventListener('click', () => leaveRoom());
+$('#stageBack').addEventListener('click', () => { if (cur !== null && !busy) leaveRoom(); });
 $('#rnNext').addEventListener('click', () => { if (cur !== null) enterRoom(cur + 1 < ROOMS.length ? cur + 1 : DOOR); });
 $$('#rnMap button').forEach(b => b.addEventListener('click', () => enterRoom(+b.dataset.i)));
 addEventListener('keydown', e => { if (cur === null) return; if (e.key === 'Escape') leaveRoom(); if (e.key === 'ArrowRight' && e.altKey) $('#rnNext').click(); });
-stage.addEventListener('scroll', () => { if (stage.scrollTop > 60) stHint.classList.remove('on'); }, { passive: true });
+stage.addEventListener('scroll', () => { if (stage.scrollTop > 160) stHint.classList.remove('on'); }, { passive: true });
 
 // ===== Frooters: Smoothie-Becher im Farbstrom =====
 const cupsBox = $('#cups'), cupTag = $('#cupTag');
@@ -226,7 +235,7 @@ function tick(dt, now) {
   }
   if (vis(juice)) updateCups(dt, t);
   // Café nyd: Bild blendet weich aus dem Dunkel auf
-  if (vis($('#nyd'))) { const v = view($('#nyd')); nydSticky.style.opacity = clamp(1 - v.top / (v.vh * 0.85)).toFixed(3); if (nyd) nyd.update(dt); }
+  if (vis($('#nyd'))) { const v = view($('#nyd')); nydSticky.style.opacity = clamp(1 - v.top / (v.vh * 0.85)).toFixed(3); $('#nydHint').classList.toggle('off', prog($('#nyd')) > 0.06); if (nyd) nyd.update(dt); }
   // Dschungelreise
   if (jungle && jBig && vis(jWrap)) {
     const p = prog(jWrap);

@@ -112,8 +112,7 @@ precision highp float; precision highp sampler2D; in vec2 uv, L, R, T, B; out ve
       for (let i = 0; i < 3; i++) bg[i] += (theme.bg[i] - bg[i]) * (1 - Math.exp(-dt * 3));
       glow += (theme.glow - glow) * (1 - Math.exp(-dt * 3));
       ptr.idle += dt;
-      if (ptr.moved) { const dx = (ptr.x - ptr.px) * 7000, dy = (ptr.y - ptr.py) * 7000; if (Math.abs(dx) + Math.abs(dy) > 1) splat(ptr.x, ptr.y, dx, dy, colNow().map(v => v * .5), 0.0012); ptr.moved = false; }
-      else if (ptr.idle > 2.5 && !reduced) auto(time);
+      if (ptr.moved) { const dx = (ptr.x - ptr.px) * 5000, dy = (ptr.y - ptr.py) * 5000; if (Math.abs(dx) + Math.abs(dy) > 1) splat(ptr.x, ptr.y, dx, dy, colNow().map(v => v * .32), 0.001); ptr.moved = false; }
       if (fade > 0) { fade -= dt; run('scale', dye.w, { tgt: dye.r, k: 0.9 }); dye.swap(); }
       step(Math.min(dt, 1 / 30));
       run('show', null, { dye: dye.r, tx: [1 / dw, 1 / dh], bg, t: time % 10, glow });
