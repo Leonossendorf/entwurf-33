@@ -1,5 +1,5 @@
 // Loaves Bakery: Mehlstaub schwebt durch die Backstube und weicht der Maus aus
-import { $, start, run, onTick, vis } from './common.js?v=20261119103632';
+import { $, start, run, onTick, vis } from './common.js?v=20261119104114';
 
 start();
 const cv = $('#mehl'), ctx = cv.getContext('2d'), sec = $('#loaves');
