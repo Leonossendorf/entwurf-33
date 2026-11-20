@@ -4,93 +4,149 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0f2416">
-<title>Bowlers · Die Reise der Açaí (inoffizieller Entwurf)</title>
-<meta name="description" content="Inoffizieller Entwurf: Bowlers. Die Reise der Açaí-Beere aus dem Regenwald bis in die Bowl.">
+<meta name="theme-color" content="#f3f2ee">
+<title>Bowlers · Bowls, Wraps und Porridge in Osnabrück (inoffizieller Entwurf)</title>
+<meta name="description" content="Inoffizieller Entwurf: Bowlers in Osnabrück. Bowls, Wraps, Porridge und Milchreis, zusammengestellt nach deinem Geschmack.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/bowlers/poster.webp" fetchpriority="high">
-<link rel="stylesheet" href="css/base.css?v=20261119111254">
-<link rel="stylesheet" href="css/bowlers.css?v=20261119111254">
-<script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js", "three/addons/": "./assets/vendor/addons/" } }</script>
-<link rel="modulepreload" href="assets/vendor/three.module.min.js">
+<link rel="preload" as="image" href="assets/img/bowlers/b07591-1600.webp" imagesrcset="assets/img/bowlers/b07591-900.webp 900w, assets/img/bowlers/b07591-1600.webp 1600w" imagesizes="(max-width: 900px) 100vw, 50vw" fetchpriority="high">
+<link rel="stylesheet" href="css/base.css?v=20261120203725">
+<link rel="stylesheet" href="css/welt.css?v=20261120203725">
+<link rel="stylesheet" href="css/bowlers.css?v=20261120203725">
 </head>
-<body data-world="bowlers">
+<body data-world="bowlers" data-story="bowl">
 <header class="wbar">
-  <a class="wback" href="index.html"><i>←</i> Zum Haus</a>
-  <div class="wright">
-    <nav class="wmap" aria-label="Hausplan"><a class="m0" href="loaves.html" title="Loaves Bakery"></a><a class="m1" href="frooters.html" title="Frooters"></a><a class="m2" href="picknick.html" title="Pick Nick"></a><a class="m3 on" href="bowlers.html" title="Bowlers" aria-current="page"></a><a class="m4" href="nyd.html" title="Café nyd"></a><a class="m5" href="partner.html" title="Haustür: Für Partner"></a></nav>
-    <a class="wnext" href="nyd.html"><span><small>Weiter</small><b>Café nyd</b></span><i>→</i></a>
-  </div>
+  <a class="wback" href="index.html" data-haus=""><i>←</i> Zum Haus</a>
+  <nav class="wnav" aria-label="Genusswelten"><a href="frooters.html">Frooters</a><a href="picknick.html">Pick Nick</a><a href="bowlers.html" aria-current="page">Bowlers</a><a href="nyd.html">Café nyd</a></nav>
 </header>
 
 <main>
-  <section class="journey" id="reise" aria-label="Die Reise der Açaí">
-    <div class="j-sticky">
-      <img class="j-poster" src="assets/img/bowlers/poster.webp" alt="" width="960" height="540" fetchpriority="high">
-      <canvas id="wald" aria-hidden="true"></canvas>
-      <div class="j-vig"></div>
+  <section class="wh" style="--vt:w-bowlers">
+    <div class="wh-text">
+      <img class="wh-logo" src="assets/img/logos/bowlers-logo-s.svg" alt="Bowlers" width="425" height="83">
+      <h1>Deine Bowl.<br>Deine Regeln.</h1>
+      <p class="wh-lead">Bowls, Wraps, Porridge und Milchreis in Osnabrück. Frisch zusammengestellt, genau so, wie du es magst. Oder du nimmst eine von Chefs Empfehlungen.</p>
+      <div class="wh-btns"><a class="btn" href="#chef">Chefs Empfehlungen ↓</a><a class="btn ghost" href="#entdecken">Selbst zusammenstellen</a></div>
+    </div>
+    <div class="wh-img"><img src="assets/img/bowlers/b07591-1600.webp" srcset="assets/img/bowlers/b07591-900.webp 900w, assets/img/bowlers/b07591-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw" alt="Schalen mit frischen Toppings: Gurke, Paprika, Rotkohl, Mais und mehr" width="1600" height="1067" fetchpriority="high"></div>
+  </section>
 
-      <div class="j-st j-intro" data-a="-1" data-b="0.09">
-        <p class="kicker">Bowlers · Bowls aus dem Regenwald</p>
-        <h1>Die Reise<br>der Açaí.</h1>
-        <p>Sie hängt hoch oben in der Palme. Komm mit, bis sie in deiner Bowl landet.</p>
-        <span class="hint"><i></i>Scrollen: der Beere folgen</span>
-      </div>
-
-      <div class="j-st j-photo" data-a="0.13" data-b="0.31">
-        <img src="assets/img/acai/regenwald.webp" alt="Fluss im Regenwald" width="720" height="1087" loading="lazy" decoding="async">
-        <div><p class="kicker">Station 1 · Herkunft</p><h2>Am Amazonas.</h2><p>Açaí wächst an der Palme <i>Euterpe oleracea</i>, vor allem im Bundesstaat Pará im Norden Brasiliens. Die schlanken Palmen stehen an Flussufern und werden über 25 Meter hoch.</p></div>
-      </div>
-
-      <div class="j-st j-photo two" data-a="0.36" data-b="0.55">
-        <img src="assets/img/acai/acai-palme.webp" alt="Açaí-Beeren an der Palme" width="720" height="1080" loading="lazy" decoding="async"><img src="assets/img/acai-traube.webp" alt="Reife Açaí-Rispe" width="640" height="960" loading="lazy" decoding="async">
-        <div><p class="kicker">Station 2 · Ernte</p><h2>Von Hand gepflückt.</h2><p>Pflücker klettern die Stämme hinauf und holen die reifen Rispen herunter. Noch am selben Tag werden die Beeren zu Fruchtmark verarbeitet und tiefgefroren.</p></div>
-      </div>
-
-      <div class="j-power" id="jPower">
-        <div class="jp-head"><p class="kicker">Station 3 · Powerfood</p><h2>Was in der kleinen Beere steckt.</h2></div>
-        <ul>
-          <li class="l"><b>Anthocyane</b><span>Der dunkle Farbstoff, der die Beere fast schwarz macht.</span></li>
-          <li class="l"><b>Polyphenole</b><span>Pflanzenstoffe, wie sie in dunklen Beeren stecken.</span></li>
-          <li class="l"><b>Ballaststoffe</b><span>Aus dem Fruchtfleisch, machen die Bowl sämig.</span></li>
-          <li class="r"><b>Ölsäure</b><span>Omega-9-Fett, dasselbe wie im Olivenöl.</span></li>
-          <li class="r"><b>Mineralstoffe</b><span>Kalium, Calcium und Magnesium.</span></li>
-          <li class="r hl"><b>&lt;1 g Zucker</b><span>in 100 g ungesüßtem Fruchtmark.</span></li>
-        </ul>
-        <small>Inhaltsstoffe laut Fachliteratur und Herstellerangaben, Mengen je nach Produkt verschieden.</small>
-      </div>
-
-      <div class="j-final" id="jFinal">
-        <div class="j-glow"></div>
-        <img class="j-bowl" src="assets/img/acai/bowl.webp" alt="Açaí-Bowl mit Beeren, Granola, Passionsfrucht und Nussmus" width="1100" height="966" loading="lazy" decoding="async">
-        <div class="j-final-text"><p class="kicker">Station 4 · Ankunft</p><h2>Die Bowl.</h2><p>Gefrorenes Açaí, frische Beeren, Granola und ein Hauch Nussmus.</p><p class="j-tip">Bowlers ist in Vorbereitung. Wer nicht warten will: Diese Bowl gibt es schon im Café nyd.</p><a class="btn light" href="nyd.html">Zum Café nyd →</a></div>
-      </div>
-
-      <nav class="j-rail" id="jRail" aria-label="Stationen der Reise">
-        <button data-p="0.2"><i></i><span>Herkunft</span></button>
-        <button data-p="0.44"><i></i><span>Ernte</span></button>
-        <button data-p="0.72"><i></i><span>Powerfood</span></button>
-        <button data-p="0.98"><i></i><span>Die Bowl</span></button>
-      </nav>
+  <!-- Chefs Empfehlungen: so stehen sie an der Tafel -->
+  <section class="ws" id="chef">
+    <div class="ws-head">
+      <p class="kicker reveal">Chefs Empfehlungen</p>
+      <h2 class="split"><span class="line">Einfach</span><span class="line">lecker.</span></h2>
+      <p class="reveal">Acht fertige Ideen, wenn du nicht lange überlegen willst.</p>
+    </div>
+    <div class="mg">
+      <article class="mc"><small>1</small><b>Habibi Bowl <em>vegan</em></b><span>Basmati Reis, Kirschtomaten, Gurken, Rotkohlsalat, Hummus natur, Kichererbsensalat, Falafel. Sesam- und Erdnuss-Sauce.</span></article>
+      <article class="mc"><small>2</small><b>Mexico Bowl</b><span>Basmati Reis, Mais, Kidneybohnensalat, Jalapeños, Avocado-Hummus, Paprika, Hähnchenstreifen. Mojo Rojo und Spicy Salsa.</span></article>
+      <article class="mc"><small>3</small><b>Asia Bowl</b><span>Kurkuma Reis, Paprika, Edamame, Karottensalat, rote Zwiebeln, Wakame, Thunfisch. Sesam- und Asia-Knoblauch-Sauce.</span></article>
+      <article class="mc"><small>4</small><b>Aus dem Meer</b><span>Basmati Reis und Salatmix, Wakame, Edamame, Paprika, Zwiebeln, Pink Hummus, Stremellachs. Asia-Knoblauch-Sauce und Trüffel-Majo.</span></article>
+      <article class="mc"><small>5</small><b>Greek Bowl</b><span>Basmati Reis und Salatmix, Kirschtomaten, rote Zwiebeln, Gurken, schwarze Oliven, Feta, Falafel. Aioli und Sesam-Sauce.</span></article>
+      <article class="mc"><small>6</small><b>Italien Bowl</b><span>Basmati Reis und Babyspinat, Kirschtomaten, rote Zwiebeln, eingelegter Mozzarella, Rucola, Hummus natur, Hähnchenstreifen.</span></article>
+      <article class="mc"><small>7</small><b>Indian Summer Bowl</b><span>Kurkuma Reis, Karottensalat, Paprika, Kidneybohnensalat, Mango, Chili-Hummus, Falafel. Thai-Mango- und India-Curry-Sauce.</span></article>
+      <article class="mc"><small>8</small><b>Habibi Falafel Wrap</b><span>Salatmix, Gurke, Kirschtomaten, Rotkohlsalat, Falafel und Habibi-Joghurt-Sauce. Auf Wunsch mit Chilifäden.</span></article>
     </div>
   </section>
 
-  <section class="wend" style="--nbg:#faf6f4;--nfg:#2b1f21">
-    <p class="kicker">Nächster Raum · Das Wohnzimmer</p>
+  <!-- Süß: Porridge, Milchreis & Bowls -->
+  <section class="ws suess">
+    <div class="wsplit">
+      <figure class="reveal"><img src="assets/img/bowlers/b07590-900.webp" srcset="assets/img/bowlers/b07590-900.webp 900w, assets/img/bowlers/b07590-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw" alt="Schalen mit süßen Toppings: Haferflocken, Granola, Nüsse, Cranberries und Mango" width="900" height="600" loading="lazy" decoding="async"></figure>
+      <div>
+        <p class="kicker reveal">Für den süßen Hunger</p>
+        <h2 class="split"><span class="line">Porridge,</span><span class="line">Milchreis &amp; Bowls.</span></h2>
+        <ul class="wlist reveal">
+          <li><b>Apfelglück</b>Apfelwürfel, Apfelmus, Zimtzucker, Walnüsse, Granatapfelkerne</li>
+          <li><b>Superfoodie</b>Gojibeeren, Cranberries, Banane, Heidelbeeren, Chia, Walnüsse, Ahornsirup</li>
+          <li><b>Nutella Banane</b>Nutella, Banane, Hafercrunch, weiße Schokolade, Kinderschokolade</li>
+          <li><b>Kirschzauber</b>Kirschkompott, Hafercrunch, Vanillesauce, weiße Raspelschokolade</li>
+          <li><b>Hafertraum</b>Mango, Banane, Heidelbeere, Kokosflocken, Hafercrunch, Honig</li>
+          <li><b>Baukasten</b>Porridge oder Milchreis mit den Toppings, die du dir aussuchst</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getränke und Standort -->
+  <section class="ws">
+    <div class="wsplit">
+      <div>
+        <p class="kicker reveal">Dazu</p>
+        <h2 class="split"><span class="line">Limonade,</span><span class="line">hausgemacht.</span></h2>
+        <ul class="wlist reveal">
+          <li><b>Erdbeere Limette</b></li><li><b>Zitrone Ingwer</b></li><li><b>Mango Minze</b></li><li><b>Beerenmix Rosmarin</b></li>
+        </ul>
+      </div>
+      <figure class="reveal"><img src="assets/img/bowlers/b07594-900.webp" srcset="assets/img/bowlers/b07594-900.webp 900w, assets/img/bowlers/b07594-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw" alt="Flaschen mit Eistee und Limonade auf der Theke" width="900" height="600" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <section class="ws orte" id="orte">
+    <div class="wsplit">
+      <figure class="reveal"><img src="assets/img/bowlers/b07589-900.webp" srcset="assets/img/bowlers/b07589-900.webp 900w, assets/img/bowlers/b07589-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw" alt="Die Theke in Osnabrück mit den Tafeln für Limonade, Porridge und Milchreis" width="900" height="600" loading="lazy" decoding="async"></figure>
+      <div>
+        <p class="kicker reveal">Hier findest du uns</p>
+        <h2 class="split"><span class="line">Mitten in</span><span class="line">Osnabrück.</span></h2>
+        <p class="reveal orte-t">Grüne Kacheln, helles Holz und eine Theke voller frischer Zutaten: Du zeigst drauf, wir stellen zusammen.</p>
+        <p class="reveal"><a class="btn ghost" href="index.html#karte" data-haus="#karte">Alle Standorte auf der Karte →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Einladung: erst hier beginnt die Scroll-Geschichte -->
+  <section class="gate" id="entdecken">
+    <img src="assets/img/bowlers/b07591-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
+    <div class="gate-in">
+      <p class="kicker">Die Bowlers-Genusswelt</p>
+      <h2>Bau dir<br>deine Bowl.</h2>
+      <p class="sub">In fünf Schritten von der Basis bis zum Crunch. Genau so läuft es bei uns an der Theke.</p>
+      <button class="gate-go" id="gateGo"><i>↓</i>Genusswelt entdecken</button>
+      <small>5 Schritte · einfach weiterscrollen · etwa eine Minute</small>
+    </div>
+  </section>
+
+  <div class="story" id="story" hidden>
+    <section class="bau" id="bau" aria-label="In fünf Schritten zur eigenen Bowl">
+      <div class="bau-sticky">
+        <div class="bau-bild" id="bauBild">
+          <img class="bau-tafel" src="assets/img/bowlers/b07593-1600.webp" alt="Tafel an der Theke: Erstelle dein eigenes Menü. Basis, Topping, Special, Sauce, Crunch." width="1600" height="1067" loading="lazy" decoding="async">
+          <img class="bau-foto" data-s="2" src="assets/img/bowlers/b07591-1600.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
+          <img class="bau-foto" data-s="6" src="assets/img/bowlers/b07592-1600.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
+        </div>
+        <div class="bau-text">
+          <p class="kicker">Erstelle dein eigenes Menü</p>
+          <ol class="bau-steps" id="bauSteps">
+            <li><small>Los geht’s</small><b>An der Tafel steht, wie es geht.</b><span>Fünf Entscheidungen, mehr nicht. Scroll weiter.</span></li>
+            <li><small>Schritt 1 · Basis</small><b>Worauf baust du?</b><span>Basmati Reis, Kurkuma Reis, Salatmix oder Babyspinat. Im Wrap: Salatmix oder Babyspinat.</span></li>
+            <li><small>Schritt 2 · Topping</small><b>Fünf Toppings deiner Wahl.</b><span>Gurke, Paprika, Mais, Rotkohl, Edamame und vieles mehr. Du zeigst drauf, wir füllen ein. Im Wrap sind es drei.</span></li>
+            <li><small>Schritt 3 · Special</small><b>Das Herzstück.</b><span>Falafel, Hähnchen, Thunfisch oder Stremellachs.</span></li>
+            <li><small>Schritt 4 · Sauce</small><b>Zwei Saucen deiner Wahl.</b><span>Von Sesam über Aioli bis Spicy Salsa.</span></li>
+            <li><small>Schritt 5 · Crunch</small><b>Zweimal Crunch obendrauf.</b><span>Zum Beispiel Sesam, Röstzwiebeln, Walnüsse, Croûtons oder Petersilie.</span></li>
+            <li><small>Fertig</small><b>Guten Appetit.</b><span>Keine Lust auf Entscheiden? Dann nimm eine von Chefs Empfehlungen.</span><a class="btn" href="#chef">Zu Chefs Empfehlungen →</a></li>
+          </ol>
+          <div class="bau-prog" aria-hidden="true"><span id="bauCount">0 / 5</span><span class="bar"><i id="bauBar"></i></span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="wend" style="--nbg:#2b1f21;--nfg:#faf6f4">
+    <p class="kicker">Nächste Genusswelt</p>
     <a class="wend-next" href="nyd.html">Café nyd <i>→</i></a>
     <p class="sub">Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte.</p>
-    <a class="btn wend-back" href="index.html">← Zurück zum Haus</a>
+    <a class="btn light wend-back" href="index.html" data-haus="">← Zurück zum Haus</a>
   </section>
 </main>
 
 <footer class="foot">
   <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
-  <p>Regenwald als Rundumbild: <a href="https://polyhaven.com/a/rainforest_trail" target="_blank" rel="noopener">Poly Haven</a> (CC0). Açaí-Bilder: Kawê Rodrigues, Fluss: Rohit Tandon (Unsplash, Beispielbilder). Bowl: Foto aus dem Café nyd. <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+  <p>Fotos und Logo: Genussmanufaktur (Bowlers Osnabrück). Angebot laut den Tafeln an der Theke. <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
 </footer>
 <div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
-<script type="module" src="js/bowlers.js?v=20261119111254"></script>
-<script>window.STAND="20261119111254";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+<script type="module" src="js/welt.js?v=20261120203725"></script>
+<script>window.STAND="20261120203725";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
 </body>
 </html>

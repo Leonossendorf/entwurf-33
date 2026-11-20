@@ -5,22 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#faf6f4">
-<title>Café nyd · Das Wohnzimmer der Genussmanufaktur (inoffizieller Entwurf)</title>
+<title>Café nyd · Brunch, Kaffee und Kuchen in Osnabrück (inoffizieller Entwurf)</title>
 <meta name="description" content="Inoffizieller Entwurf: Café nyd in Osnabrück. Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/nyd/hero-room-1800.webp" imagesrcset="assets/img/nyd/hero-room-900.webp 900w, assets/img/nyd/hero-room-1800.webp 1800w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="css/base.css?v=20261119111254">
-<link rel="stylesheet" href="css/nyd.css?v=20261119111254">
+<link rel="stylesheet" href="css/base.css?v=20261120203725">
+<link rel="stylesheet" href="css/nyd.css?v=20261120203725">
 </head>
-<body data-world="nyd">
+<body data-world="nyd" data-story="nyd">
 <header class="wbar">
-  <a class="wback" href="index.html"><i>←</i> Zum Haus</a>
-  <div class="wright">
-    <nav class="wmap" aria-label="Hausplan"><a class="m0" href="loaves.html" title="Loaves Bakery"></a><a class="m1" href="frooters.html" title="Frooters"></a><a class="m2" href="picknick.html" title="Pick Nick"></a><a class="m3" href="bowlers.html" title="Bowlers"></a><a class="m4 on" href="nyd.html" title="Café nyd" aria-current="page"></a><a class="m5" href="partner.html" title="Haustür: Für Partner"></a></nav>
-    <a class="wnext" href="partner.html"><span><small>Weiter</small><b>Haustür</b></span><i>→</i></a>
-  </div>
+  <a class="wback" href="index.html" data-haus=""><i>←</i> Zum Haus</a>
+  <nav class="wnav" aria-label="Genusswelten"><a href="frooters.html">Frooters</a><a href="picknick.html">Pick Nick</a><a href="bowlers.html">Bowlers</a><a href="nyd.html" aria-current="page">Café nyd</a></nav>
 </header>
 
 <main>
@@ -32,16 +29,64 @@
     <div class="hero-text">
       <p class="kicker">Café nyd · Osnabrück · Große Straße</p>
       <h1>Nyd ist dänisch<br>für genießen.</h1>
-      <p class="hero-lead">Draußen die Fußgängerzone, drinnen beginnt die Pause.</p>
+      <p class="hero-lead">Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte. Draußen die Fußgängerzone, drinnen beginnt die Pause.</p>
+      <div class="wh-btns"><a class="btn light" href="#besuch">Öffnungszeiten und Weg</a><a class="btn ghost" href="#entdecken">Genusswelt entdecken</a></div>
     </div>
-    <span class="hint hero-hint"><i></i>Scrollen: wir decken deinen Tisch</span>
   </section>
 
+  <!-- Schau dich um: vier Bilder, ganz in Ruhe -->
+  <section class="ws galerie" id="rundgang">
+    <div class="ws-head">
+      <p class="kicker reveal">Bei uns</p>
+      <h2 class="split"><span class="line">Schau dich</span><span class="line">in Ruhe um.</span></h2>
+      <p class="reveal">Helles Holz, weiche Kissen, warmes Licht. Und Teller, die Lust auf langes Bleiben machen.</p>
+    </div>
+    <div class="g-grid reveal">
+      <figure class="f-card"><img src="assets/img/nyd/sitzbank-1800.webp" srcset="assets/img/nyd/sitzbank-900.webp 900w, assets/img/nyd/sitzbank-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" alt="Sitzbank mit Kissen, auf dem Holztisch steht ein Cappuccino" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Dein Platz im Wohnzimmer.</b><span>Der Cappuccino steht schon da.</span></figcaption></figure>
+      <figure class="f-card"><img src="assets/img/nyd/avocado-1800.webp" srcset="assets/img/nyd/avocado-900.webp 900w, assets/img/nyd/avocado-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" alt="Sauerteigbrot mit Avocado und Salat" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Sauerteig &amp; Avocado.</b><span>Knuspriges Brot, cremige Avocado, frische Begleiter.</span></figcaption></figure>
+      <figure class="f-card"><img src="assets/img/nyd/karottenkuchen-1800.webp" srcset="assets/img/nyd/karottenkuchen-900.webp 900w, assets/img/nyd/karottenkuchen-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" alt="Karottenkuchen mit Frischkäse-Topping und Blütenblättern" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Karottenkuchen.</b><span>Saftig, mit Frischkäse-Topping und feinen Blütenblättern.</span></figcaption></figure>
+      <figure class="f-card"><img src="assets/img/nyd/fassade-1800.webp" srcset="assets/img/nyd/fassade-900.webp 900w, assets/img/nyd/fassade-1800.webp 1800w" sizes="(max-width: 900px) 100vw, 50vw" alt="Das Café nyd von außen am Abend" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Mitten in der Stadt.</b><span>Große Straße 27–32, Osnabrück.</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Besuch -->
+  <section class="besuch" id="besuch">
+    <div>
+      <p class="kicker reveal">Bis gleich</p>
+      <h2 class="split"><span class="line">Große Straße 27–32,</span><span class="line">Osnabrück.</span></h2>
+    </div>
+    <div class="b-info reveal">
+      <dl>
+        <dt>Dienstag bis Samstag</dt><dd>10–19 Uhr</dd>
+        <dt>Sonntag</dt><dd>10–17 Uhr</dd>
+        <dt>Montag</dt><dd>Ruhetag</dd>
+      </dl>
+      <div class="b-btns">
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Stra%C3%9Fe+27-32%2C+49074+Osnabr%C3%BCck" target="_blank" rel="noopener">Route planen ↗</a>
+        <a class="btn ghost" href="https://cafe-nyd.eu/" target="_blank" rel="noopener">cafe-nyd.eu ↗</a>
+        <a class="btn ghost" href="https://www.instagram.com/nyd.cafe/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Einladung: erst hier beginnt die Scroll-Geschichte -->
+  <section class="gate" id="entdecken">
+    <img src="assets/img/nyd/tisch/voll-1100.webp" alt="" width="1100" height="825" loading="lazy" decoding="async">
+    <div class="gate-in">
+      <p class="kicker">Die nyd-Genusswelt</p>
+      <h2>Setz dich.<br>Wir decken auf.</h2>
+      <p class="sub">Erst wird dein Tisch gedeckt. Dann zeigen wir dir, was hinter unserem lila Highlight steckt: Ube.</p>
+      <button class="gate-go" id="gateGo"><i>↓</i>Genusswelt entdecken</button>
+      <small>2 Teile · einfach weiterscrollen · etwa eine Minute</small>
+    </div>
+  </section>
+
+  <div class="story" id="story" hidden>
   <!-- Der Tisch wird gedeckt -->
   <section class="tisch" id="tisch">
     <div class="t-sticky">
       <div class="t-text">
-        <p class="kicker">Auf dem Tisch</p>
+        <p class="kicker">Die nyd-Genusswelt · Teil 1</p>
         <h2>Setz dich.<br>Wir decken auf.</h2>
         <ol class="t-list">
           <li><i></i><div><b>Cappuccino</b><span>mit Herz im Schaum</span></div></li>
@@ -67,83 +112,45 @@
     </div>
   </section>
 
-  <!-- Rundgang: zieht seitlich vorbei -->
-  <section class="film" id="film">
-    <div class="f-sticky">
-      <div class="f-track" id="fTrack">
-        <div class="f-intro">
-          <p class="kicker">Rundgang</p>
-          <h2>Schau dich<br>in Ruhe um.</h2>
-          <p>Helles Holz, weiche Kissen, warmes Licht. Und Teller, die Lust auf langes Bleiben machen.</p>
-          <span class="hint f-hint"><i></i><span class="d">Weiter scrollen</span><span class="m">Zur Seite wischen</span></span>
-        </div>
-        <figure class="f-card"><img src="assets/img/nyd/sitzbank-1800.webp" srcset="assets/img/nyd/sitzbank-900.webp 900w, assets/img/nyd/sitzbank-1800.webp 1800w" sizes="(max-width: 900px) 86vw, 60vw" alt="Sitzbank mit Kissen, auf dem Holztisch steht ein Cappuccino" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Dein Platz im Wohnzimmer.</b><span>Der Cappuccino steht schon da.</span></figcaption></figure>
-        <figure class="f-card"><img src="assets/img/nyd/avocado-1800.webp" srcset="assets/img/nyd/avocado-900.webp 900w, assets/img/nyd/avocado-1800.webp 1800w" sizes="(max-width: 900px) 86vw, 60vw" alt="Sauerteigbrot mit Avocado und Salat" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Sauerteig &amp; Avocado.</b><span>Knuspriges Brot, cremige Avocado, frische Begleiter.</span></figcaption></figure>
-        <figure class="f-card"><img src="assets/img/nyd/karottenkuchen-1800.webp" srcset="assets/img/nyd/karottenkuchen-900.webp 900w, assets/img/nyd/karottenkuchen-1800.webp 1800w" sizes="(max-width: 900px) 86vw, 60vw" alt="Karottenkuchen mit Frischkäse-Topping und Blütenblättern" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Karottenkuchen.</b><span>Saftig, mit Frischkäse-Topping und feinen Blütenblättern.</span></figcaption></figure>
-        <figure class="f-card"><img src="assets/img/nyd/fassade-1800.webp" srcset="assets/img/nyd/fassade-900.webp 900w, assets/img/nyd/fassade-1800.webp 1800w" sizes="(max-width: 900px) 86vw, 60vw" alt="Das Café nyd von außen am Abend" width="1800" height="1350" loading="lazy" decoding="async"><figcaption><b>Mitten in der Stadt.</b><span>Große Straße 27–32, Osnabrück.</span></figcaption></figure>
-      </div>
-      <div class="f-bar"><i id="fBar"></i></div>
-    </div>
-  </section>
-
   <!-- Ube: das lila Highlight -->
   <section class="ube" id="ube">
     <canvas id="fluid" aria-hidden="true"></canvas>
     <div class="ube-head">
       <p class="ube-pre reveal">Das Highlight im Café nyd ist lila. Es heißt:</p>
       <h2 class="split big"><span class="line">Ube.</span></h2>
-      <p class="ube-intro reveal">Sprich: „u-be“. Daraus machen wir den Ube Vanille Latte, nach dem in Osnabrück alle fragen. Aber was ist Ube eigentlich? Eine lila Knolle von den Philippinen. In vier Schritten von der Erde bis ins Glas.</p>
+      <p class="ube-intro reveal">Sprich: „u-be“. Daraus machen wir den Ube Vanille Latte, nach dem in Osnabrück alle fragen. Aber was ist Ube eigentlich? Eine lila Knolle von den Philippinen. In drei Schritten von der Erde bis ins Glas.</p>
     </div>
     <ol class="ube-steps">
       <li class="ube-step reveal"><figure><img class="knolle" src="assets/img/ube/ube-knolle.webp" alt="Lila Yamswurzel (Ube) in der Erde, mit lila Trieb" width="1100" height="947" loading="lazy" decoding="async"><figcaption>Ube-Knolle in der Erde, Mindanao (Philippinen)</figcaption></figure><div><span>01</span><h3>Eine Knolle.</h3><p>Ube ist die lila Yamswurzel, botanisch <i>Dioscorea alata</i>. Keine Süßkartoffel und kein Taro, sondern eine eigene Pflanze. Ihre Knolle wächst unter der Erde und ist innen tief violett.</p></div></li>
       <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-eis.webp" alt="Lila Eis auf einem Löffel" width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Lila Eis: so kennt man Ube auf den Philippinen</figcaption></figure><div><span>02</span><h3>Von den Philippinen.</h3><p>Ihre Heimat ist Südostasien, vor allem die Philippinen. Dort gehört Ube seit Generationen in Eis, Cremes und Gebäck. Von dort kam sie in die Cafés der Welt.</p></div></li>
       <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-latte.webp" alt="Ube Vanille Latte aus dem Café nyd im Glas" width="1000" height="1250" loading="lazy" decoding="async"><figcaption>Ube Vanille Latte im Café nyd</figcaption></figure><div><span>03</span><h3>Natürlich lila.</h3><p>Das Lila stammt von Anthocyanen. Das sind dieselben Pflanzenfarbstoffe wie in Heidelbeeren. Keine Farbe aus der Tube, sondern aus der Knolle selbst. Mit Milch aufgeschäumt wird daraus ein zartes Flieder.</p></div></li>
-      <li class="ube-step reveal"><figure><img src="assets/img/ube/ube-dessert.webp" alt="Pfannkuchen mit lila Creme und Nüssen" width="1000" height="1500" loading="lazy" decoding="async"><figcaption>Nussig und mild süß</figcaption></figure><div><span>04</span><h3>Nussig, ein bisschen Vanille.</h3><p>Ube schmeckt mild süß, nussig und erinnert an Vanille. Darum passt sie so gut zu Milch, Kaffee und Kuchen.</p></div></li>
     </ol>
     <div class="ube-star">
       <div class="ube-glass reveal"><img src="assets/img/nyd/ube-drink.webp" alt="Ube Vanille Latte und Blue Spirulina Zimt Latte im Café nyd" width="1000" height="1333" loading="lazy" decoding="async"></div>
       <div class="ube-star-text">
         <p class="kicker reveal">Bei uns im Glas</p>
         <h2 class="split"><span class="line">Ube Vanille Latte</span><span class="line l2">im Café nyd.</span></h2>
-        <p class="reveal">Lila, cremig, mit einem Hauch Vanille und Muster im Schaum. Warm oder auf Eis.</p>
+        <p class="reveal">Ube schmeckt mild süß, nussig und erinnert an Vanille. Darum passt sie so gut zu Milch und Kaffee. Bei uns kommt sie lila und cremig ins Glas, mit Muster im Schaum. Warm oder auf Eis.</p>
       </div>
     </div>
   </section>
 
-  <!-- Besuch -->
-  <section class="besuch" id="besuch">
-    <div>
-      <p class="kicker reveal">Bis gleich</p>
-      <h2 class="split"><span class="line">Große Straße 27–32,</span><span class="line">Osnabrück.</span></h2>
-    </div>
-    <div class="b-info reveal">
-      <dl>
-        <dt>Dienstag bis Samstag</dt><dd>10–19 Uhr</dd>
-        <dt>Sonntag</dt><dd>10–17 Uhr</dd>
-        <dt>Montag</dt><dd>Ruhetag</dd>
-      </dl>
-      <div class="b-btns">
-        <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Stra%C3%9Fe+27-32%2C+49074+Osnabr%C3%BCck" target="_blank" rel="noopener">Route planen ↗</a>
-        <a class="btn ghost" href="https://cafe-nyd.eu/" target="_blank" rel="noopener">cafe-nyd.eu ↗</a>
-        <a class="btn ghost" href="https://www.instagram.com/nyd.cafe/" target="_blank" rel="noopener">Instagram ↗</a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <section class="wend">
-    <p class="kicker">Letzter Halt · Die Haustür</p>
-    <a class="wend-next" href="partner.html">Für Partner <i>→</i></a>
-    <p class="sub">Flächen, Modehäuser, Lieferanten, Presse und Jobs.</p>
-    <a class="btn light wend-back" href="index.html">← Zurück zum Haus</a>
+    <p class="kicker">Das war die letzte Genusswelt</p>
+    <a class="wend-next" href="index.html" data-haus="">Zum Haus <i>→</i></a>
+    <p class="sub">Alle vier Marken, die Standorte, Jobs und Kontakt.</p>
+    <a class="btn light wend-back" href="frooters.html">Noch einmal von vorn: Frooters →</a>
   </section>
 </main>
 
 <footer class="foot">
   <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
-  <p>Fotos: Café nyd. Cappuccino im Sitzplatz-Foto eingesetzt (Bildmontage für den Entwurf). Ube-Knolle: Obsidian Soul, <a href="https://commons.wikimedia.org/wiki/File:Dioscorea_alata_-_Purple_yam_tuber_-_Mindanao,_Philippines.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>. Ube-Eis und Ube-Dessert: Alexander Grey, Eiliv Aceron (Unsplash, Beispielbilder). Holzmaserung: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+  <p>Fotos: Café nyd. Cappuccino im Sitzplatz-Foto eingesetzt (Bildmontage für den Entwurf). Ube-Knolle: Obsidian Soul, <a href="https://commons.wikimedia.org/wiki/File:Dioscorea_alata_-_Purple_yam_tuber_-_Mindanao,_Philippines.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>. Ube-Eis: Alexander Grey (Unsplash, Beispielbild). Holzmaserung: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
 </footer>
 <div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
-<script type="module" src="js/cafe.js?v=20261119111254"></script>
-<script>window.STAND="20261119111254";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+<script type="module" src="js/welt.js?v=20261120203725"></script>
+<script>window.STAND="20261120203725";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
 </body>
 </html>

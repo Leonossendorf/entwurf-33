@@ -1,0 +1,79 @@
+/* Genusswelten · gemeinsamer Aufbau: erst eine ganz normale Seite, dann die Einladung „Genusswelt entdecken“ */
+h2{font-size:clamp(38px,4.6vw,84px)}
+
+/* Oben: Logo, ein Satz, ein großes Bild */
+.wh{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--hbg,var(--bg));color:var(--hfg,var(--fg))}
+.wh-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:120px var(--pad) 64px}
+.wh-logo{width:auto;height:clamp(64px,8.4vw,128px);max-width:100%;object-fit:contain;object-position:left;margin-bottom:clamp(26px,3.4vw,52px)}
+.wh h1{font-size:clamp(42px,5.2vw,98px);margin-bottom:22px}
+.wh-lead{font-size:clamp(18px,1.4vw,21px);max-width:520px;opacity:.92}
+.wh-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.wh-img{position:relative;overflow:hidden;min-height:56vh;view-transition-name:var(--vt)}
+.wh-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.ws{padding:clamp(72px,9vw,150px) var(--pad)}
+.ws-head{max-width:780px;margin-bottom:clamp(30px,4vw,60px)}
+.ws-head p:last-child{font-size:clamp(17px,1.35vw,20px);margin-top:20px;max-width:580px;opacity:.88}
+
+/* Produkte: Bild, einheitliches Schild, Klick zeigt den Text */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(210px,44vw),1fr));gap:12px}
+.pc{position:relative;aspect-ratio:9/15;border-radius:18px;overflow:hidden;background:#111;color:#fff;display:block;width:100%;isolation:isolate}
+.pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s}
+.pc:hover img{transform:scale(1.04)}
+.pc-name{position:absolute;left:12px;bottom:12px;max-width:calc(100% - 24px);display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:99px;background:var(--acc,#d01044);color:#fff;font:700 14.5px "Bric";letter-spacing:-.01em;transition:opacity .3s,transform .5s var(--ease)}
+.pc-name i{flex:none;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--acc,#d01044);display:grid;place-items:center;font-style:normal;font-size:17px;line-height:1}
+.pc-more{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.92) 38%,rgba(0,0,0,.2));opacity:0;transform:translateY(16px);transition:opacity .4s,transform .6s var(--ease);pointer-events:none;text-align:left}
+.pc-more b{font:700 clamp(20px,1.7vw,26px)/1.05 "Bric";letter-spacing:-.02em}
+.pc-more span{font-size:14.5px;line-height:1.42}
+.pc-more small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.7}
+.pc.open .pc-more{opacity:1;transform:none}
+.pc.open .pc-name{opacity:0;transform:translateY(8px)}
+.pc.open img{filter:brightness(.8)}
+
+/* Karten ohne Bild (zum Beispiel die Bowls von der Tafel) */
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:12px}
+.mc{padding:22px 22px 24px;border-radius:18px;background:var(--card,#fff);box-shadow:inset 0 0 0 1px rgba(16,17,20,.08)}
+.mc small{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1.5px currentColor;font:700 13px "Bric";margin-bottom:14px}
+.mc b{display:block;font:700 clamp(21px,1.7vw,26px)/1.1 "Bric";letter-spacing:-.02em;margin-bottom:8px}
+.mc span{display:block;font-size:15px;line-height:1.5;opacity:.82}
+.mc em{display:inline-block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#dfeccf;color:#27521a;margin-left:8px;vertical-align:middle}
+
+/* Bild neben Text */
+.wsplit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,70px);align-items:center}
+.wsplit figure{border-radius:22px;overflow:hidden}
+.wsplit figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.wlist{list-style:none;margin-top:22px}
+.wlist li{padding:13px 0;border-top:1px solid var(--line,rgba(16,17,20,.14));font-size:17px}
+.wlist li:last-child{border-bottom:1px solid var(--line,rgba(16,17,20,.14))}
+.wlist b{font-family:"Bric";font-size:19px;margin-right:8px}
+
+/* Standorte */
+.ol{list-style:none;border-top:1.5px solid currentColor}
+.ol li{display:grid;grid-template-columns:minmax(150px,.5fr) 1fr auto;gap:8px 24px;align-items:center;padding:22px 0;border-bottom:1.5px solid currentColor}
+.ol b{font:700 clamp(24px,2.4vw,40px)/1 "Bric";letter-spacing:-.03em}
+.ol span{font-size:16px;opacity:.86}
+.ol div{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:700}
+.ol a{text-decoration:none;border-bottom:1.5px solid currentColor;white-space:nowrap}
+
+/* Die Einladung: groß, eindeutig, erst hier beginnt die Scroll-Geschichte */
+.gate{position:relative;min-height:92vh;min-height:92svh;display:grid;place-items:center;text-align:center;color:#fff;background:#0a0a0a;overflow:hidden;padding:14vh var(--pad)}
+.gate>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.04)}
+.gate:after{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%,rgba(0,0,0,.1),rgba(0,0,0,.66))}
+.gate-in{position:relative;z-index:2;max-width:900px}
+.gate .kicker{opacity:.9}
+.gate h2{font-size:clamp(46px,7.4vw,136px)}
+.gate p.sub{font-size:clamp(18px,1.5vw,22px);margin:24px auto 36px;max-width:560px}
+.gate-go{display:inline-flex;align-items:center;gap:18px;height:86px;padding:0 44px 0 12px;border-radius:99px;background:#fff;color:#101114;font:800 clamp(19px,1.7vw,24px) "Bric";letter-spacing:-.01em;box-shadow:0 30px 70px -24px rgba(0,0,0,.8);transition:transform .4s var(--ease)}
+.gate-go i{width:62px;height:62px;border-radius:50%;background:var(--acc,#101114);color:#fff;display:grid;place-items:center;font-style:normal;font-size:26px;transition:transform .4s var(--ease)}
+.gate-go:hover{transform:translateY(-4px)}.gate-go:hover i{transform:translateY(4px)}
+.gate small{display:block;margin-top:20px;font-size:14px;opacity:.78}
+.story[hidden]{display:none}
+
+@media (max-width:900px){
+  .wh{grid-template-columns:1fr;min-height:0}
+  .wh-img{order:-1;height:52svh;min-height:300px}
+  .wh-text{padding:34px var(--pad) 54px}
+  .wsplit{grid-template-columns:1fr}
+  .ol li{grid-template-columns:1fr;gap:6px}
+  .gate-go{height:72px;padding:0 30px 0 9px;gap:14px}.gate-go i{width:54px;height:54px}
+}

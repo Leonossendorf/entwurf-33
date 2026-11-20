@@ -4,74 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#fbf7f0">
-<title>Genussmanufaktur · Ein Dach, fünf Welten (inoffizieller Entwurf)</title>
-<meta name="description" content="Inoffizieller Entwurf: die Genussmanufaktur aus Ochtrup als Dachmarke für Frooters, Café nyd, Bowlers, Pick Nick und Loaves Bakery.">
+<meta name="theme-color" content="#08090b">
+<title>Genussmanufaktur · Ein Dach, vier Welten (inoffizieller Entwurf A)</title>
+<meta name="description" content="Inoffizieller Entwurf: die Genussmanufaktur aus Ochtrup als Dachmarke für Frooters, Pick Nick, Bowlers und Café nyd.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/base.css?v=20261119111254">
-<link rel="stylesheet" href="css/home.css?v=20261119111254">
+<link rel="preload" as="image" href="assets/img/frooters/bubble-a-700.webp" imagesrcset="assets/img/frooters/bubble-a-700.webp 700w, assets/img/frooters/bubble-a-1200.webp 1200w" imagesizes="(max-width: 760px) 50vw, 34vw" fetchpriority="high">
+<link rel="stylesheet" href="css/base.css?v=20261120203725">
+<link rel="stylesheet" href="css/start.css?v=20261120203725">
+<link rel="stylesheet" href="css/hero-a.css?v=20261120203725">
+<script>try{localStorage.setItem('gmHaus','index.html')}catch(e){}</script>
 </head>
-<body data-world="haus">
-<div id="cur" aria-hidden="true"><span>Eintreten</span></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="boil"><feTurbulence id="turb" type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="1"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs></svg>
-
+<body data-world="haus" data-hero="a">
 <header class="nav" id="nav">
-  <a href="index.html" class="brand">Genussmanufaktur</a>
-  <nav aria-label="Genusswelten">
-    <a href="loaves.html">Loaves</a><a href="frooters.html">Frooters</a><a href="picknick.html">Pick Nick</a><a href="bowlers.html">Bowlers</a><a href="nyd.html">Café nyd</a><a href="partner.html" class="pill">Für Partner</a>
+  <a href="index.html" class="brand"><svg viewBox="0 0 30 14" aria-hidden="true"><path d="M2 12 L15 2 L28 12"/></svg>Genussmanufaktur</a>
+  <nav aria-label="Hauptmenü">
+    <span class="nav-w"><a href="frooters.html">Frooters</a><a href="picknick.html">Pick Nick</a><a href="bowlers.html">Bowlers</a><a href="nyd.html">Café nyd</a></span>
+    <span class="nav-s"><a href="#karte">Standorte</a><a href="#jobs">Jobs</a><a href="#kontakt" class="pill">Kontakt</a></span>
   </nav>
 </header>
 
 <main>
-  <!-- Das Haus: ein Dach, fünf Räume, eine Haustür -->
-  <section id="start" class="hero">
-    <div class="hero-text">
-      <p class="kicker reveal">Genussmanufaktur · Ochtrup · seit 2011</p>
-      <h1 class="split"><span class="line">Ein Dach.</span><span class="line l2">Fünf Welten.</span></h1>
-      <p class="lead reveal">Unter dem Dach der Genussmanufaktur wohnen fünf Marken. Jede hat ihren eigenen Raum. Such dir einen aus und tritt ein.</p>
-      <div class="hero-links reveal"><a class="btn" href="partner.html">Für Partner</a><a class="link" href="#dach">Unsere Geschichte ↓</a></div>
-    </div>
-    <div class="house" id="house">
-      <div class="roof" role="img" aria-label="Das Dach: Genussmanufaktur, die Dachmarke">
-        <svg viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true"><path d="M10 139 L300 11 L590 139 Z"/></svg>
-        <p class="roof-k">Die Dachmarke</p>
-        <p class="roof-n">Genussmanufaktur</p>
+  <!-- Hero A „Lichter an“: Der ganze Bildschirm ist das Haus. Giebel aus Licht, darunter die erleuchteten Räume. -->
+  <section id="start" class="ha" style="--gx:50%;--gc:255,255,255">
+    <div class="ha-roof">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="haG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1f24"/><stop offset="1" stop-color="#14161a"/></linearGradient></defs>
+        <polygon points="0,100 50,7 100,100" fill="url(#haG)"/>
+        <polyline class="ha-line" points="0,100 50,7 100,100" />
+      </svg>
+      <div class="ha-glow" aria-hidden="true"></div>
+      <div class="ha-title">
+        <p class="ha-k">Die Dachmarke aus Ochtrup · seit 2011</p>
+        <p class="ha-n">Genussmanufaktur</p>
+        <h1>Ein Dach. Vier Welten.</h1>
       </div>
-      <div class="rooms">
-        <a class="room r-loaves" href="loaves.html" aria-label="Loaves Bakery betreten: die Backstube unterm Dach">
-          <canvas class="flour" id="flourCv"></canvas>
-          <span class="dough" aria-hidden="true"><i>L</i><i>o</i><i>a</i><i>v</i><i>e</i><i>s</i></span>
-          <span class="lbl"><small>Backstube · bald</small><b>Loaves Bakery</b></span><span class="go" aria-hidden="true">↗</span>
-        </a>
-        <a class="room r-frooters" href="frooters.html" aria-label="Frooters betreten: die Obstküche">
-          <video muted loop playsinline preload="none" poster="assets/video/raum-frooters.webp" data-src="assets/video/raum-frooters.mp4" width="720" height="360"></video>
-          <span class="lbl"><small>Obstküche</small><b>Frooters</b></span><span class="go" aria-hidden="true">↗</span>
-        </a>
-        <a class="room r-pick" href="picknick.html" aria-label="Pick Nick betreten: die Terrasse">
-          <svg class="mini-doodles" viewBox="0 0 300 200" aria-hidden="true"><g filter="url(#boil)" fill="none" stroke="#2c4a28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M30 60 C10 30 50 10 60 35 C67 55 45 72 30 60 C15 47 15 25 40 20 M60 35 C70 10 110 20 100 50 C93 72 70 60 60 35"/>
-            <path d="M220 40 L270 40 L263 110 L227 110 Z M216 40 L274 40 M270 60 C290 60 290 88 266 90"/>
-            <path d="M200 150 L280 150 L280 192 L200 192 Z M226 150 L226 192 M253 150 L253 192 M200 171 L280 171"/>
-          </g></svg>
-          <img class="pn-logo" src="assets/img/pn-logo-hell.webp" alt="" width="1458" height="504">
-          <span class="lbl"><small>Terrasse</small><b>Pick Nick</b></span><span class="go" aria-hidden="true">↗</span>
-        </a>
-        <a class="room r-bowlers" href="bowlers.html" aria-label="Bowlers betreten: das Gewächshaus mit der Reise der Açaí">
-          <video muted loop playsinline preload="none" poster="assets/video/raum-bowlers.webp" data-src="assets/video/raum-bowlers.mp4" width="720" height="360"></video>
-          <span class="lbl"><small>Gewächshaus</small><b>Bowlers</b></span><span class="go" aria-hidden="true">↗</span>
-        </a>
-        <a class="room r-nyd" href="nyd.html" aria-label="Café nyd betreten: das Wohnzimmer">
-          <span class="slides" aria-hidden="true"><i style="background-image:url(assets/img/nyd/hero-room-900.webp)"></i><i style="background-image:url(assets/img/nyd/tisch/voll-1100.webp)"></i><i style="background-image:url(assets/img/nyd/karottenkuchen-900.webp)"></i></span>
-          <span class="lbl"><small>Wohnzimmer</small><b>Café nyd</b></span><span class="go" aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <a class="door" href="partner.html"><small>Haustür</small><b>Für Partner</b><span>Flächen, Lieferanten, Presse, Jobs →</span></a>
     </div>
+    <div class="ha-rooms" id="haRooms">
+      <a class="ha-room" href="frooters.html" style="--i:0;--c:208,16,68;--vt:w-frooters" aria-label="Frooters betreten">
+        <img src="assets/img/frooters/bubble-a-700.webp" srcset="assets/img/frooters/bubble-a-700.webp 700w, assets/img/frooters/bubble-a-1200.webp 1200w" sizes="(max-width: 760px) 50vw, 34vw" alt="" width="700" height="1050" fetchpriority="high">
+        <span class="ha-lbl"><img src="assets/img/logos/frooters-negativ.webp" alt="Frooters" width="1600" height="560"><em>Frozen Yogurt, Bubble Waffles, Açaí-Bowls</em><b>Eintreten <i>→</i></b></span>
+      </a>
+      <a class="ha-room pn" href="picknick.html" style="--i:1;--c:255,60,50;--vt:w-pick" aria-label="Pick Nick betreten">
+        <span class="ha-vichy" aria-hidden="true"></span>
+        <span class="ha-lbl"><img class="plaque" src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"><em>Kaffee, Brötchen, Waffeln: die kleine Pause</em><b>Eintreten <i>→</i></b></span>
+      </a>
+      <a class="ha-room" href="bowlers.html" style="--i:2;--c:120,170,90;--vt:w-bowlers" aria-label="Bowlers betreten">
+        <img src="assets/img/bowlers/b07591-900.webp" srcset="assets/img/bowlers/b07591-900.webp 900w, assets/img/bowlers/b07591-1600.webp 1600w" sizes="(max-width: 760px) 80vw, 50vw" alt="" width="900" height="600">
+        <span class="ha-lbl"><img src="assets/img/logos/bowlers-logo-w.svg" alt="Bowlers" width="425" height="83" style="--k:.62"><em>Bowls, Wraps und Porridge nach deinem Geschmack</em><b>Eintreten <i>→</i></b></span>
+      </a>
+      <a class="ha-room" href="nyd.html" style="--i:3;--c:182,147,238;--vt:w-nyd" aria-label="Café nyd betreten">
+        <img src="assets/img/nyd/hero-room-900.webp" srcset="assets/img/nyd/hero-room-900.webp 900w, assets/img/nyd/hero-room-1800.webp 1800w" sizes="(max-width: 760px) 80vw, 50vw" alt="" width="900" height="675">
+        <span class="ha-lbl"><img src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="300" height="150" style="--k:1.15"><em>Brunch, Kaffee, Kuchen in Osnabrück</em><b>Eintreten <i>→</i></b></span>
+      </a>
+      <div class="ha-room soon" style="--i:4" aria-label="Bald kommt etwas Neues dazu"><span class="ha-soon"><small>Noch dunkel</small><b>Bald.</b><em>Hier zieht etwas Neues ein.</em></span></div>
+    </div>
+    <a class="ha-down" href="#dach"><span>Mehr über das Haus</span><i>↓</i></a>
   </section>
 
-  <!-- Die Geschichte: ruhig, ohne Effekte -->
+  <!-- Das Dach: die Geschichte, ruhig -->
   <section id="dach" class="dach">
     <div>
       <p class="kicker reveal">Das Dach über allem</p>
@@ -87,38 +79,130 @@
     </div>
   </section>
 
-  <!-- Die fünf Welten auf einen Blick -->
-  <section class="welten" aria-label="Die fünf Genusswelten">
-    <p class="kicker reveal">Unter einem Dach</p>
-    <ul>
-      <li class="reveal"><a href="loaves.html" style="--c:#e8d3b0;--t:#4a3220"><span>01</span><b>Loaves Bakery</b><em>Die Backstube unterm Dach. In Vorbereitung.</em><i>→</i></a></li>
-      <li class="reveal"><a href="frooters.html" style="--c:#0a0a0a;--t:#fff6ec"><span>02</span><b>Frooters</b><em>Frozen Yogurt, Bubble Waffles, Müslibecher und Smoothies.</em><i>→</i></a></li>
-      <li class="reveal"><a href="picknick.html" style="--c:#e9efd9;--t:#2c4a28"><span>03</span><b>Pick Nick</b><em>Kaffee, Brötchen und Waffeln. Die kleine Pause beim Einkaufen.</em><i>→</i></a></li>
-      <li class="reveal"><a href="bowlers.html" style="--c:#0f2416;--t:#f4ecff"><span>04</span><b>Bowlers</b><em>Açaí-Bowls aus dem Regenwald. In Vorbereitung.</em><i>→</i></a></li>
-      <li class="reveal"><a href="nyd.html" style="--c:#8e6b6d;--t:#fff8f6"><span>05</span><b>Café nyd</b><em>Brunch, Kaffee, Kuchen und Ube in Osnabrück.</em><i>→</i></a></li>
-    </ul>
+  <!-- Standorte: echte Karte, pro Ort die Marken -->
+  <section id="karte" class="karte">
+    <div class="k-head">
+      <p class="kicker reveal">Standorte</p>
+      <h2 class="split"><span class="line">Hier findest</span><span class="line">du uns.</span></h2>
+      <p class="reveal">Vom Ruhrgebiet bis Osnabrück. Tipp auf einen Ort und sieh, welche unserer Marken dort auf dich warten.</p>
+    </div>
+    <div class="k-wrap reveal">
+      <div class="k-map" id="kMap">
+        <img src="assets/img/karte.svg" alt="Karte vom Niederrhein bis Osnabrück mit Autobahnen, Rhein, Ems und Lippe" width="1700" height="1160" loading="lazy" decoding="async">
+        <span class="k-city" data-lat="51.9607" data-lon="7.6261">Münster</span>
+        <span class="k-city" data-lat="52.2215" data-lon="6.8937">Enschede</span>
+        <span class="k-city" data-lat="52.2800" data-lon="7.4400">Rheine</span>
+        <span class="k-city" data-lat="51.5136" data-lon="7.4653">Dortmund</span>
+        <span class="k-city" data-lat="51.4556" data-lon="7.0116">Essen</span>
+        <span class="k-city" data-lat="51.4344" data-lon="6.7623">Duisburg</span>
+        <span class="k-city" data-lat="51.6739" data-lon="7.8160">Hamm</span>
+        <span class="k-city" data-lat="52.0302" data-lon="8.5325">Bielefeld</span>
+        <span class="k-land" style="left:14%;top:30%">Niederlande</span>
+        <span class="k-land" style="left:76%;top:9%">Niedersachsen</span>
+        <span class="k-land" style="left:60%;top:62%">Nordrhein-Westfalen</span>
+        <button class="k-pin on" data-ort="ochtrup" data-lat="52.2046" data-lon="7.1886" aria-controls="kPanel"><i></i><b>Ochtrup</b><span><img src="assets/img/logos/frooters-zeichen.webp" alt="Frooters" width="60" height="50"><img src="assets/img/logos/picknick-zeichen.webp" alt="Pick Nick" width="46" height="60"></span></button>
+        <button class="k-pin" data-ort="osnabrueck" data-lat="52.2760" data-lon="8.0440" aria-controls="kPanel"><i></i><b>Osnabrück</b><span><img class="inv" src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="60" height="30"><img src="assets/img/logos/bowlers-sticker-s.svg" alt="Bowlers" width="50" height="37"></span></button>
+        <button class="k-pin" data-ort="oberhausen" data-lat="51.4905" data-lon="6.8795" aria-controls="kPanel"><i></i><b>Oberhausen</b><span><img src="assets/img/logos/frooters-zeichen.webp" alt="Frooters" width="60" height="50"></span></button>
+        <button class="k-pin k-far" data-ort="gifhorn" aria-controls="kPanel"><b>Gifhorn</b><span><img src="assets/img/logos/picknick-zeichen.webp" alt="Pick Nick" width="46" height="60"></span><em>170 km weiter östlich →</em></button>
+        <small class="k-osm">Kartendaten © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende</small>
+      </div>
+      <aside class="k-panel" id="kPanel" aria-live="polite">
+        <div class="k-ort on" data-ort="ochtrup">
+          <p class="k-ort-n"><small>Ochtrup</small>Zwei Marken im Designer Outlet</p>
+          <article class="k-loc">
+            <img class="k-ph" src="assets/img/frooters/bubble-b-700.webp" alt="Bubble Waffle im roten Frooters-Becher" width="700" height="1050" loading="lazy" decoding="async">
+            <div><img class="k-lg" src="assets/img/logos/frooters.webp" alt="Frooters" width="1600" height="560"><p>Designer Outlet Ochtrup<br>Laurenzstraße 51, 48607 Ochtrup</p><p class="k-links"><a href="frooters.html">Zu Frooters →</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Frooters+Designer+Outlet+Ochtrup" target="_blank" rel="noopener">Route ↗</a></p></div>
+          </article>
+          <article class="k-loc">
+            <div class="k-ph k-vichy" aria-hidden="true"></div>
+            <div><img class="k-lg" src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"><p>Designer Outlet Ochtrup<br>Laurenzstraße 51, 48607 Ochtrup</p><p class="k-links"><a href="picknick.html">Zu Pick Nick →</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Pick+Nick+Designer+Outlet+Ochtrup" target="_blank" rel="noopener">Route ↗</a></p></div>
+          </article>
+        </div>
+        <div class="k-ort" data-ort="osnabrueck">
+          <p class="k-ort-n"><small>Osnabrück</small>Zwei Marken in der Innenstadt</p>
+          <article class="k-loc">
+            <img class="k-ph" src="assets/img/nyd/fassade-900.webp" alt="Das Café nyd von außen am Abend" width="900" height="675" loading="lazy" decoding="async">
+            <div><img class="k-lg inv" src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="300" height="150"><p>Große Straße 27–32, 49074 Osnabrück<br>Di bis Sa 10–19 Uhr, So 10–17 Uhr</p><p class="k-links"><a href="nyd.html">Zum Café nyd →</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gro%C3%9Fe+Stra%C3%9Fe+27-32%2C+49074+Osnabr%C3%BCck" target="_blank" rel="noopener">Route ↗</a></p></div>
+          </article>
+          <article class="k-loc">
+            <img class="k-ph" src="assets/img/bowlers/b07595-900.webp" alt="Die Bowl-Theke in Osnabrück" width="900" height="600" loading="lazy" decoding="async">
+            <div><img class="k-lg" src="assets/img/logos/bowlers-logo-s.svg" alt="Bowlers" width="425" height="83"><p>Bowls, Wraps und Porridge<br>Osnabrück, Innenstadt</p><p class="k-links"><a href="bowlers.html">Zu Bowlers →</a></p></div>
+          </article>
+        </div>
+        <div class="k-ort" data-ort="oberhausen">
+          <p class="k-ort-n"><small>Oberhausen</small>Frooters im Westfield Centro</p>
+          <article class="k-loc">
+            <img class="k-ph" src="assets/img/frooters/theke/frozenyoghurt.webp" alt="Frozen Yogurt in Waffelschalen" width="720" height="1280" loading="lazy" decoding="async">
+            <div><img class="k-lg" src="assets/img/logos/frooters.webp" alt="Frooters" width="1600" height="560"><p>Westfield Centro<br>Centroallee 1000, 46047 Oberhausen</p><p class="k-links"><a href="frooters.html">Zu Frooters →</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Frooters+Westfield+Centro+Oberhausen" target="_blank" rel="noopener">Route ↗</a></p></div>
+          </article>
+        </div>
+        <div class="k-ort" data-ort="gifhorn">
+          <p class="k-ort-n"><small>Gifhorn</small>Pick Nick im Modehaus</p>
+          <article class="k-loc">
+            <div class="k-ph k-vichy" aria-hidden="true"></div>
+            <div><img class="k-lg" src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"><p>Modehaus Becker, Gifhorn<br>Liegt außerhalb der Karte, rund 170 km östlich von Osnabrück.</p><p class="k-links"><a href="picknick.html">Zu Pick Nick →</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Modehaus+Becker+Gifhorn" target="_blank" rel="noopener">Route ↗</a></p></div>
+          </article>
+        </div>
+      </aside>
+    </div>
   </section>
 
-  <!-- Für Partner (Kurzform) -->
-  <section class="partner-teaser">
-    <div><p class="kicker reveal">Die Haustür · Für Partner</p><h2 class="split"><span class="line">Ihr Haus.</span><span class="line">Unser Genuss.</span></h2></div>
-    <div class="pt-grid">
-      <a class="pt reveal" href="partner.html#flaechen"><b>Flächen &amp; Center</b><span>Gastronomie, die Menschen anzieht</span></a>
-      <a class="pt reveal" href="partner.html#handel"><b>Modehäuser</b><span>Genuss als Teil des Einkaufs</span></a>
-      <a class="pt reveal" href="partner.html#lieferanten"><b>Lieferanten</b><span>Frucht, Backwaren, Açaí</span></a>
-      <a class="pt reveal" href="partner.html#presse"><b>Presse</b><span>Geschichte, Fakten, Bilder</span></a>
-      <a class="pt reveal" href="partner.html#jobs"><b>Jobs</b><span>Alle offenen Stellen</span></a>
-      <a class="pt reveal" href="partner.html#kontakt"><b>Kontakt</b><span>Direkt zum richtigen Menschen</span></a>
+  <!-- Bewerbung -->
+  <section id="jobs" class="jobs">
+    <div class="j-head">
+      <p class="kicker reveal">Jobs</p>
+      <h2 class="split"><span class="line">Gastgeber</span><span class="line">gesucht.</span></h2>
+      <p class="reveal">Wir suchen Menschen, die gern mit Menschen arbeiten: an der Theke, an der Kaffeemaschine, im Team. Such dir aus, wo du hinpasst. Die Bewerbung dauert zwei Minuten.</p>
     </div>
+    <div class="j-list reveal">
+      <details class="job" open>
+        <summary><img class="inv" src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="300" height="150"><b>Barista (m/w/d)</b><span>Osnabrück · Teilzeit, ca. 20–30 Std. pro Woche</span><i></i></summary>
+        <div class="jbody"><div><h3>Deine Aufgaben</h3><ul><li>Kaffeespezialitäten zubereiten</li><li>Die Kaffeestation betreuen</li><li>Gästen mit einem freundlichen Wort begegnen</li></ul></div><div><h3>Gut zu wissen</h3><ul><li>Start nach Absprache, auch am Wochenende</li><li>Erfahrung ist willkommen</li></ul></div>
+        <a class="btn" href="#kontakt" data-job="Barista (m/w/d), Café nyd Osnabrück">Jetzt bewerben</a></div>
+      </details>
+      <details class="job">
+        <summary><img src="assets/img/logos/frooters.webp" alt="Frooters" width="1600" height="560"><b>Initiativbewerbung</b><span>Ochtrup oder Oberhausen</span><i></i></summary>
+        <div class="jbody"><p>Gerade ist keine Stelle ausgeschrieben. Schreib uns trotzdem und nenn deinen Wunsch-Standort. Wir melden uns, sobald etwas frei wird.</p><a class="btn" href="#kontakt" data-job="Initiativbewerbung Frooters">Initiativ bewerben</a></div>
+      </details>
+      <details class="job">
+        <summary><img src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"><b>Initiativbewerbung</b><span>Designer Outlet Ochtrup</span><i></i></summary>
+        <div class="jbody"><p>Gerade ist keine Stelle ausgeschrieben. Schreib uns trotzdem. Wir melden uns, sobald etwas frei wird.</p><a class="btn" href="#kontakt" data-job="Initiativbewerbung Pick Nick">Initiativ bewerben</a></div>
+      </details>
+      <details class="job">
+        <summary><img src="assets/img/logos/bowlers-logo-s.svg" alt="Bowlers" width="425" height="83"><b>Initiativbewerbung</b><span>Osnabrück</span><i></i></summary>
+        <div class="jbody"><p>Gerade ist keine Stelle ausgeschrieben. Schreib uns trotzdem. Wir melden uns, sobald etwas frei wird.</p><a class="btn" href="#kontakt" data-job="Initiativbewerbung Bowlers">Initiativ bewerben</a></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Kontakt: ein Formular, Thema zur Auswahl -->
+  <section id="kontakt" class="kontakt">
+    <div class="c-head">
+      <p class="kicker reveal">Kontakt</p>
+      <h2 class="split"><span class="line">Schreib uns.</span></h2>
+      <p class="reveal">Eine Frage, ein Lob, eine Bewerbung oder eine Presseanfrage: Wähl einfach das passende Thema aus. Wir antworten so schnell wie möglich.</p>
+      <address class="reveal"><b>Genussmanufaktur GmbH &amp; Co. KG</b><br>Dachsweg 19, 48607 Ochtrup<br><a href="tel:+49255379205">02553 79205</a> · <a href="mailto:info@frooters.eu">info@frooters.eu</a></address>
+    </div>
+    <form class="form reveal" id="form">
+      <label>Worum geht es?<select name="thema" id="fThema">
+        <option>Allgemeine Frage</option><option>Bewerbung</option><option>Presse</option><option>Lob oder Kritik zu einem Besuch</option><option>Sonstiges</option>
+      </select></label>
+      <label class="only-job" hidden>Für welche Stelle?<input name="stelle" id="fStelle" placeholder="z. B. Barista im Café nyd"></label>
+      <div class="row"><label>Dein Name<input name="name" required autocomplete="name"></label><label>E-Mail<input name="mail" type="email" required autocomplete="email"></label></div>
+      <label>Deine Nachricht<textarea name="msg" rows="5" required></textarea></label>
+      <label class="only-job file" hidden>Lebenslauf (PDF, freiwillig)<input name="cv" type="file" accept="application/pdf"></label>
+      <button class="btn" type="submit">Nachricht senden</button>
+      <p class="note" id="fNote" role="status">Im Entwurf wird noch nichts verschickt. Später landet jede Nachricht bei info@frooters.eu.</p>
+    </form>
   </section>
 </main>
 
 <footer class="foot">
   <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
-  <p>Fotos: Frooters und Café nyd. Pick-Nick-Logo aus einem Foto der Filiale freigestellt. Regenwald-Rundumbild und Obstmodelle: <a href="https://polyhaven.com/" target="_blank" rel="noopener">Poly Haven</a> (CC0). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
+  <p>Logos und Fotos: Genussmanufaktur (Frooters, Pick Nick, Bowlers, Café nyd). Karte: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende (ODbL). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
 </footer>
-<div class="flag">Inoffizieller Entwurf · nicht öffentlich</div>
-<script type="module" src="js/home.js?v=20261119111254"></script>
-<script>window.STAND="20261119111254";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+<nav class="varianten" aria-label="Entwürfe für den Hero vergleichen"><span>Hero-Entwurf</span><a href="index.html" data-v="a">A</a><a href="b.html" data-v="b">B</a><a href="c.html" data-v="c">C</a></nav>
+<script type="module" src="js/start.js?v=20261120203725"></script>
+<script>window.STAND="20261120203725";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
 </body>
 </html>

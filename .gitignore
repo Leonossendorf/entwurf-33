@@ -3,3 +3,4 @@ frooters-becher.html
 frooters-theke.html
 *.py
 !tools/*.py
+tools/karte-roh.json

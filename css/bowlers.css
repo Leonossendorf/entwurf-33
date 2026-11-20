@@ -1,89 +1,39 @@
-/* Bowlers · Regenwald-Grün, Açaí-Violett */
-body{--bg:#0b1a10;--fg:#f4ecff}
+/* Bowlers · wie der Laden in Osnabrück: Beton hell, grüne Kacheln, helles Holz, schwarzes Logo, feine rote Linie */
+body{--bg:#f3f2ee;--fg:#161a16;--acc:#3f4f3a;--card:#fff;--line:rgba(22,26,22,.16)}
+.wh{--hbg:#f3f2ee}
+.wh-logo{height:clamp(44px,5.6vw,84px)}
+.wh h1:after{content:"";display:block;width:92px;height:3px;background:#c8102e;margin-top:22px}
+.btn{background:#161a16;color:#fff}
+.suess{background:#3f4f3a;color:#f3f2ee;--line:rgba(243,242,238,.22)}
+.orte{background:#e7e5df}
+.orte-t{font-size:clamp(17px,1.35vw,20px);max-width:480px;margin:20px 0 26px}
+.gate{--acc:#3f4f3a}
 
-.journey{height:780vh;background:#0b1a10}
-.j-sticky{position:sticky;top:0;height:100vh;overflow:clip;color:#f4ecff;background:#0f2416;view-transition-name:w-bowlers}
-.j-poster,#wald{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-#wald{opacity:0;transition:opacity .9s}
-#wald.on{opacity:1}
-.j-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,transparent 45%,rgba(4,10,6,.58)),linear-gradient(to top,rgba(4,10,6,.6),transparent 44%)}
-.j-st{position:absolute;left:var(--pad);bottom:11vh;max-width:560px;opacity:0;transform:translateY(26px);transition:opacity .7s,transform .9s var(--ease);pointer-events:none;text-shadow:0 2px 26px rgba(0,0,0,.65)}
-.j-st.on{opacity:1;transform:none}
-.j-st h1{font-size:clamp(62px,9vw,152px);margin-bottom:18px}
-.j-st h2{font-size:clamp(44px,5.2vw,88px);margin-bottom:14px}
-.j-st p{font-size:clamp(17px,1.35vw,20px)}
-.j-intro .hint{margin-top:26px;padding:12px 18px;border-radius:99px;background:rgba(244,236,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-shadow:none}
-.j-photo{display:flex;gap:26px;align-items:flex-end;max-width:1020px}
-.j-photo img{flex:none;width:min(280px,24vw);aspect-ratio:2/3;object-fit:cover;border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.j-photo.two img:nth-child(2){width:min(200px,17vw);margin-left:-56px;transform:translateY(-36px) rotate(4deg)}
-
-/* Station Powerfood: die Beere groß in der Mitte, drumherum was drinsteckt */
-.j-power{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s}
-.j-power.on{opacity:1}
-.jp-head{position:absolute;left:0;right:0;top:12.5vh;text-align:center;padding:0 var(--pad);text-shadow:0 2px 26px rgba(0,0,0,.65)}
-.jp-head .kicker{margin-bottom:10px}
-.jp-head h2{font-size:clamp(32px,3.7vw,62px)}
-.j-power ul{list-style:none}
-.j-power li{position:absolute;width:min(300px,23vw);opacity:0;transform:translateY(18px);transition:opacity .6s,transform .8s var(--ease)}
-.j-power li.on{opacity:1;transform:none}
-.j-power li.l{right:calc(50% + min(22vh,17vw) + 5.4vw);text-align:right}
-.j-power li.r{left:calc(50% + min(22vh,17vw) + 5.4vw)}
-.j-power li:nth-child(1),.j-power li:nth-child(4){top:32vh}
-.j-power li:nth-child(2),.j-power li:nth-child(5){top:48vh}
-.j-power li:nth-child(3),.j-power li:nth-child(6){top:64vh}
-.j-power li:after{content:"";position:absolute;top:1.05em;height:1px;width:4.4vw;background:linear-gradient(90deg,rgba(230,210,255,.9),rgba(230,210,255,0))}
-.j-power li.l:after{left:calc(100% + 12px)}
-.j-power li.r:after{right:calc(100% + 12px);transform:scaleX(-1)}
-.j-power b{display:block;font:700 clamp(24px,2.3vw,38px)/1 "Bric";letter-spacing:-.03em;color:#ead6ff;text-shadow:0 2px 20px rgba(0,0,0,.6)}
-.j-power span{display:block;font-size:15px;margin-top:8px;text-shadow:0 1px 14px rgba(0,0,0,.8)}
-.j-power li.hl b{color:#fff}
-.j-power small{position:absolute;left:0;right:0;bottom:4.5vh;text-align:center;font-size:12px;opacity:.72;padding:0 var(--pad)}
-
-/* Ankunft: die Bowl */
-.j-final{position:absolute;inset:0;pointer-events:none}
-.j-final:before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 38% 55%,rgba(50,20,60,0),rgba(12,6,16,.66));opacity:0;transition:opacity 1s}
-.j-final.on:before{opacity:1}
-.j-glow{position:absolute;left:37%;top:54%;width:min(72vh,58vw);aspect-ratio:1;transform:translate(-50%,-50%) scale(var(--g,0));border-radius:50%;background:radial-gradient(closest-side,rgba(205,150,255,.55),rgba(120,60,180,.18) 60%,transparent);filter:blur(10px)}
-.j-bowl{position:absolute;left:37%;top:54%;width:min(78vh,54vw);height:auto;transform:translate(-50%,-50%) translateY(var(--by,45vh)) scale(var(--bs,.6)) rotate(var(--br,-14deg));opacity:var(--bo,0);filter:drop-shadow(0 50px 60px rgba(0,0,0,.55));will-change:transform}
-.j-final-text{position:absolute;right:calc(var(--pad) + 90px);top:50%;max-width:430px;opacity:0;transform:translateY(-50%) translateY(24px);transition:opacity .8s,transform 1s var(--ease);text-shadow:0 2px 24px rgba(0,0,0,.55)}
-.j-final.on .j-final-text{opacity:1;transform:translateY(-50%);pointer-events:auto}
-.j-final-text h2{font-size:clamp(62px,8vw,144px);margin-bottom:10px}
-.j-final-text p{font-size:clamp(17px,1.35vw,20px)}
-.j-tip{margin:12px 0 22px;font-size:15px!important;opacity:.9}
-.j-final-text .btn{text-shadow:none}
-
-/* Wo bin ich: Stationen am Rand */
-.j-rail{position:absolute;right:clamp(12px,2.4vw,34px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:20px;z-index:5}
-.j-rail:before{content:"";position:absolute;right:5px;top:8px;bottom:8px;width:1px;background:rgba(244,236,255,.28)}
-.j-rail button{display:flex;align-items:center;justify-content:flex-end;gap:10px;color:#f4ecff;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.7)}
-.j-rail span{opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s}
-.j-rail i{position:relative;z-index:1;width:11px;height:11px;border-radius:50%;background:#12281a;box-shadow:inset 0 0 0 1.5px #f4ecff;transition:background .3s,box-shadow .3s}
-.j-rail button.on span,.j-rail button:hover span{opacity:1;transform:none}
-.j-rail button.done i{background:#f4ecff}
-.j-rail button.on i{background:#d9b8ff;box-shadow:0 0 0 5px rgba(217,184,255,.28)}
+/* Genusswelt: die Tafel wird Schritt für Schritt vorgelesen */
+.bau{height:620vh;background:#161a16;color:#f3f2ee}
+.bau-sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1.25fr .75fr;overflow:clip}
+.bau-bild{position:relative;overflow:hidden;background:#000}
+.bau-bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bau-tafel{transform-origin:var(--ox,50%) var(--oy,50%);transform:scale(var(--z,1));transition:transform 1.1s var(--ease),transform-origin 1.1s var(--ease)}
+.bau-foto{opacity:0;transition:opacity .9s,transform 6s linear;transform:scale(1.08)}
+.bau-foto.on{opacity:1;transform:none}
+.bau-text{position:relative;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,3vw,56px) 60px}
+.bau-steps{list-style:none;position:relative;min-height:330px}
+.bau-steps li{position:absolute;left:0;right:0;top:0;opacity:0;transform:translateY(22px);transition:opacity .5s,transform .7s var(--ease);pointer-events:none}
+.bau-steps li.on{opacity:1;transform:none;pointer-events:auto}
+.bau-steps small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#b9c7a8;margin-bottom:16px}
+.bau-steps b{display:block;font:700 clamp(32px,3.3vw,58px)/1 "Bric";letter-spacing:-.035em;margin-bottom:18px}
+.bau-steps span{display:block;font-size:clamp(17px,1.35vw,20px);line-height:1.5;opacity:.9;max-width:420px}
+.bau-steps .btn{margin-top:26px;background:#f3f2ee;color:#161a16}
+.bau-prog{display:flex;align-items:center;gap:14px;margin-top:28px;font:600 14px "Bric";letter-spacing:.06em}
+.bau-prog .bar{position:relative;flex:1;max-width:220px;height:2px;background:rgba(243,242,238,.2)}
+.bau-prog .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:#f3f2ee;transition:width .3s}
 
 @media (max-width:900px){
-  .journey{height:680vh}
-  .j-st{left:5vw;right:5vw;bottom:11vh}
-  .j-photo{flex-direction:column;align-items:flex-start;gap:16px}
-  .j-photo img{width:36vw}
-  .j-photo.two img:nth-child(2){display:none}
-  .jp-head{top:84px}
-  .j-power ul{position:absolute;left:4vw;right:4vw;bottom:8.5vh;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .j-power li{position:static;width:auto;text-align:left!important;background:rgba(24,8,30,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(230,210,255,.16);border-radius:14px;padding:11px 12px}
-  .j-power li:after{display:none}
-  .j-power b{font-size:19px}
-  .j-power span{font-size:12.5px;margin-top:5px}
-  .j-power small{bottom:2.2vh;font-size:10.5px}
-  .j-bowl,.j-glow{left:50%;top:34%;width:84vw}
-  .j-final-text{left:5vw;right:5vw;top:auto;bottom:9vh;max-width:none;transform:translateY(24px)}
-  .j-final.on .j-final-text{transform:none}
-  .j-final-text h2{font-size:54px}
-  .j-tip{margin:8px 0 14px}
-  .j-rail{right:auto;left:50%;top:auto;bottom:16px;transform:translateX(-50%);flex-direction:row;gap:26px}
-  .j-rail:before{left:5px;right:5px;top:5px;bottom:auto;width:auto;height:1px}
-  .j-rail span{display:none}
+  .bau{height:560vh}
+  .bau-sticky{grid-template-columns:1fr;grid-template-rows:48vh 1fr}
+  .bau-text{padding:26px var(--pad) 30px;justify-content:flex-start}
+  .bau-steps{min-height:250px}
+  .bau-steps b{font-size:30px;margin-bottom:12px}
+  .bau-steps small{margin-bottom:10px}
 }
-.j-photo:not(.two){max-width:1200px}
-.j-photo:not(.two) img{width:min(560px,40vw,64vh);aspect-ratio:4/5}
-@media (max-width:900px){.j-photo:not(.two) img{width:66vw;max-height:42vh}}

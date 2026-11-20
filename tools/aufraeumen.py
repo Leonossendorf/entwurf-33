@@ -3,7 +3,7 @@ Aufruf: python tools/aufraeumen.py          (nur zeigen)
         python tools/aufraeumen.py --weg    (in den Nachbarordner archiv-seite verschieben)"""
 import pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parent.parent
-pages = ['index.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html', 'loaves.html', 'partner.html']
+pages = ['index.html', 'b.html', 'c.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html']
 seen, todo = set(), [root / p for p in pages]
 text = ''
 while todo:
@@ -21,7 +21,7 @@ for f in sorted(list((root / 'assets').rglob('*')) + list((root / 'css').glob('*
     if not f.is_file(): continue
     rel = f.relative_to(root).as_posix()
     if f.resolve() in seen: continue
-    if rel.startswith(('assets/m2/', 'assets/img/bowlers/wald-')): continue      # werden im Code zusammengesetzt
+    if rel.startswith('assets/img/bowlers/wald-'): continue      # werden im Code zusammengesetzt
     if rel in text_assets: continue
     unused.append(f)
 size = sum(f.stat().st_size for f in unused)
