@@ -1,5 +1,5 @@
 // Startseiten: Kopfzeile, Karte, Jobs, Kontaktformular. Dazu das Verhalten des jeweiligen Hero-Entwurfs (A, B oder C).
-import { $, $$, clamp, start, run, onTick } from './common.js?v=20261123131330';
+import { $, $$, clamp, start, run, onTick } from './common.js?v=20261123174324';
 
 start();
 const hero = document.body.dataset.hero, nav = $('#nav'), top = $('#start');

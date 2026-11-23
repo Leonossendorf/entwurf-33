@@ -1,5 +1,5 @@
 // Genussmanufaktur · gemeinsame Helfer für alle Seiten
-import Lenis from './lenis.mjs?v=20261123131330';
+import Lenis from './lenis.mjs?v=20261123174324';
 
 export const REC = new URLSearchParams(location.search).has('rec');
 export const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -15,7 +15,7 @@ export const prog = el => { const r = el.getBoundingClientRect(); return clamp(-
 export const vis = (el, m = 0) => { const r = el.getBoundingClientRect(); return r.bottom > -m && r.top < innerHeight + m; };
 
 // Welcher Haus-Entwurf zuletzt offen war: dorthin führen alle Zurück-Links
-export const HAUS = (() => { try { const h = localStorage.getItem('gmHaus'); return h === 'b.html' ? h : 'index.html'; } catch (e) { return 'index.html'; } })();
+export const HAUS = (() => { try { const h = localStorage.getItem('gmHaus'); return h === 'a.html' ? h : 'index.html'; } catch (e) { return 'index.html'; } })();
 
 export let lenis = null;
 export function start({ smooth = true } = {}) {

@@ -1,0 +1,29 @@
+/* Pick Nick · das Logo unverändert auf Weiß; Rot und rot-weißes Karo kommen aus dem Logo selbst */
+body{--bg:#fff;--fg:#1c1a19;--acc:#e21f26;--line:rgba(28,26,25,.16)}
+.vichy{background-color:#fff;background-image:linear-gradient(90deg,rgba(226,31,38,.55) 50%,transparent 50%),linear-gradient(rgba(226,31,38,.55) 50%,transparent 50%);background-size:44px 44px}
+.btn{background:#e21f26;color:#fff}
+.btn.ghost{background:transparent;color:#e21f26}
+
+.pn-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:#fff;view-transition-name:var(--vt)}
+.pn-top{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px var(--pad) 56px}
+.pn-top h1{width:min(820px,84vw);margin-bottom:clamp(22px,3.4vw,46px)}
+.pn-top h1 img{width:100%;height:auto}
+.pn-claim{font:700 clamp(30px,4vw,64px)/1 "Bric";letter-spacing:-.035em;color:#e21f26}
+.pn-lead{font-size:clamp(18px,1.4vw,21px);max-width:540px;margin-top:20px}
+.pn-top .wh-btns{justify-content:center}
+/* Tischdecke: ein Streifen Karo am unteren Rand, mit gezackter Kante */
+.pn-decke{flex:none;height:clamp(90px,16vh,170px);-webkit-mask:conic-gradient(from -45deg at 50% 0,#000 90deg,transparent 0) 0 0/22px 11px repeat-x,linear-gradient(#000 0 0) 0 10px/100% 100% no-repeat;mask:conic-gradient(from 135deg at 50% 0,transparent 90deg,#000 0) 0 0/22px 11px repeat-x,linear-gradient(#000 0 0) 0 10px/100% 100% no-repeat}
+
+.pn-list{list-style:none;border-top:2px solid #e21f26}
+.pn-list li{display:grid;grid-template-columns:70px minmax(220px,.8fr) 1fr;gap:10px 30px;align-items:baseline;padding:26px 0;border-bottom:2px solid #e21f26}
+.pn-list span{font:700 15px "Bric";color:#e21f26;letter-spacing:.06em}
+.pn-list b{font:700 clamp(26px,3vw,48px)/1 "Bric";letter-spacing:-.035em}
+.pn-list p{font-size:clamp(16px,1.3vw,19px);max-width:460px}
+.orte{background:#e21f26;color:#fff}
+.orte .btn.ghost{color:#fff;margin-top:30px}
+
+@media (max-width:760px){
+  .pn-list li{grid-template-columns:44px 1fr}
+  .pn-list p{grid-column:2}
+  .vichy{background-size:32px 32px}
+}

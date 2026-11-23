@@ -1,0 +1,76 @@
+/* Genussmanufaktur · gemeinsames Gerüst für alle Seiten */
+@font-face{font-family:"Bric";src:url("../assets/fonts/bricolage.woff2") format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:"Hank";src:url("../assets/fonts/hanken.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{--paper:#f4f5f6;--cream:#e9eaec;--ink:#101114;--fr:#c10230;--frgreen:#76bc21;--pick:#e9efd9;--pickink:#2c4a28;--pnred:#c8102e;--loaf:#e8d3b0;--loafink:#4a3220;--jungle:#0f2416;--acai:#1c0d21;--ube:#b693ee;--nyd:#8e6b6d;--nydpaper:#faf6f4;--ease:cubic-bezier(.2,.75,.15,1);--pad:clamp(18px,4vw,64px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg,var(--paper));-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:clip}
+body{font-family:"Hank",system-ui,sans-serif;color:var(--fg,var(--ink));background:var(--bg,var(--paper));font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+img,video,canvas{display:block;max-width:100%}
+img,video{height:auto}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-align:left}
+h1,h2,h3{font-family:"Bric",sans-serif;letter-spacing:-.035em;word-spacing:.07em;line-height:.92;font-weight:700}
+.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;opacity:.8}
+section{position:relative}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:99px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;transition:transform .3s var(--ease)}
+.btn:hover{transform:translateY(-3px)}
+.btn.light{background:var(--paper);color:var(--ink)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.link{font-weight:700;text-decoration:none;border-bottom:1.5px solid currentColor}
+
+/* Aufdecken beim Scrollen */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.split .line{display:block;overflow:hidden;padding-bottom:.08em}
+.split .line>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.split.in .line>span{transform:none}
+.split.in .line:nth-child(2)>span{transition-delay:.08s}.split.in .line:nth-child(3)>span{transition-delay:.16s}
+
+/* Kopfzeile in den Genusswelten: groß zurück zum Haus, daneben die vier Welten */
+.wbar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px clamp(12px,2.4vw,34px);pointer-events:none}
+.wbar>*{pointer-events:auto}
+.wback{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 26px 0 20px;border-radius:99px;background:#fff;color:#101114;font:800 18px "Bric";letter-spacing:-.01em;text-decoration:none;box-shadow:0 14px 34px -14px rgba(0,0,0,.55);transition:transform .35s var(--ease);white-space:nowrap}
+.wback i{font-style:normal;font-size:24px;line-height:1;transition:transform .35s var(--ease)}
+.wback:hover{transform:translateY(-2px)}.wback:hover i{transform:translateX(-4px)}
+.wnav{display:flex;gap:2px;padding:5px;border-radius:99px;background:rgba(16,17,20,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.wnav a{padding:11px 18px;border-radius:99px;color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;transition:background .3s}
+.wnav a:hover{background:rgba(255,255,255,.16)}
+.wnav a[aria-current]{background:#fff;color:#101114}
+
+/* Ende einer Genusswelt: weiter in den nächsten Raum */
+.wend{position:relative;z-index:2;min-height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:14vh var(--pad);background:var(--nbg,var(--ink));color:var(--nfg,var(--paper));overflow:hidden}
+.wend .kicker{margin:0}
+.wend-next{display:inline-flex;align-items:center;gap:.3em;font:800 clamp(52px,9vw,150px)/.9 "Bric";letter-spacing:-.05em;text-decoration:none;padding:.1em .1em .16em}
+.wend-next i{font-style:normal;font-weight:300;transition:transform .5s var(--ease)}
+.wend-next:hover i{transform:translateX(.18em)}
+.wend p.sub{max-width:460px;font-size:18px;opacity:.85}
+.wend-back{margin-top:26px}
+
+.foot{position:relative;z-index:2;background:var(--ink);color:#c4c6ca;font-size:13px;padding:30px var(--pad) 56px;border-top:1px solid rgba(255,255,255,.08)}
+.foot p+p{margin-top:6px}.foot a{color:#fff}
+.flag{position:fixed;left:10px;bottom:10px;z-index:55;font-size:10.5px;letter-spacing:.04em;background:rgba(16,17,20,.72);color:#fff;padding:5px 10px;border-radius:99px;pointer-events:none}
+.hint{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.hint i{width:14px;height:22px;border:2px solid currentColor;border-radius:9px;position:relative;flex:none}
+.hint i:after{content:"";position:absolute;left:50%;top:4px;width:2px;height:5px;margin-left:-1px;border-radius:2px;background:currentColor;animation:wheel 1.6s infinite}
+@keyframes wheel{60%{transform:translateY(7px);opacity:0}100%{opacity:0}}
+@keyframes fade{to{opacity:1}}
+
+/* Übergang zwischen Haus und Genusswelt: der Raum wächst zur Seite */
+@view-transition{navigation:auto}
+::view-transition-group(*){animation-duration:.7s;animation-timing-function:cubic-bezier(.3,.7,.1,1)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
+::view-transition-old(w-frooters),::view-transition-new(w-frooters),::view-transition-old(w-pick),::view-transition-new(w-pick),::view-transition-old(w-bowlers),::view-transition-new(w-bowlers),::view-transition-old(w-nyd),::view-transition-new(w-nyd){width:100%;height:100%;object-fit:cover;overflow:clip}
+::view-transition-group(w-frooters),::view-transition-group(w-pick),::view-transition-group(w-bowlers),::view-transition-group(w-nyd){overflow:clip;border-radius:16px;z-index:5}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .wback{height:48px;padding:0 18px 0 14px;font-size:15px;gap:8px}
+  .wnav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.split .line>span{transition:none!important;opacity:1;transform:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}

@@ -4,3 +4,5 @@ frooters-theke.html
 *.py
 !tools/*.py
 tools/karte-roh.json
+!neu/tools/*.py
+neu/tools/karte-roh.json

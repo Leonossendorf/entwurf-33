@@ -1,0 +1,10 @@
+/* Frooters · dunkler Schiefer wie auf den Produktfotos, Rot und Grün aus dem Logo (Pantone 200 C, 368 C) */
+body{--bg:#131313;--fg:#fff;--acc:#d01044;--line:rgba(255,255,255,.18)}
+.wh{--hbg:#161616}
+.btn.light{background:#fff;color:#131313}
+.orte{background:#fff;color:#131313}
+.orte .btn.ghost{margin-top:30px}
+.orte-karte{margin-top:6px}
+.gate{--acc:#5b2a86}
+.j-st.j-intro{max-width:860px}
+.j-st .j-h1{font-size:clamp(54px,7.4vw,128px);margin-bottom:18px}

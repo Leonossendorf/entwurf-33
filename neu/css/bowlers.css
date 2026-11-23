@@ -1,0 +1,43 @@
+/* Bowlers · wie der Laden in Osnabrück: Beton hell, grüne Kacheln, helles Holz, schwarzes Logo, feine rote Linie */
+body{--bg:#f3f2ee;--fg:#161a16;--acc:#3f4f3a;--card:#fff;--line:rgba(22,26,22,.16)}
+.wh{--hbg:#f3f2ee}
+.wh-logo{height:clamp(44px,5.6vw,84px)}
+.wh h1:after{content:"";display:block;width:92px;height:3px;background:#c8102e;margin-top:22px}
+.btn{background:#161a16;color:#fff}
+.suess{background:#3f4f3a;color:#f3f2ee;--line:rgba(243,242,238,.22)}
+.orte{background:#e7e5df}
+.orte-t{font-size:clamp(17px,1.35vw,20px);max-width:480px;margin:20px 0 26px}
+.gate{--acc:#3f4f3a}
+
+/* Genusswelt: die Tafel wird Schritt für Schritt vorgelesen */
+.bau{height:620vh;background:#161a16;color:#f3f2ee}
+.bau-sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1.25fr .75fr;overflow:clip}
+.bau-bild{position:relative;overflow:hidden;background:#000}
+.bau-bild img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bau-tafel{transform-origin:var(--ox,50%) var(--oy,50%);transform:scale(var(--z,1));transition:transform 1.1s var(--ease),transform-origin 1.1s var(--ease)}
+.bau-foto{opacity:0;transition:opacity .9s,transform 6s linear;transform:scale(1.08)}
+.bau-foto.on{opacity:1;transform:none}
+.bau-text{position:relative;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(22px,3vw,56px) 60px}
+.bau-steps{list-style:none;position:relative;min-height:330px}
+.bau-steps li{position:absolute;left:0;right:0;top:0;opacity:0;transform:translateY(22px);transition:opacity .5s,transform .7s var(--ease);pointer-events:none}
+.bau-steps li.on{opacity:1;transform:none;pointer-events:auto}
+.bau-steps small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#b9c7a8;margin-bottom:16px}
+.bau-steps b{display:block;font:700 clamp(32px,3.3vw,58px)/1 "Bric";letter-spacing:-.035em;margin-bottom:18px}
+.bau-steps span{display:block;font-size:clamp(17px,1.35vw,20px);line-height:1.5;opacity:.9;max-width:420px}
+.bau-steps .btn{margin-top:26px;background:#f3f2ee;color:#161a16}
+.bau-prog{display:flex;align-items:center;gap:14px;margin-top:28px;font:600 14px "Bric";letter-spacing:.06em}
+.bau-prog .bar{position:relative;flex:1;max-width:220px;height:2px;background:rgba(243,242,238,.2)}
+.bau-prog .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:#f3f2ee;transition:width .3s}
+
+@media (max-width:900px){
+  .bau{height:560vh}
+  .bau-sticky{grid-template-columns:1fr;grid-template-rows:48vh 1fr}
+  .bau-text{padding:26px var(--pad) 30px;justify-content:flex-start}
+  .bau-steps{min-height:250px}
+  .bau-steps b{font-size:30px;margin-bottom:12px}
+  .bau-steps small{margin-bottom:10px}
+}
+.chef-bild{position:relative;border-radius:22px;overflow:hidden;margin-bottom:14px}
+.chef-bild img{width:100%;height:auto;aspect-ratio:16/7;object-fit:cover;object-position:50% 55%}
+.chef-bild figcaption{position:absolute;left:18px;bottom:16px;padding:8px 14px;border-radius:99px;background:#fff;font:700 14px "Bric"}
+@media (max-width:900px){.chef-bild img{aspect-ratio:3/2}}

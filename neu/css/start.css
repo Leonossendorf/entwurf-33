@@ -1,0 +1,154 @@
+/* Startseiten · alles, was unter dem Hero in allen drei Entwürfen gleich ist */
+body{--bg:#f4f5f6;--fg:#101114}
+h2{font-size:clamp(40px,5vw,92px)}
+
+/* Kopfzeile */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px var(--pad);color:var(--navc,#fff);transition:color .3s}
+.nav:before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:rgba(244,245,246,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(16,17,20,.08)}
+.nav.bar{color:#101114}.nav.bar:before{opacity:1}
+.nav a{text-decoration:none}
+.brand{display:inline-flex;align-items:center;gap:9px;font:700 19px "Bric";letter-spacing:-.01em;white-space:nowrap}
+.brand svg{width:26px;height:12px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nav nav{display:flex;gap:30px;font-size:14px;font-weight:600;align-items:center}
+.nav-w,.nav-s{display:flex;gap:22px;align-items:center}
+.nav-w{opacity:.82}
+.nav nav a{transition:opacity .2s}.nav nav a:hover{opacity:.6}
+.pill{box-shadow:inset 0 0 0 1.5px currentColor;padding:8px 16px;border-radius:99px}
+
+/* Fashion · Food · Fun: die beiden großen Wörter schieben sich beim Scrollen ineinander (Differenz-Mischung: wo sie sich überlagern, wird es weiß), Fun kommt kleiner als Stempel dazu */
+.dach.ff{display:block;--p:0}
+.ff-h{position:relative;display:flex;align-items:baseline;justify-content:center;font-size:clamp(68px,13.6vw,250px);line-height:.86;letter-spacing:-.055em;margin:clamp(18px,2.4vw,36px) 0 clamp(50px,6vw,100px);isolation:isolate;white-space:nowrap;background:#fff;color:#fff}
+.ff-w{display:block;mix-blend-mode:difference;will-change:transform}
+.ff-a{transform:translateX(calc((1 - var(--p)) * -9vw))}
+.ff-b{margin-left:-.3em;transform:translateX(calc((1 - var(--p)) * 9vw))}
+.ff-fun{position:absolute;right:clamp(4px,4vw,80px);top:-34%;display:grid;place-items:center;width:clamp(86px,10vw,170px);aspect-ratio:1;border-radius:50%;background:#c10230;color:#fff;font:800 clamp(20px,2.3vw,40px)/1 "Bric";letter-spacing:-.03em;transform:rotate(calc(-18deg + var(--p) * 26deg)) scale(calc(.6 + var(--p) * .4));opacity:calc(var(--p) * 1.4);box-shadow:0 18px 40px -18px rgba(120,0,20,.7)}
+.ff-body{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
+.ff-lead{font:600 clamp(22px,1.9vw,30px)/1.32 "Bric";letter-spacing:-.015em;max-width:620px}
+.dach p.ff-lead{font-size:clamp(22px,1.9vw,30px)}
+.dach .ff-start{margin-top:26px;font-size:clamp(17px,1.3vw,20px);max-width:560px;opacity:.82}
+.ff-list{border-top:1px solid rgba(16,17,20,.14)}
+.ff-list div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(16,17,20,.14)}
+.ff-list dt{font:800 22px/1.2 "Bric";letter-spacing:-.02em}
+.ff-list dd{font-size:16.5px;line-height:1.5}
+.ff-list .fun dt{color:#c10230}
+.ff-list+.awards{margin-top:30px}
+
+/* Geschichte */
+.dach{display:grid;grid-template-columns:1fr 1fr;gap:6vw;padding:clamp(90px,12vw,190px) var(--pad);background:#fff}
+.dach p{font-size:clamp(18px,1.45vw,22px);max-width:600px}
+.awards{list-style:none;margin-top:38px;border-top:1px solid rgba(16,17,20,.14)}
+.awards li{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid rgba(16,17,20,.14);font-size:16px}
+.awards b{font:700 20px "Bric"}
+
+/* Karte */
+.karte{padding:clamp(80px,10vw,160px) var(--pad);background:#0c0d10;color:#f2f3f5}
+.k-head{max-width:760px;margin-bottom:clamp(30px,4vw,56px)}
+.k-head p:last-child{font-size:clamp(17px,1.35vw,20px);margin-top:20px;opacity:.82;max-width:560px}
+.k-wrap{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.8fr);gap:18px;align-items:stretch}
+.k-map{position:relative;border-radius:22px;overflow:hidden;background:#131518;aspect-ratio:1700/1160;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.k-map>img{position:absolute;inset:0;width:100%;height:100%}
+.k-city,.k-land{position:absolute;transform:translate(-50%,-50%);font-size:clamp(9.5px,.82vw,12.5px);font-weight:600;letter-spacing:.02em;color:#8a919b;white-space:nowrap;pointer-events:none}
+.k-city:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#8a919b;margin-right:6px;vertical-align:middle}
+.k-city{transform:translate(-5px,-50%)}
+.k-land{font-size:clamp(9px,.75vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#4b515a}
+.k-pin{position:absolute;transform:translate(-11px,-50%);display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:99px;background:rgba(244,245,246,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;transition:background .3s,color .3s,transform .4s var(--ease);z-index:2}
+.k-pin i{flex:none;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.2)}
+.k-pin b{font:700 clamp(13px,1.15vw,17px) "Bric";letter-spacing:-.01em}
+.k-pin span{display:flex;gap:5px}
+.k-pin span img{height:clamp(22px,2vw,30px);width:auto;padding:4px 6px;border-radius:8px;background:#fff;box-sizing:content-box}
+.k-pin span img.inv,.k-lg.inv,.job img.inv{filter:invert(1)}
+.k-pin span img.inv{background:#000}
+.k-pin.links{transform:translate(calc(-100% + 11px),-50%);flex-direction:row-reverse;padding:6px 6px 6px 12px}
+.k-pin:hover{background:rgba(244,245,246,.24)}
+.k-pin.on{background:#fff;color:#101114;z-index:3}
+.k-pin.on i{background:#d01044;box-shadow:0 0 0 5px rgba(208,16,68,.22)}
+.k-pin.on span img{box-shadow:inset 0 0 0 1px rgba(16,17,20,.12);background:#f4f5f6}
+.k-pin.on span img.inv{background:#0b0a09}
+.k-far{right:12px;top:18%;left:auto;transform:none;padding-left:14px}
+.k-far em{font-style:normal;font-size:11.5px;opacity:.75;white-space:nowrap}
+.k-osm{position:absolute;right:10px;bottom:8px;font-size:10px;color:#6b727c}
+.k-osm a{color:inherit}
+.k-far{top:27%}
+.job summary img[src*="logos/picknick"],.k-lg[src*="logos/picknick"]{mix-blend-mode:multiply}
+.k-panel{border-radius:22px;background:#fff;color:#101114;padding:clamp(18px,1.8vw,28px);display:flex;flex-direction:column}
+.k-ort{display:none;flex-direction:column;gap:14px;flex:1}
+.k-ort.on{display:flex;animation:kin .5s var(--ease)}
+@keyframes kin{from{opacity:0;transform:translateY(12px)}}
+.k-ort-n{font:700 clamp(20px,1.7vw,26px)/1.1 "Bric";letter-spacing:-.02em;margin-bottom:4px}
+.k-ort-n small{display:block;font:700 11.5px "Hank";letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+.k-loc{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:center;padding:12px;border-radius:16px;background:#f4f5f6}
+.k-ph{width:112px;height:132px;object-fit:cover;border-radius:11px}
+.k-lg{height:30px;width:auto;margin-bottom:10px}
+.k-loc p{font-size:14.5px;line-height:1.45}
+.k-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:9px;font-weight:700}
+.k-links a{text-decoration:none;border-bottom:1.5px solid currentColor}
+.k-vichy,.vichy{background-color:#fff;background-image:linear-gradient(90deg,rgba(226,35,32,.55) 50%,transparent 50%),linear-gradient(rgba(226,35,32,.55) 50%,transparent 50%);background-size:26px 26px}
+
+/* Jobs */
+.jobs{display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw;padding:clamp(90px,11vw,180px) var(--pad);background:#f4f5f6}
+.j-head p:last-child,.c-head>p:nth-of-type(2){font-size:clamp(17px,1.35vw,20px);margin-top:22px;max-width:480px}
+.j-list{border-top:1.5px solid #101114}
+.job{border-bottom:1.5px solid #101114}
+.job summary{display:grid;grid-template-columns:118px 1fr auto;grid-template-areas:"l t i" "l m i";column-gap:22px;align-items:center;padding:22px 0;cursor:pointer;list-style:none}
+.job summary::-webkit-details-marker{display:none}
+.job summary img{grid-area:l;max-width:118px;max-height:40px;width:auto;height:auto;justify-self:start}
+.job summary b{grid-area:t;font:700 clamp(21px,1.9vw,29px)/1.1 "Bric";letter-spacing:-.02em}
+.job summary span{grid-area:m;font-size:15px;opacity:.7;margin-top:3px}
+.job summary i{grid-area:i;width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #101114;position:relative;transition:transform .4s var(--ease),background .3s}
+.job summary i:before,.job summary i:after{content:"";position:absolute;left:12px;right:12px;top:19px;height:2px;background:#101114;transition:transform .4s var(--ease),background .3s}
+.job summary i:after{transform:rotate(90deg)}
+.job[open] summary i{background:#101114}.job[open] summary i:before,.job[open] summary i:after{background:#fff}.job[open] summary i:after{transform:none}
+.jbody{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:0 0 28px 140px}
+.jbody h3{font:700 12px "Hank";letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+.jbody ul{list-style:none}.jbody li{padding:3px 0 3px 18px;position:relative}.jbody li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:2px;background:currentColor}
+.jbody p{grid-column:1/-1;max-width:520px}
+.jbody .btn{grid-column:1/-1;justify-self:start;margin-top:12px}
+
+/* Kontakt */
+.kontakt{display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw;padding:clamp(90px,11vw,180px) var(--pad);background:#fff}
+.kontakt address{font-style:normal;margin-top:34px;font-size:16px;line-height:1.6}
+.form{display:grid;gap:16px;padding:clamp(22px,2.6vw,40px);border-radius:24px;background:#f4f5f6}
+.form label{display:grid;gap:7px;font-size:14px;font-weight:700}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form input,.form select,.form textarea{font:inherit;font-weight:400;font-size:17px;padding:14px 16px;border:1.5px solid rgba(16,17,20,.18);border-radius:12px;background:#fff;color:#101114;width:100%;transition:border-color .2s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:#101114}
+.form [hidden]{display:none}
+.form .btn{justify-self:start;border:0;cursor:pointer}
+.form .note{font-size:13.5px;opacity:.7}
+.form.done .note{opacity:1;font-weight:700;color:#12703a}
+
+/* Umschalter für die drei Hero-Entwürfe (nur zum Vergleichen) */
+.varianten{position:fixed;right:12px;bottom:12px;z-index:70;display:flex;align-items:center;gap:4px;padding:5px 5px 5px 14px;border-radius:99px;background:rgba(16,17,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;box-shadow:0 10px 30px -10px rgba(0,0,0,.6)}
+.varianten span{margin-right:6px;opacity:.75}
+.varianten a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:800 15px "Bric";transition:background .2s}
+.varianten a:hover{background:rgba(255,255,255,.18)}
+.varianten a.on{background:#fff;color:#101114}
+
+@media (max-width:1100px){
+  .nav-w{display:none}
+  .k-wrap{grid-template-columns:1fr}
+  .k-ort.on{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .k-ort-n{grid-column:1/-1}
+}
+@media (max-width:760px){
+  .nav{padding:14px var(--pad)}
+  .nav nav{gap:14px;font-size:13px}.nav-s{gap:14px}
+  .brand{font-size:16px}.brand svg{width:20px}
+  .dach,.jobs,.kontakt,.ff-body{grid-template-columns:1fr;gap:34px}
+  .ff-h{flex-direction:column;align-items:flex-start;font-size:25vw;line-height:.8;margin-bottom:56px}
+  .ff-a{transform:translateX(calc((1 - var(--p)) * -14vw))}
+  .ff-b{margin:-.08em 0 0 .4em;transform:translateX(calc((1 - var(--p)) * 14vw))}
+  .ff-fun{top:auto;bottom:-2%;right:0;width:84px}
+  .ff-list div{grid-template-columns:1fr;gap:4px}
+  .k-map{border-radius:16px;margin:0 calc(var(--pad) * -1 + 8px)}
+  .k-city,.k-land{display:none}
+  .k-pin{padding:4px 9px 4px 4px;gap:6px}.k-pin b{font-size:12.5px}.k-pin span img{height:18px;padding:3px 4px}
+  .k-pin span{display:none}.k-pin{padding-right:10px}
+  .k-far{top:8px;right:8px}.k-far em{display:none}
+  .nav-s a[href="#karte"]{display:none}
+  .job summary{grid-template-columns:1fr auto;grid-template-areas:"l i" "t i" "m i";row-gap:4px}
+  .job summary img{max-height:28px;margin-bottom:6px}
+  .jbody{grid-template-columns:1fr;padding-left:0}
+  .form .row{grid-template-columns:1fr}
+  .varianten span{display:none}.varianten{padding-left:5px}
+}

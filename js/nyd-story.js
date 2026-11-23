@@ -1,5 +1,5 @@
 // nyd-Genusswelt: Der Tisch wird beim Scrollen gedeckt, danach Ube mit lila Farbe (nur wenn man die Maus bewegt)
-import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, onTick } from './common.js?v=20261123131330';
+import { $, $$, REC, reduced, mobile, clamp, range, ease, prog, vis, onTick } from './common.js?v=20261123174324';
 
 // Tisch: vier Dinge kommen nacheinander dazu. Am Ende steht das echte Foto.
 const tisch = $('#tisch'), full = $('.t-full'), lis = $$('.t-list li'), count = $('#tCount'), tbar = $('#tBar');
@@ -9,7 +9,7 @@ const STEPS = [[.08, .24], [.29, .45], [.50, .66], [.71, .85]];
 // Ube: lila Farbe nur, wenn man die Maus bewegt
 const ube = $('#ube'), fluidCanvas = $('#fluid');
 let fluid = null;
-new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); import('./fluid.js?v=20261123131330').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'ube', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(ube);
+new IntersectionObserver(([e], io) => { if (!e.isIntersecting) return; io.disconnect(); import('./fluid.js?v=20261123174324').then(m => { fluid = m.createFluid(fluidCanvas, { rec: REC, mobile, reduced, theme: 'ube', warm: false }); if (!fluid) fluidCanvas.remove(); }); }, { rootMargin: '120% 0px' }).observe(ube);
 
 let lastDone = -1;
 onTick(dt => {

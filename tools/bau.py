@@ -1,12 +1,13 @@
-"""Setzt die drei Startseiten (Hero-Entwürfe A, B, C) aus den Teilen in tools/teile zusammen.
+"""Seit 23.11.2026 ist B die Standard-Startseite (index.html), A liegt unter a.html, b.html leitet nur noch weiter.
+Setzt die Startseiten (Hero-Entwürfe A, B, C) aus den Teilen in tools/teile zusammen.
 Der Teil unter dem Hero (Geschichte, Karte, Jobs, Kontakt) ist in allen dreien derselbe.
 Aufruf: python tools/bau.py   (danach python tools/stand.py)"""
 import pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
 T = root / 'tools' / 'teile'
 VAR = {
-    'a': dict(datei='index.html', theme='#08090b', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-a-700.webp" imagesrcset="assets/img/frooters/bubble-a-700.webp 700w, assets/img/frooters/bubble-a-1200.webp 1200w" imagesizes="(max-width: 760px) 50vw, 34vw" fetchpriority="high">'),
-    'b': dict(datei='b.html', theme='#ffffff', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-hero-2200.webp" imagesrcset="assets/img/frooters/bubble-hero-1100.webp 1100w, assets/img/frooters/bubble-hero-2200.webp 2200w" imagesizes="100vw" fetchpriority="high">'),
+    'a': dict(datei='a.html', theme='#08090b', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-a-700.webp" imagesrcset="assets/img/frooters/bubble-a-700.webp 700w, assets/img/frooters/bubble-a-1200.webp 1200w" imagesizes="(max-width: 760px) 50vw, 34vw" fetchpriority="high">'),
+    'b': dict(datei='index.html', theme='#ffffff', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-hero-2200.webp" imagesrcset="assets/img/frooters/bubble-hero-1100.webp 1100w, assets/img/frooters/bubble-hero-2200.webp 2200w" imagesizes="100vw" fetchpriority="high">'),
 }
 kopf = (T / 'kopf.html').read_text(encoding='utf-8')
 unten = (T / 'unten.html').read_text(encoding='utf-8')
