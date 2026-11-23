@@ -1,5 +1,5 @@
 // Bowlers-Genusswelt: In fünf Schritten zur eigenen Bowl. Die Tafel aus dem Laden wird Spalte für Spalte herangeholt.
-import { $, $$, clamp, prog, vis, onTick } from './common.js?v=20261123094356';
+import { $, $$, clamp, prog, vis, onTick } from './common.js?v=20261123120221';
 
 const bau = $('#bau'), tafel = $('.bau-tafel'), fotos = $$('.bau-foto'), steps = $$('#bauSteps li'), count = $('#bauCount'), bar = $('#bauBar');
 // Wohin die Tafel je Schritt rückt: Mittelpunkt im Bild (in Prozent) und Vergrößerung
