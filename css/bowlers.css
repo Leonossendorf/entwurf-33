@@ -37,3 +37,7 @@ body{--bg:#f3f2ee;--fg:#161a16;--acc:#3f4f3a;--card:#fff;--line:rgba(22,26,22,.1
   .bau-steps b{font-size:30px;margin-bottom:12px}
   .bau-steps small{margin-bottom:10px}
 }
+.chef-bild{position:relative;border-radius:22px;overflow:hidden;margin-bottom:14px}
+.chef-bild img{width:100%;height:auto;aspect-ratio:16/7;object-fit:cover;object-position:50% 55%}
+.chef-bild figcaption{position:absolute;left:18px;bottom:16px;padding:8px 14px;border-radius:99px;background:#fff;font:700 14px "Bric"}
+@media (max-width:900px){.chef-bild img{aspect-ratio:3/2}}

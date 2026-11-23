@@ -3,7 +3,7 @@ Aufruf: python tools/aufraeumen.py          (nur zeigen)
         python tools/aufraeumen.py --weg    (in den Nachbarordner archiv-seite verschieben)"""
 import pathlib, re, sys
 root = pathlib.Path(__file__).resolve().parent.parent
-pages = ['index.html', 'b.html', 'c.html', 'd.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html']
+pages = ['index.html', 'b.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html']
 seen, todo = set(), [root / p for p in pages]
 text = ''
 while todo:

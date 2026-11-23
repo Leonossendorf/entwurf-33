@@ -6,9 +6,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 T = root / 'tools' / 'teile'
 VAR = {
     'a': dict(datei='index.html', theme='#08090b', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-a-700.webp" imagesrcset="assets/img/frooters/bubble-a-700.webp 700w, assets/img/frooters/bubble-a-1200.webp 1200w" imagesizes="(max-width: 760px) 50vw, 34vw" fetchpriority="high">'),
-    'b': dict(datei='b.html', theme='#ffffff', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-breit-1920.webp" fetchpriority="high">'),
-    'c': dict(datei='c.html', theme='#0b0c0f', preload=''),
-    'd': dict(datei='d.html', theme='#f4f5f6', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-hero-1100.webp" fetchpriority="high">'),
+    'b': dict(datei='b.html', theme='#ffffff', preload='<link rel="preload" as="image" href="assets/img/frooters/bubble-hero-2200.webp" imagesrcset="assets/img/frooters/bubble-hero-1100.webp 1100w, assets/img/frooters/bubble-hero-2200.webp 2200w" imagesizes="100vw" fetchpriority="high">'),
 }
 kopf = (T / 'kopf.html').read_text(encoding='utf-8')
 unten = (T / 'unten.html').read_text(encoding='utf-8')
