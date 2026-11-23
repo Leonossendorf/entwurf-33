@@ -1,5 +1,5 @@
 // Startseiten: Kopfzeile, Karte, Jobs, Kontaktformular. Dazu das Verhalten des jeweiligen Hero-Entwurfs (A, B oder C).
-import { $, $$, clamp, start, run, onTick } from './common.js?v=20261120203725';
+import { $, $$, clamp, start, run, onTick } from './common.js?v=20261123094356';
 
 start();
 const hero = document.body.dataset.hero, nav = $('#nav'), top = $('#start');
@@ -67,8 +67,30 @@ if (hero === 'b') {
 let lift = null, floors = [], liftNow, liftName, liftBtns, lastF = '';
 if (hero === 'c') { lift = $('#lift'); floors = $$('.hc-f'); liftNow = $('#liftNow'); liftName = $('#liftName'); liftBtns = $$('.lift-btns a'); }
 
+// Entwurf D: Beim Scrollen wächst das kleine Haus, bis die vier Räume den Bildschirm füllen
+const house = hero === 'd' ? $('#hdHouse') : null;
+let lastP = -1;
+const lerp = (a, b, t) => a + (b - a) * t, ease = x => x * x * (3 - 2 * x), part = (p, a, b) => clamp((p - a) / (b - a));
+function haus() {
+  const r = top.getBoundingClientRect(), p = clamp(-r.top / Math.max(1, r.height - innerHeight));
+  if (Math.abs(p - lastP) < .0005) return; lastP = p;
+  const W = innerWidth, H = innerHeight, small = W < 760;
+  const w0 = small ? W * .84 : Math.min(W * .46, H * .62), h0 = small ? Math.min(H * .56, w0 * 1.2) : Math.min(H * .6, w0 * .98);
+  const e = ease(part(p, .04, .86)), roof0 = h0 * .3;
+  const s = top.style;
+  s.setProperty('--w', lerp(w0, W, e).toFixed(1) + 'px'); s.setProperty('--h', lerp(h0, H, e).toFixed(1) + 'px');
+  s.setProperty('--b', lerp(H * (small ? .1 : .06), 0, e).toFixed(1) + 'px');
+  s.setProperty('--rh', lerp(roof0, 0, ease(part(p, .2, .86))).toFixed(1) + 'px');
+  s.setProperty('--ro', (1 - part(p, .3, .6)).toFixed(3));
+  s.setProperty('--g', lerp(small ? 4 : 6, small ? 3 : 4, e).toFixed(1) + 'px');
+  s.setProperty('--t', (1 - part(p, 0, .3)).toFixed(3));
+  s.setProperty('--l', ease(part(p, .72, .96)).toFixed(3));
+  top.classList.toggle('inside', p > .9);
+}
+
 onTick(() => {
   nav.classList.toggle('bar', top.getBoundingClientRect().bottom < 70);
+  if (house) haus();
   if (!lift) return;
   let f = floors[0];
   for (const el of floors) if (el.getBoundingClientRect().top <= innerHeight * .5) f = el;

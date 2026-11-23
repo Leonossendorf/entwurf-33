@@ -1,0 +1,46 @@
+/* Hero D „Durchs Dach“ · hell. Ein kleines Haus aus vier echten Fotos, beim Scrollen geht man hinein. */
+body[data-hero="d"] .nav{--navc:#101114}
+.hd{height:260vh;background:#f4f5f6;color:#101114}
+.hd-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:clip}
+.hd-title{position:absolute;left:0;right:0;top:calc(11vh + 20px);text-align:center;padding:0 var(--pad);opacity:var(--t,1);transform:translateY(calc((1 - var(--t,1)) * -40px))}
+.hd-k{font-size:clamp(10px,.8vw,12px);letter-spacing:.28em;text-transform:uppercase;font-weight:700;opacity:.55;margin-bottom:12px}
+.hd h1{font-size:clamp(40px,min(5.6vw,9vh),104px)}
+/* Das Haus: Größe kommt aus dem Skript (--w, --h), Dach wird beim Hineingehen flach */
+.hd-house{position:absolute;left:50%;bottom:var(--b,6vh);width:var(--w,46vw);height:var(--h,52vh);transform:translateX(-50%);display:flex;flex-direction:column}
+.hd-roof{flex:none;height:var(--rh,16vh);background:#101114;clip-path:polygon(50% 0,100% var(--rk,100%),100% 100%,0 100%,0 var(--rk,100%));display:grid;place-items:end center;padding-bottom:calc(var(--rh,16vh) * .16);color:#fff}
+.hd-roof span{font:600 clamp(13px,1.5vw,24px)/1 "Bric";letter-spacing:.01em;opacity:var(--ro,1)}
+.hd-rooms{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:var(--g,6px);background:#101114;padding:var(--g,6px)}
+.hd-room{position:relative;overflow:hidden;background:#222;color:#fff;text-decoration:none;view-transition-name:var(--vt)}
+.hd-room>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.hd-white{background:#fff;color:#101114}
+.hd-room:not(.hd-white):after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0) 60%);opacity:var(--l,0);pointer-events:none}
+/* Schild je Raum: erscheint, sobald man im Haus steht */
+.hd-lbl{position:absolute;z-index:2;left:clamp(14px,2.2vw,40px);right:clamp(14px,2.2vw,40px);bottom:clamp(14px,3.4vh,40px);display:flex;flex-direction:column;align-items:flex-start;gap:10px;opacity:var(--l,0);transform:translateY(calc((1 - var(--l,0)) * 18px));pointer-events:none}
+.hd-white .hd-lbl{inset:0;justify-content:center;align-items:center;text-align:center;opacity:1;transform:none}
+.hd-lbl img{height:calc(clamp(30px,3.6vw,58px) * var(--k,1));width:auto;max-width:100%}
+.hd-white .hd-lbl img{height:auto;width:min(78%,520px);mix-blend-mode:multiply}
+.hd-lbl em{font-style:normal;font-size:clamp(13px,1.1vw,17px);opacity:.92}
+.hd-white .hd-lbl em,.hd-white .hd-lbl b{opacity:var(--l,0)}
+.hd-lbl b{font:700 15px "Bric";padding:9px 16px;border-radius:99px;background:#fff;color:#101114}
+.hd-white .hd-lbl b{background:#e21f26;color:#fff}
+.hd.inside .hd-lbl{pointer-events:auto}
+.hd.inside .hd-room:hover>img{transform:scale(1.04)}
+/* Haustür unten in der Mitte: verschwindet beim Hineingehen */
+.hd-door{position:absolute;left:50%;bottom:0;width:13%;height:30%;min-width:34px;transform:translateX(-50%);background:#101114;border-radius:6px 6px 0 0;opacity:var(--t,1);pointer-events:none}
+.hd-door:after{content:"";position:absolute;right:18%;top:52%;width:6px;height:6px;border-radius:50%;background:#f4f5f6}
+.hd-soon{position:absolute;right:var(--pad);bottom:16px;font-size:14px;color:#6b7078;opacity:var(--t,1)}
+.hd-soon b{font:700 18px "Bric";color:#101114;margin-right:4px}
+
+/* Scroll-Hinweis links neben dem Haus */
+.hd-hint{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;left:var(--pad);transform:none;bottom:18px;color:#101114;text-decoration:none;font-weight:700;font-size:14px;opacity:var(--t,1)}
+.hd-hint i{width:16px;height:25px;border:2px solid currentColor;border-radius:9px;position:relative}
+.hd-hint i:after{content:"";position:absolute;left:50%;top:4px;width:2px;height:6px;margin-left:-1px;border-radius:2px;background:currentColor;animation:wheel 1.6s infinite}
+
+@media (max-width:760px){
+  .hd{height:230vh}
+  .hd-title{top:calc(8vh + 30px)}
+  .hd h1{font-size:9.6vw}
+  .hd-lbl em{display:none}
+  .hd-lbl b{font-size:12.5px;padding:7px 12px}
+  .hd-soon{left:var(--pad);right:auto;bottom:52px;font-size:13px}
+}

@@ -11,9 +11,9 @@
 <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/frooters/bubble-breit-1920.webp" fetchpriority="high">
-<link rel="stylesheet" href="css/base.css?v=20261120203725">
-<link rel="stylesheet" href="css/start.css?v=20261120203725">
-<link rel="stylesheet" href="css/hero-b.css?v=20261120203725">
+<link rel="stylesheet" href="css/base.css?v=20261123094356">
+<link rel="stylesheet" href="css/start.css?v=20261123094356">
+<link rel="stylesheet" href="css/hero-b.css?v=20261123094356">
 <script>try{localStorage.setItem('gmHaus','b.html')}catch(e){}</script>
 </head>
 <body data-world="haus" data-hero="b">
@@ -29,7 +29,7 @@
   <!-- Hero B „Schaufenster“: hell und ruhig. Ein großes Bild, darunter die vier Original-Logos als Auswahl. -->
   <section id="start" class="hb" data-w="frooters">
     <div class="hb-stage" id="hbStage">
-      <a class="hb-slide on" data-w="frooters" href="frooters.html" style="--vt:w-frooters" tabindex="-1" aria-hidden="true"><img src="assets/img/frooters/bubble-breit-1920.webp" alt="" width="1920" height="1210" fetchpriority="high"></a>
+      <a class="hb-slide on" data-w="frooters" href="frooters.html" style="--vt:w-frooters" tabindex="-1" aria-hidden="true"><img src="assets/img/frooters/bubble-hero-2200.webp" srcset="assets/img/frooters/bubble-hero-1100.webp 1100w, assets/img/frooters/bubble-hero-2200.webp 2200w" sizes="100vw" alt="" width="2200" height="1238" fetchpriority="high"></a>
       <a class="hb-slide pn" data-w="pick" href="picknick.html" style="--vt:w-pick" tabindex="-1" aria-hidden="true"><span class="hb-vichy"></span><img class="plaque" data-src="assets/img/logos/picknick.webp" alt="" width="1800" height="625"></a>
       <a class="hb-slide" data-w="bowlers" href="bowlers.html" style="--vt:w-bowlers" tabindex="-1" aria-hidden="true"><img data-src="assets/img/bowlers/b07591-1600.webp" alt="" width="1600" height="1067"></a>
       <a class="hb-slide" data-w="nyd" href="nyd.html" style="--vt:w-nyd" tabindex="-1" aria-hidden="true"><img data-src="assets/img/nyd/hero-room-1800.webp" alt="" width="1800" height="1350"></a>
@@ -41,12 +41,15 @@
         <a class="btn light" id="hbGo" href="frooters.html">Zu Frooters <span>→</span></a>
       </div>
     </div>
-    <div class="hb-bar" id="hbBar" role="tablist" aria-label="Unsere Marken">
-      <a class="hb-tab on" href="frooters.html" data-w="frooters" data-n="Frooters" data-zu="Zu" data-t="Frozen Yogurt, Bubble Waffles und Açaí-Bowls. Frisch gemacht, da wo gebummelt wird."><img src="assets/img/logos/frooters.webp" alt="Frooters" width="1600" height="560"></a>
-      <a class="hb-tab" href="picknick.html" data-w="pick" data-n="Pick Nick" data-zu="Zu" data-t="Kaffeespezialitäten, belegte Brötchen und Waffeln. Die kleine Pause beim Einkaufen."><img src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"></a>
-      <a class="hb-tab" href="bowlers.html" data-w="bowlers" data-n="Bowlers" data-zu="Zu" data-t="Bowls, Wraps und Porridge. Zusammengestellt, wie du es magst."><img src="assets/img/logos/bowlers-logo-s.svg" alt="Bowlers" width="425" height="83"></a>
-      <a class="hb-tab" href="nyd.html" data-w="nyd" data-n="Café nyd" data-zu="Zum" data-t="Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte. Mitten in Osnabrück."><img class="inv" src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="300" height="150"></a>
-      <div class="hb-tab soon"><b>Bald.</b><small>Hier kommt etwas Neues dazu.</small></div>
+    <div class="hb-pick">
+      <p class="hb-hint"><span>Unsere vier Marken</span><b>Wähl eine aus</b><i aria-hidden="true">↓</i></p>
+      <div class="hb-bar" id="hbBar" aria-label="Unsere Marken">
+        <a class="hb-tab on" href="frooters.html" data-w="frooters" data-n="Frooters" data-zu="Zu" data-t="Frozen Yogurt, Bubble Waffles und Açaí-Bowls. Frisch gemacht, da wo gebummelt wird."><span class="hb-l"><img src="assets/img/logos/frooters.webp" alt="Frooters" width="1600" height="560"></span><small>Frozen Yogurt &amp; Waffeln</small></a>
+        <a class="hb-tab" href="picknick.html" data-w="pick" data-n="Pick Nick" data-zu="Zu" data-t="Kaffeespezialitäten, belegte Brötchen und Waffeln. Die kleine Pause beim Einkaufen."><span class="hb-l"><img src="assets/img/logos/picknick.webp" alt="Pick Nick" width="1800" height="625"></span><small>Kaffee &amp; Brötchen</small></a>
+        <a class="hb-tab" href="bowlers.html" data-w="bowlers" data-n="Bowlers" data-zu="Zu" data-t="Bowls, Wraps und Porridge. Zusammengestellt, wie du es magst."><span class="hb-l"><img src="assets/img/logos/bowlers-logo-s.svg" alt="Bowlers" width="425" height="83"></span><small>Bowls &amp; Porridge</small></a>
+        <a class="hb-tab" href="nyd.html" data-w="nyd" data-n="Café nyd" data-zu="Zum" data-t="Brunch, Kaffee, Kuchen und der lila Ube Vanille Latte. Mitten in Osnabrück."><span class="hb-l"><img class="inv" src="assets/img/nyd/logo-weiss.png" alt="Café nyd" width="300" height="150"></span><small>Brunch &amp; Kaffee</small></a>
+        <div class="hb-tab soon"><b>Bald.</b><small>Hier kommt etwas Neues dazu.</small></div>
+      </div>
     </div>
   </section>
 
@@ -188,8 +191,8 @@
   <p><b>Inoffizieller Entwurf</b> von Leon Oßendorf für die Genussmanufaktur GmbH &amp; Co. KG. Nicht öffentlich, nicht von Suchmaschinen erfasst.</p>
   <p>Logos und Fotos: Genussmanufaktur (Frooters, Pick Nick, Bowlers, Café nyd). Karte: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende (ODbL). <a href="https://www.frooters.de/impressum/" target="_blank" rel="noopener">Impressum der Genussmanufaktur</a></p>
 </footer>
-<nav class="varianten" aria-label="Entwürfe für den Hero vergleichen"><span>Hero-Entwurf</span><a href="index.html" data-v="a">A</a><a href="b.html" data-v="b">B</a><a href="c.html" data-v="c">C</a></nav>
-<script type="module" src="js/start.js?v=20261120203725"></script>
-<script>window.STAND="20261120203725";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
+<nav class="varianten" aria-label="Entwürfe für den Hero vergleichen"><span>Hero-Entwurf</span><a href="index.html" data-v="a">A</a><a href="b.html" data-v="b">B</a><a href="c.html" data-v="c">C</a><a href="d.html" data-v="d">D</a></nav>
+<script type="module" src="js/start.js?v=20261123094356"></script>
+<script>window.STAND="20261123094356";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>
 </body>
 </html>

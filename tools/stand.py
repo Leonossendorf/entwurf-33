@@ -5,7 +5,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 s = time.strftime('%Y%m%d%H%M%S')
 (root / 'stand.txt').write_text(s, encoding='utf-8')
 CHK = '<script>window.STAND="%s";fetch("stand.txt?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():null).then(s=>{s=s&&s.trim();if(s&&s!==window.STAND&&!sessionStorage.getItem("st"+s)){sessionStorage.setItem("st"+s,"1");location.reload();}}).catch(()=>{});</script>'
-pages = ['index.html', 'b.html', 'c.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html']
+pages = ['index.html', 'b.html', 'c.html', 'd.html', 'frooters.html', 'picknick.html', 'bowlers.html', 'nyd.html']
 for name in pages:
     p = root / name
     t = p.read_text(encoding='utf-8')
