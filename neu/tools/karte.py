@@ -1,11 +1,11 @@
 """Baut die Standortkarte (assets/img/karte.svg) aus echten OpenStreetMap-Daten.
-Ausschnitt: Niederrhein bis Osnabrück. Autobahnen, große Flüsse, Kanäle, Landes- und Staatsgrenze.
+Ausschnitt: Niederrhein bis Gifhorn (seit 26.11.2026, damit alle Standorte auf der Karte liegen). Autobahnen, große Flüsse, Kanäle, Landes- und Staatsgrenze.
 Aufruf: python tools/karte.py   (lädt einmal von der Overpass-Schnittstelle, Zwischenspeicher in tools/karte-roh.json)"""
 import json, math, pathlib, sys, time, urllib.request, urllib.parse
 
 root = pathlib.Path(__file__).resolve().parent.parent
 RAW = root / 'tools' / 'karte-roh.json'
-S, N, W, E = 51.28, 52.48, 5.95, 8.80          # Kartenausschnitt (muss zu js/start.js passen)
+S, N, W, E = 51.22, 52.78, 6.15, 10.85         # Kartenausschnitt (muss zu js/start.js passen)
 WIDTH = 1700
 K = WIDTH / ((E - W) * math.cos(math.radians((S + N) / 2)))
 HEIGHT = round((N - S) * K)
@@ -13,9 +13,9 @@ HEIGHT = round((N - S) * K)
 BB = f"{S - .03},{W - .03},{N + .03},{E + .03}"
 TEILE = {
  'auto': f'[out:json][timeout:120][bbox:{BB}];way[highway=motorway];out tags geom;',
- 'wasser': f'[out:json][timeout:120][bbox:{BB}];(way[waterway=river][name~"^(Rhein|Rijn|Waal|Nederrijn|IJssel|Ems|Lippe|Ruhr|Weser)$"];way[waterway=canal][name~"Dortmund-Ems-Kanal|Mittellandkanal|Rhein-Herne-Kanal|Wesel-Datteln-Kanal|Twentekanaal"];);out tags geom;',
+ 'wasser': f'[out:json][timeout:120][bbox:{BB}];(way[waterway=river][name~"^(Rhein|Rijn|Waal|Nederrijn|IJssel|Ems|Lippe|Ruhr|Weser|Aller|Leine)$"];way[waterway=canal][name~"Dortmund-Ems-Kanal|Mittellandkanal|Rhein-Herne-Kanal|Wesel-Datteln-Kanal|Twentekanaal|Elbe-Seitenkanal"];);out tags geom;',
  'staat': f'[out:json][timeout:120];rel["ISO3166-1"="DE"][admin_level=2];way(r)({BB});out geom;',
- 'land': f'[out:json][timeout:120];rel["ISO3166-2"="DE-NW"];way(r)({BB});out geom;',
+ 'land': f'[out:json][timeout:120];(rel["ISO3166-2"="DE-NW"];rel["ISO3166-2"="DE-NI"];);way(r)({BB});out geom;',
 }
 SERVER = ('https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.openstreetmap.fr/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter')
 

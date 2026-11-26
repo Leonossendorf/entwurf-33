@@ -33,6 +33,46 @@ h2{font-size:clamp(40px,5vw,92px)}
 .ff-list .fun dt{color:#c10230}
 .ff-list+.awards{margin-top:30px}
 
+/* Drei Entwürfe für den Abschnitt, umschaltbar über body[data-dach] */
+.dv{display:none}
+body:not([data-dach]) .dv-a,body[data-dach="a"] .dv-a,body[data-dach="b"] .dv-b,body[data-dach="c"] .dv-c{display:block}
+.dach .ff-fuss{margin-top:clamp(50px,6vw,96px);align-items:start}
+.dach .ff-fuss .ff-start{margin-top:0}.ff-fuss .awards{margin-top:0}
+
+/* Entwurf B: drei gleich große Kreise wachsen beim Scrollen zusammen. Farben mischen sich wie beim Druck, in der dunklen Mitte steht das Dach. */
+.fb-head{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end;margin-top:clamp(8px,1.2vw,20px)}
+.fb-stage{--d:clamp(208px,25vw,400px);--k:calc(1 + (1 - var(--p)) * .62);position:relative;height:calc(var(--d) * 1.56);margin:calc(var(--d) * .26) 0 calc(var(--d) * .1);isolation:isolate}
+.fb-c{position:absolute;left:50%;top:44%;width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);border-radius:50%;mix-blend-mode:multiply;will-change:transform}
+.fb-1{background:#ff5c93;transform:translate(calc(var(--d) * -.32 * var(--k)),calc(var(--d) * -.185 * var(--k)))}
+.fb-2{background:#ffc814;transform:translate(calc(var(--d) * .32 * var(--k)),calc(var(--d) * -.185 * var(--k)))}
+.fb-3{background:#1fc9d4;transform:translate(0,calc(var(--d) * .37 * var(--k)))}
+.fb-c b{position:absolute;font:800 calc(var(--d) * .14)/1 "Bric";letter-spacing:-.04em;color:#101114}
+.fb-1 b{left:8%;top:27%}.fb-2 b{right:9%;top:27%}.fb-3 b{left:0;right:0;bottom:15%;text-align:center}
+.fb-mid{position:absolute;left:50%;top:44%;width:calc(var(--d) * .17);transform:translate(-50%,-50%) scale(calc(.5 + var(--p) * .5));opacity:calc((var(--p) - .74) * 4.5);color:#fff}
+.fb-mid svg,.fb-cap svg{display:block;width:100%;height:auto;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dach .fb-cap{display:flex;align-items:center;justify-content:center;gap:12px;max-width:none;margin:0 auto clamp(46px,5.4vw,84px);font:600 clamp(16px,1.25vw,19px)/1.3 "Bric";text-align:center}
+.fb-cap span{flex:none;display:grid;place-items:center;width:38px;height:38px;padding:9px 8px 10px;border-radius:50%;background:#1f390a;color:#fff}
+.fb-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3.4vw,56px)}
+.fb-cols div{padding-top:20px;border-top:5px solid}
+.fb-cols .k1{border-color:#ff5c93}.fb-cols .k2{border-color:#ffc814}.fb-cols .k3{border-color:#1fc9d4}
+.fb-cols dt{font:800 clamp(26px,2.3vw,36px)/1 "Bric";letter-spacing:-.03em;margin-bottom:12px}
+.fb-cols dd{font-size:16.5px;line-height:1.52}
+
+/* Entwurf C: die drei Wörter bauen ein Haus. Erst die Mode als Fundament, dann das Essen, dann der Spaß, zuletzt zieht sich das Dach in einem Strich darüber. Die Bühne bleibt dabei kurz stehen. */
+.fc-pin{height:calc(4.02em + 56vh);font-size:min(10.6vw,19.5vh);margin:clamp(6px,1.4vw,24px) 0 clamp(50px,6vw,100px)}
+.fc-stage{position:sticky;top:calc(50vh - 2.01em + 26px);width:max-content;margin:0 auto;padding:1.62em .72em 0;font:800 1em/.8 "Bric"}
+.fc-h{display:flex;flex-direction:column;align-items:center;font:inherit;text-transform:uppercase;letter-spacing:-.045em;word-spacing:0}
+.fc-w{display:block;opacity:calc(.07 + var(--q) * .93);will-change:opacity}
+.fc-1{--q:clamp(0,calc(var(--p) * 2.8),1);letter-spacing:-.02em}
+.fc-2{--q:clamp(0,calc((var(--p) - .2) * 2.8),1);letter-spacing:.03em;margin-right:-.03em}
+.fc-3{--q:clamp(0,calc((var(--p) - .4) * 2.8),1)}
+.fc-roof{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fc-roof path{fill:none;stroke:#101114;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
+.fc-roof .g{opacity:.08}
+.fc-roof .z{stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc((var(--p) - .52) * 2.4),1));opacity:clamp(0,calc((var(--p) - .52) * 40),1)}
+.dach .fc-name{position:absolute;left:0;right:0;top:36.6%;max-width:none;text-align:center;font:700 .078em/1 "Hank";letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;opacity:calc((var(--p) - .9) * 10)}
+.dv-c .ff-list dd::first-line{font-weight:700}
+
 /* Geschichte */
 .dach{display:grid;grid-template-columns:1fr 1fr;gap:6vw;padding:clamp(90px,12vw,190px) var(--pad);background:#fff}
 .dach p{font-size:clamp(18px,1.45vw,22px);max-width:600px}
@@ -44,14 +84,15 @@ h2{font-size:clamp(40px,5vw,92px)}
 .karte{padding:clamp(80px,10vw,160px) var(--pad);background:#0c0d10;color:#f2f3f5}
 .k-head{max-width:760px;margin-bottom:clamp(30px,4vw,56px)}
 .k-head p:last-child{font-size:clamp(17px,1.35vw,20px);margin-top:20px;opacity:.82;max-width:560px}
-.k-wrap{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.8fr);gap:18px;align-items:stretch}
-.k-map{position:relative;border-radius:22px;overflow:hidden;background:#131518;aspect-ratio:1700/1160;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.k-wrap{display:grid;grid-template-columns:1fr;gap:18px}
+.k-map{position:relative;border-radius:22px;overflow:hidden;background:#131518;aspect-ratio:1700/917;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .k-map>img{position:absolute;inset:0;width:100%;height:100%}
 .k-city,.k-land{position:absolute;transform:translate(-50%,-50%);font-size:clamp(9.5px,.82vw,12.5px);font-weight:600;letter-spacing:.02em;color:#8a919b;white-space:nowrap;pointer-events:none}
 .k-city:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#8a919b;margin-right:6px;vertical-align:middle}
 .k-city{transform:translate(-5px,-50%)}
+.k-city.l{transform:translate(calc(-100% + 5px),-50%)}.k-city.l:before{display:none}.k-city.l:after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#8a919b;margin-left:6px;vertical-align:middle}
 .k-land{font-size:clamp(9px,.75vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#4b515a}
-.k-pin{position:absolute;transform:translate(-11px,-50%);display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:99px;background:rgba(244,245,246,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;transition:background .3s,color .3s,transform .4s var(--ease);z-index:2}
+.k-pin{position:absolute;transform:translate(-11px,-50%);display:flex;width:max-content;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:99px;background:rgba(244,245,246,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;transition:background .3s,color .3s,transform .4s var(--ease);z-index:2}
 .k-pin i{flex:none;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.2)}
 .k-pin b{font:700 clamp(13px,1.15vw,17px) "Bric";letter-spacing:-.01em}
 .k-pin span{display:flex;gap:5px}
@@ -72,7 +113,8 @@ h2{font-size:clamp(40px,5vw,92px)}
 .job summary img[src*="logos/picknick"],.k-lg[src*="logos/picknick"]{mix-blend-mode:multiply}
 .k-panel{border-radius:22px;background:#fff;color:#101114;padding:clamp(18px,1.8vw,28px);display:flex;flex-direction:column}
 .k-ort{display:none;flex-direction:column;gap:14px;flex:1}
-.k-ort.on{display:flex;animation:kin .5s var(--ease)}
+.k-ort.on{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));animation:kin .5s var(--ease)}
+.k-ort-n{grid-column:1/-1}
 @keyframes kin{from{opacity:0;transform:translateY(12px)}}
 .k-ort-n{font:700 clamp(20px,1.7vw,26px)/1.1 "Bric";letter-spacing:-.02em;margin-bottom:4px}
 .k-ort-n small{display:block;font:700 11.5px "Hank";letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
@@ -117,18 +159,15 @@ h2{font-size:clamp(40px,5vw,92px)}
 .form .note{font-size:13.5px;opacity:.7}
 .form.done .note{opacity:1;font-weight:700;color:#12703a}
 
-/* Umschalter für die drei Hero-Entwürfe (nur zum Vergleichen) */
+/* Umschalter für die drei Entwürfe des Abschnitts Fashion · Food · Fun (nur zum Vergleichen) */
 .varianten{position:fixed;right:12px;bottom:12px;z-index:70;display:flex;align-items:center;gap:4px;padding:5px 5px 5px 14px;border-radius:99px;background:rgba(16,17,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;box-shadow:0 10px 30px -10px rgba(0,0,0,.6)}
 .varianten span{margin-right:6px;opacity:.75}
-.varianten a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:800 15px "Bric";transition:background .2s}
-.varianten a:hover{background:rgba(255,255,255,.18)}
-.varianten a.on{background:#fff;color:#101114}
+.varianten button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;text-align:center;font:800 15px "Bric";transition:background .2s}
+.varianten button:hover{background:rgba(255,255,255,.18)}
+.varianten button.on{background:#fff;color:#101114}
 
 @media (max-width:1100px){
   .nav-w{display:none}
-  .k-wrap{grid-template-columns:1fr}
-  .k-ort.on{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-  .k-ort-n{grid-column:1/-1}
 }
 @media (max-width:760px){
   .nav{padding:14px var(--pad)}
@@ -140,10 +179,15 @@ h2{font-size:clamp(40px,5vw,92px)}
   .ff-b{margin:-.08em 0 0 .4em;transform:translateX(calc((1 - var(--p)) * 14vw))}
   .ff-fun{top:auto;bottom:-2%;right:0;width:84px}
   .ff-list div{grid-template-columns:1fr;gap:4px}
+  .fb-head,.fb-cols{grid-template-columns:1fr;gap:26px}
+  .fb-stage{--d:52vw;--k:calc(1 + (1 - var(--p)) * .42);margin-bottom:calc(var(--d) * .16)}
+  .fc-pin{font-size:min(16.4vw,17vh)}
+  .dach .fc-name{font-size:.1em;letter-spacing:.16em;text-indent:.16em;top:35.4%}
+  .varianten button{width:38px;height:38px}
   .k-map{border-radius:16px;margin:0 calc(var(--pad) * -1 + 8px)}
   .k-city,.k-land{display:none}
   .k-pin{padding:4px 9px 4px 4px;gap:6px}.k-pin b{font-size:12.5px}.k-pin span img{height:18px;padding:3px 4px}
-  .k-pin span{display:none}.k-pin{padding-right:10px}
+  .k-pin span{display:none}.k-pin{padding-right:10px}.k-pin.links{padding:4px 4px 4px 10px}
   .k-far{top:8px;right:8px}.k-far em{display:none}
   .nav-s a[href="#karte"]{display:none}
   .job summary{grid-template-columns:1fr auto;grid-template-areas:"l i" "t i" "m i";row-gap:4px}

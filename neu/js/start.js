@@ -1,27 +1,45 @@
 // Startseiten: Kopfzeile, Karte, Jobs, Kontaktformular. Dazu das Verhalten des jeweiligen Hero-Entwurfs (A, B oder C).
-import { $, $$, clamp, start, run, onTick } from './common.js?v=20261123174324';
+import { $, $$, clamp, start, run, onTick, scrollToY, lenis } from './common.js?v=20261126092546';
 
 start();
 const hero = document.body.dataset.hero, nav = $('#nav'), top = $('#start');
 
 // Fashion · Food · Fun: Fortschritt nur durch Scrollen, nie von selbst
-const ff = $('#dach'), ffH = $('#ffH');
-if (ff && ffH) {
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let ffT = 0;
-  const ffSet = () => { ffT = 0; const r = ffH.getBoundingClientRect(), h = innerHeight; const p = still ? 1 : clamp((h - r.top) / (h * .62), 0, 1); ff.style.setProperty('--p', p.toFixed(3)); };
+// Drei Entwürfe (A, B, C) zum Vergleichen: Schalter unten rechts, Auswahl bleibt gemerkt, ?dach=b in der Adresse öffnet direkt einen Entwurf
+const ff = $('#dach');
+if (ff) {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches, alle = ['a', 'b', 'c'], knoepfe = $$('.varianten button');
+  const merk = { get: () => { try { return localStorage.getItem('gmDach'); } catch (e) { return null; } }, set: v => { try { localStorage.setItem('gmDach', v); } catch (e) {} } };
+  const wunsch = new URLSearchParams(location.search).get('dach');
+  let dach = alle.includes(wunsch) ? wunsch : alle.includes(merk.get()) ? merk.get() : 'a', ffT = 0;
+  const ffSet = () => {
+    ffT = 0; const st = $(`.dv-${dach} [data-ffp]`); if (!st) return;
+    const h = innerHeight; let p = 1;
+    if (!still) {
+      if ('pin' in st.dataset) { const w = st.parentElement.getBoundingClientRect(), oben = parseFloat(getComputedStyle(st).top) || 0; p = clamp((oben + h * .22 - w.top) / (h * .22 + w.height - st.offsetHeight)); }
+      else { const r = st.getBoundingClientRect(); p = clamp((h * +st.dataset.o - (r.top + r.height * +st.dataset.a)) / (h * +st.dataset.b)); }
+    }
+    ff.style.setProperty('--p', p.toFixed(3));
+  };
+  const wahl = (v, hin) => {
+    dach = v; document.body.dataset.dach = v; merk.set(v);
+    for (const k of knoepfe) { const an = k.dataset.v === v; k.classList.toggle('on', an); k.setAttribute('aria-pressed', an); }
+    if (lenis) lenis.resize(); ffSet();
+    if (hin) scrollToY(ff.getBoundingClientRect().top + scrollY - 40);
+  };
+  for (const k of knoepfe) k.addEventListener('click', () => wahl(k.dataset.v, true));
   addEventListener('scroll', () => { if (!ffT) ffT = requestAnimationFrame(ffSet); }, { passive: true });
-  addEventListener('resize', ffSet); ffSet();
+  addEventListener('resize', ffSet); wahl(dach, false);
 }
 
 // Karte: Orte nach Breiten- und Längengrad setzen (gleicher Ausschnitt wie tools/karte.py)
-const S = 51.28, N = 52.48, W = 5.95, E = 8.80;
+const S = 51.22, N = 52.78, W = 6.15, E = 10.85;
 for (const el of $$('#kMap [data-lat]')) {
   const x = (+el.dataset.lon - W) / (E - W) * 100;
   el.style.left = x.toFixed(2) + '%'; el.style.top = ((N - +el.dataset.lat) / (N - S) * 100).toFixed(2) + '%';
 }
 // Schild nach links klappen, wenn es rechts aus der Karte ragen würde
-const kMap = $('#kMap'), klappen = () => { const m = kMap.getBoundingClientRect(); for (const p of $$('.k-pin[data-lat]')) { p.classList.remove('links'); if (p.getBoundingClientRect().right > m.right - 8) p.classList.add('links'); } };
+const kMap = $('#kMap'), klappen = () => { const m = kMap.getBoundingClientRect(); for (const p of $$('.k-pin[data-lat]')) { p.classList.remove('links'); if (p.dataset.seite === 'links' || p.getBoundingClientRect().right > m.right - 8) p.classList.add('links'); } };
 klappen(); addEventListener('resize', klappen); addEventListener('load', klappen);
 const pins = $$('.k-pin'), orte = $$('.k-ort');
 for (const p of pins) p.addEventListener('click', () => {

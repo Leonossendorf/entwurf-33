@@ -1,5 +1,5 @@
 // Genusswelten: die normale Seite. Produktkarten klappen auf, die Scroll-Geschichte lädt erst auf Wunsch.
-import { $$, start, run, gate } from './common.js?v=20261123174324';
+import { $$, start, run, gate } from './common.js?v=20261126092546';
 
 start();
 
@@ -12,9 +12,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') zu(); });
 
 // Genusswelt entdecken: Die Geschichte wird erst geladen, wenn man sie startet
 const STORY = {
-  acai: () => import('./acai.js?v=20261123174324'),
-  bowl: () => import('./bowl.js?v=20261123174324'),
-  nyd: () => import('./nyd-story.js?v=20261123174324'),
+  acai: () => import('./acai.js?v=20261126092546'),
+  bowl: () => import('./bowl.js?v=20261126092546'),
+  nyd: () => import('./nyd-story.js?v=20261126092546'),
 };
 gate(STORY[document.body.dataset.story]);
 run();
