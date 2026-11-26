@@ -1,5 +1,5 @@
 // Startseiten: Kopfzeile, Karte, Jobs, Kontaktformular. Dazu das Verhalten des jeweiligen Hero-Entwurfs (A, B oder C).
-import { $, $$, clamp, start, run, onTick, scrollToY, lenis } from './common.js?v=20261126092546';
+import { $, $$, clamp, start, run, onTick, scrollToY, lenis } from './common.js?v=20261126095339';
 
 start();
 const hero = document.body.dataset.hero, nav = $('#nav'), top = $('#start');
@@ -24,9 +24,11 @@ if (ff) {
   const wahl = (v, hin) => {
     dach = v; document.body.dataset.dach = v; merk.set(v);
     for (const k of knoepfe) { const an = k.dataset.v === v; k.classList.toggle('on', an); k.setAttribute('aria-pressed', an); }
-    if (lenis) lenis.resize(); ffSet();
+    if (lenis) lenis.resize(); goo(); ffSet();
     if (hin) scrollToY(ff.getBoundingClientRect().top + scrollY - 40);
   };
+  const goo = () => { const d = $('.fb-d'), f = $('#ffGoo feGaussianBlur'); if (d && f && d.offsetWidth) f.setAttribute('stdDeviation', (d.offsetWidth * .048).toFixed(1)); };
+  addEventListener('resize', goo);
   for (const k of knoepfe) k.addEventListener('click', () => wahl(k.dataset.v, true));
   addEventListener('scroll', () => { if (!ffT) ffT = requestAnimationFrame(ffSet); }, { passive: true });
   addEventListener('resize', ffSet); wahl(dach, false);
